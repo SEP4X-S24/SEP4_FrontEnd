@@ -1,7 +1,7 @@
 import React from "react";
 
 function HomeAbout() {
-  return <div>HomeAbout</div>;
+  return <div className=".homeAbout">HomeAbout</div>;
 }
 
 export default HomeAbout;

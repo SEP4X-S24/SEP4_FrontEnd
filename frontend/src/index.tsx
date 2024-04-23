@@ -5,6 +5,8 @@ import HomePage from "./pages/Home/HomePage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
+import "./index.css";
+import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 
 const router = createHashRouter([
   {
@@ -19,6 +21,10 @@ const router = createHashRouter([
       {
         path: "profile",
         element: <ProfilePage />,
+      },
+      {
+        path: "recomendation",
+        element: <RecomendationPage />,
       },
     ],
   },
