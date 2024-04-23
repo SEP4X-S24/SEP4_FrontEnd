@@ -1,0 +1,5 @@
+.homeAbout {
+  background-color: var(--secondary-color);
+  padding: var(--spacing-medium);
+  border-radius: var(--border-radius);
+}
