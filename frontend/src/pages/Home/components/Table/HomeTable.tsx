@@ -1,7 +1,8 @@
 import React from "react";
+import classes from "./HomeTable.module.css";
 
 function HomeTable() {
-  return <div>HomeTable</div>;
+  return <div className={classes.table}>HomeTable</div>;
 }
 
 export default HomeTable;

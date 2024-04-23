@@ -4,12 +4,12 @@ import Footer from "../components/Footer/Footer";
 import AppIcon from "../images/MitWeather-icon.png";
 import ProfileIcon from "../images/profile-icon.png";
 import NotificationIcon from "../images/notification-icon.png";
-import "./Root.css";
+import classes from "./Root.module.css";
 
 function Root() {
   return (
     <>
-      <header className="p-3">
+      <header className={classes.header + " p-3"}>
         <div className="container">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <a
@@ -31,8 +31,8 @@ function Root() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/profile" className="nav-link px-2 text-white">
-                Recomandation
+              <Link to="/recomendation" className="nav-link px-2 text-white">
+                Styles Guide
               </Link>
               <Link to="/" className="nav-link px-2 text-white">
                 Dashboard

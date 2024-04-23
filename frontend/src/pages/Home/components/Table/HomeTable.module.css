@@ -1,0 +1,7 @@
+/* 
+For variables check src/styles folder
+*/
+
+.table {
+  background-color: var(--color-primary);
+}
