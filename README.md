@@ -20,7 +20,7 @@ src/
 |   |-- Home/
 |   |   |-- components/
 |   |   |   |-- About/
-|   |   |   |   |-- About.tsx
+|   |   |   |   |-- HomeAbout.tsx
 |   |   |-- HomePage.tsx
 |   |   |-- HomePageStyles.css
 |   |-- Profile/
