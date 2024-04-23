@@ -1,7 +1,7 @@
 import React from "react";
 
-function Recomendation() {
+function RecomendationPage() {
   return <div>Recomendation</div>;
 }
 
-export default Recomendation;
+export default RecomendationPage;
