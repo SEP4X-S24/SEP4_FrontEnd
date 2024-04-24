@@ -1,19 +1,21 @@
 import React from "react";
 import classes from "./HomeSugestion.module.css";
+import { Suggestion } from "../../services/DemoDataHome";
 
-function HomeSugestion() {
+function HomeSugestion({ sugestion }: { sugestion: Suggestion }) {
   return (
     <div className={classes.sugestion}>
-      HomeSugestion
-      <h2 className="heading-4">Clothes for Rain</h2>
-      <p className="body-text-regular">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged
-      </p>
+      HomeSugestion Component
+      <h2 className="heading-4">{sugestion.title}</h2>
+      <p className="body-text-regular"></p>
+      <ul>
+        {sugestion.items.map((item) => (
+          <li>
+            Type: <b>{item.itemType}</b> Description: {item.description}
+            <div>Icon: {item.icon}</div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
