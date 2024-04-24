@@ -1,0 +1,7 @@
+/* 
+For variables check src/styles folder
+*/
+
+.weatherData {
+  background-color: var(--color-primary);
+}

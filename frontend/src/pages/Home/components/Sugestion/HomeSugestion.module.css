@@ -1,0 +1,7 @@
+/* 
+For variables check src/styles folder
+*/
+
+.sugestion {
+  background-color: var(--color-primary-2);
+}
