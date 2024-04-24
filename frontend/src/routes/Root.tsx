@@ -37,7 +37,7 @@ function Root() {
               <Link to="/" className="nav-link px-2 text-white">
                 Dashboard
               </Link>
-              <Link to="/" className="nav-link px-2 text-white">
+              <Link to="/notification" className="nav-link px-2 text-white">
                 <img src={NotificationIcon} height="40" alt="AppIcon" />
               </Link>
               <Link to="/profile" className="nav-link px-2 text-white">
