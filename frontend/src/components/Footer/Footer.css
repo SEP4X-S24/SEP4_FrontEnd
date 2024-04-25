@@ -12,14 +12,14 @@
 .footer h4,
 .footer h5,
 .footer h6 {
-  color: var(--color-grey-1);
+  color: var(--color-gray-1);
 }
 
 .footer p,
 .footer label, 
 .footer hr,
 .footer .a{
-  color: var(--color-grey-3);
+  color: var(--color-gray-3);
   font-size: 0.9rem;
 }
 
