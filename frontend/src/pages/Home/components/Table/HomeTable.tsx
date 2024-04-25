@@ -1,22 +1,11 @@
 import React from "react";
 import styles from "./HomeTable.module.css";
+import { Table } from "../../services/DemoDataHome";
+import icon from "../../../../images/icon-1.png";
 
-interface ForecastSummary {
-  date: Date;
-  minTemperature: number;
-  maxTemperature: number;
-  humidity: number;
-  rain: string;
-}
-
-interface TableProps {
-  forecastSummary: ForecastSummary[];
-}
-
-const HomeTable: React.FC<{ table: TableProps }> = ({ table }) => {
+function HomeTable({ table }: { table: Table }) {
   return (
-    <div>
-      <h1 className={styles.header}>Forecast Summary</h1>
+    <div className="container">
       <table className={styles.weatherTable}>
         <thead>
           <tr>
@@ -35,7 +24,7 @@ const HomeTable: React.FC<{ table: TableProps }> = ({ table }) => {
               <td>{entry.maxTemperature}°C</td>
               <td>{entry.humidity}%</td>
               <td>
-                <img src={entry.rain} alt="Weather Icon" />
+                <img src={icon} alt="Weather Icon" />
               </td>
             </tr>
           ))}
@@ -43,6 +32,6 @@ const HomeTable: React.FC<{ table: TableProps }> = ({ table }) => {
       </table>
     </div>
   );
-};
+}
 
 export default HomeTable;

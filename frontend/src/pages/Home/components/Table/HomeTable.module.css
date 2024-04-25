@@ -2,7 +2,6 @@
 .weatherTable {
   width: 100%;
   max-width: 800px;
-  margin: 32px auto;
   border-collapse: collapse;
   background-color: white;
   color: #6c757d; /* Secondary Color */
@@ -11,7 +10,7 @@
 }
 
 .weatherTable thead {
-  background-color: #007bff; /* Primary Color */
+  background-color: var(--color-primary);
 }
 
 .weatherTable th,
