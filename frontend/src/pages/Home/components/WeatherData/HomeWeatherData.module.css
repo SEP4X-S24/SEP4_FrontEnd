@@ -1,7 +1,18 @@
-/* 
-For variables check src/styles folder
-*/
-
 .weatherData {
-  background-color: var(--color-primary);
+  background-color: var(--color-white);
+  width: fit-content;
+  margin: auto;
+  user-select: none;
+  border-radius: 20px;
+  border: 2px solid var(--color-gray-3);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.4);
 }
+
+.weatherAutoSlider {
+  display: flex;
+  width: 200px !important;
+  visibility: visible;
+}
+
+
