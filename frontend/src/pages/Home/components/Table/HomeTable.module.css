@@ -1,29 +1,38 @@
+/* HomeTable.module.css */
 .weatherTable {
-  width: 90%;
-  max-width: 600px;
-  margin: 20px auto;
+  width: 100%;
+  max-width: 800px;
+  margin: 32px auto;
   border-collapse: collapse;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  color: #6c757d; /* Secondary Color */
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.weatherTable thead {
+  background-color: #007bff; /* Primary Color */
 }
 
 .weatherTable th,
 .weatherTable td {
-  padding: 12px 15px;
+  padding: 16px; /* Medium spacing for padding */
   text-align: center;
   border-bottom: 1px solid #ddd;
 }
 
 .weatherTable th {
-  background-color: #4caf50;
   color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px; /* Close to H3 size for visibility */
 }
 
-.weatherTable tbody tr:nth-child(even) {
-  background-color: #f2f2f2;
+.weatherTable tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
 }
 
 .weatherTable tbody tr:hover {
-  background-color: #ddd;
+  background-color: #f1f1f1;
 }
 
 .weatherTable img {
@@ -33,23 +42,24 @@
 
 .header {
   text-align: center;
-  color: #333;
-  font-size: 24px;
-  margin-top: 0;
+  color: #007bff; /* Primary Color */
+  font-size: 32px; /* H1 size */
+  font-family: "Montserrat", sans-serif;
+  margin-bottom: 16px; /* Medium spacing */
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .weatherTable {
-    width: 100%;
-    margin: 10px auto;
+    margin: 16px auto;
   }
 
   .weatherTable th,
   .weatherTable td {
-    padding: 8px;
+    padding: 12px; /* Slightly reduced padding */
+    font-size: 16px; /* Adjusted for readability on smaller screens */
   }
 
   .header {
-    font-size: 20px;
+    font-size: 24px; /* Adjusted size for mobile */
   }
 }
