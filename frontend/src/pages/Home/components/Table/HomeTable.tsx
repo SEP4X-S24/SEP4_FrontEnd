@@ -5,7 +5,7 @@ import icon from "../../../../images/icon-1.png";
 
 function HomeTable({ table }: { table: Table }) {
   return (
-    <div className="container">
+    <div>
       <table className={styles.weatherTable}>
         <thead>
           <tr>

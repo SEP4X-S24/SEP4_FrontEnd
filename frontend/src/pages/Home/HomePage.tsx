@@ -12,12 +12,12 @@ import {
 
 function HomePage() {
   return (
-    <>
+    <div className="container">
       <HomeAbout about={demoData.About} />
       <HomeWeatherData weatherData={demoData.WeatherData} />
       <HomeSugestion sugestion={demoData.Suggestion} />
       <HomeTable table={demoData.Table} />
-    </>
+    </div>
   );
 }
 

@@ -3,5 +3,10 @@ For variables check src/styles folder
 */
 
 .homeAbout {
-  background-color: var(--color-primary-2);
+  background-image: url("../../../../images/horsens-1.jpg"); /* Replace with your image path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%; /* Set the width of the div */
+  height: 400px;
 }

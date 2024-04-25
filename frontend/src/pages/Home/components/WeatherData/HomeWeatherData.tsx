@@ -8,8 +8,11 @@ import { Slider, Button } from "@mui/base";
 function HomeWeatherData({ weatherData }: { weatherData: WeatherData }) {
   const timeListEl = (
     <div className="time-entries d-flex flex-row container-fluid">
-      {weatherData.hourlyForecast.map((item) => (
-        <div className="time-entry d-flex flex-column col text-center m-2 fw-bolder">
+      {weatherData.hourlyForecast.map((item, index) => (
+        <div
+          key={index}
+          className="time-entry d-flex flex-column col text-center m-2 fw-bolder"
+        >
           <label>{item.time.split(" ")[0]}</label>
           <label>{item.time.split(" ")[1]}</label>
         </div>
@@ -19,30 +22,31 @@ function HomeWeatherData({ weatherData }: { weatherData: WeatherData }) {
 
   const weatherListEl = (
     <div className="weather-entries d-flex container-fluid justify-content-center">
-      {weatherData.hourlyForecast.map((item) => (
-        <div className="weather-entry d-flex col flex-column text-center m-2 justify-content-center">
+      {weatherData.hourlyForecast.map((item, index) => (
+        <div
+          key={index}
+          className="weather-entry d-flex col flex-column text-center m-2 justify-content-center"
+        >
           <label>
             <b>{item.temperature}</b>℃
           </label>
           <label>{item.windSpeed} m/s</label>
-          <WeatherIcon.WiDayCloudy size={45} color={COLORS().secondary} />
+          <div className="d-flex justify-content-center">
+            <WeatherIcon.WiDayCloudy size={45} color={COLORS().secondary} />
+          </div>
           <label>{item.rainChance} %</label>
         </div>
       ))}
-      
     </div>
-    
   );
 
   return (
     <>
       <div className={classes.weatherData}>
-      {timeListEl}
-      {weatherListEl}
-    </div>
+        {timeListEl}
+        {weatherListEl}
+      </div>
     </>
-    
-    
   );
 }
 

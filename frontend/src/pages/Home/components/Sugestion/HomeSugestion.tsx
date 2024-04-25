@@ -9,8 +9,8 @@ function HomeSugestion({ sugestion }: { sugestion: Suggestion }) {
       <h2 className="heading-4">{sugestion.title}</h2>
       <p className="body-text-regular"></p>
       <ul>
-        {sugestion.items.map((item) => (
-          <li>
+        {sugestion.items.map((item, index) => (
+          <li key={index}>
             Type: <b>{item.itemType}</b> Description: {item.description}
             <div>Icon: {item.icon}</div>
           </li>

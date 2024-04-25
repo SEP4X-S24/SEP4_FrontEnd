@@ -1,7 +1,7 @@
 .weatherData {
   background-color: var(--color-white);
-  width: fit-content;
-  margin: auto;
+  width: auto;
+  margin: 1.2rem;
   user-select: none;
   border-radius: 20px;
   border: 2px solid var(--color-gray-3);
@@ -14,5 +14,3 @@
   width: 200px !important;
   visibility: visible;
 }
-
-
