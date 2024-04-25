@@ -1,36 +1,48 @@
 import React from "react";
-import classes from "./HomeTable.module.css";
-import { Table } from "../../services/DemoDataHome";
+import styles from "./HomeTable.module.css";
 
-function HomeTable({ table }: { table: Table }) {
+interface ForecastSummary {
+  date: Date;
+  minTemperature: number;
+  maxTemperature: number;
+  humidity: number;
+  rain: string;
+}
+
+interface TableProps {
+  forecastSummary: ForecastSummary[];
+}
+
+const HomeTable: React.FC<{ table: TableProps }> = ({ table }) => {
   return (
-    <div className={classes.table}>
-      HomeTable
-      <div>Table</div>
+    <div>
+      <h1>Forecast Summary</h1>
       <table>
         <thead>
           <tr>
             <th>Date</th>
-            <th>Min</th>
-            <th>Max</th>
+            <th>Min Temp</th>
+            <th>Max Temp</th>
             <th>Humidity</th>
             <th>Rain</th>
           </tr>
         </thead>
         <tbody>
-          {table.forecastSummary.map((item) => (
-            <tr>
-              <td>{item.date.getDate()} </td>
-              <td>{item.minTemperature} 'C__</td>
-              <td>{item.maxTemperature} 'C__</td>
-              <td>{item.humidity}%</td>
-              <td>{item.rain}</td>
+          {table.forecastSummary.map((entry, index) => (
+            <tr key={index}>
+              <td>{entry.date.toLocaleDateString()}</td>
+              <td>{entry.minTemperature}°C</td>
+              <td>{entry.maxTemperature}°C</td>
+              <td>{entry.humidity}%</td>
+              <td>
+                <img src={entry.rain} alt="Weather Icon" />
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
     </div>
   );
-}
+};
 
 export default HomeTable;

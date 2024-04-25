@@ -5,3 +5,69 @@ For variables check src/styles folder
 .table {
   background-color: var(--color-primary);
 }
+
+/* WeatherPage.module.css */
+
+/* Base styles for the whole page */
+.weatherTable {
+  width: 75%;
+  margin: 20px auto; /* Center the table and add margin to the top */
+  border-collapse: collapse;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #007bff; /* Add a border with a distinct color */
+}
+
+.weatherTable th,
+.weatherTable td {
+  text-align: left;
+  padding: 12px 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+.weatherTable th {
+  background-color: #007bff; /* Blue header background */
+  color: #ffffff; /* White text for headers */
+  font-weight: bold;
+}
+
+.weatherTable td {
+  background-color: #ffffff; /* White cell backgrounds for contrast */
+  color: #333; /* Dark text for readability */
+}
+
+/* Styles for the header */
+.header {
+  font-size: 24px;
+  color: #ffffff; /* White text */
+  padding: 20px;
+  text-align: center;
+  background-color: #007bff; /* Blue background matching the table header */
+  margin-bottom: 0;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 600px) {
+  .header {
+    font-size: 20px;
+    padding: 15px;
+  }
+
+  .weatherTable th,
+  .weatherTable td {
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .weatherTable {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
+
+/* Tablet and above */
+@media (min-width: 601px) {
+  .weatherTable th,
+  .weatherTable td {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+}
