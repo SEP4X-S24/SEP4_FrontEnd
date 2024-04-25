@@ -16,8 +16,8 @@ interface TableProps {
 const HomeTable: React.FC<{ table: TableProps }> = ({ table }) => {
   return (
     <div>
-      <h1>Forecast Summary</h1>
-      <table>
+      <h1 className={styles.header}>Forecast Summary</h1>
+      <table className={styles.weatherTable}>
         <thead>
           <tr>
             <th>Date</th>
