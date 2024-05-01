@@ -13,12 +13,12 @@ import {
 
 function HomePage() {
   return (
-    <div>
-      <div className="container-fluid weather-container">
+    <div className="container-fluid weather-root d-flex align-items-center justify-content-center">
+      <div className="weather-container">
         <HomeAbout about={demoData.About} />
-        <HomeWeatherData weatherData={demoData.WeatherData} />
+        {/* <HomeWeatherData weatherData={demoData.WeatherData} />
         <HomeSugestion sugestion={demoData.Suggestion} />
-        <HomeTable table={demoData.Table} />
+        <HomeTable table={demoData.Table} /> */}
       </div>
     </div>
   );

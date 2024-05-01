@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./HomeAbout.css";
 import { About } from "../../services/DemoDataHome";
 import * as Icon from "react-icons/wi";
@@ -11,6 +11,8 @@ function HomeAbout({ about }: { about: About }) {
   const [windSpeed, setWindSpeed] = React.useState(8); // TODO: pass as parameter
   const [currentWeather, setCurrentWeather] = React.useState("Partly Cloudy");
   const [location, setLocation] = React.useState("Horsens");
+
+  useRef()
 
   const handleUpdate = () => {
     setCurrentTemperature(23);
@@ -26,7 +28,9 @@ function HomeAbout({ about }: { about: About }) {
         <h2 className="my-3">{currentTemperature}°</h2>
         <h5>{currentWeather}</h5>
       </div>
-      <Icon.WiDayCloudy size={100} color={COLORS().secondary} />
+      <div className="weather-icon-container">
+        <Icon.WiDayCloudy color={COLORS().secondary} style={{ width: "100%", height: "100%" }} />
+      </div>
       <div className="details-data d-flex flex-row justify-content-between">
         <div>
           <h5>Humidity: {humidity}%</h5>

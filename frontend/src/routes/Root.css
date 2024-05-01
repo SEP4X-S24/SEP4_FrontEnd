@@ -9,3 +9,8 @@
 .navbar-icon:hover{
   color: black;
 }
+
+
+.navbar{
+  height: 5vh;
+}
