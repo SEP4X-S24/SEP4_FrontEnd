@@ -1,0 +1,7 @@
+.weather-container{
+    width: 100%;
+    margin: 0;
+    height: fit-content;
+    background-image: url("../../images/rainy_back.jpg");
+    padding: var(--space-big);
+}

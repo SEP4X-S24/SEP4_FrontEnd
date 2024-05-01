@@ -1,0 +1,11 @@
+.header {
+  background-color: var(--color-tertiary);
+}
+
+#header-name{
+  color: var(--color-white);
+}
+
+.navbar-icon:hover{
+  color: black;
+}

@@ -1,27 +1,41 @@
 import React from "react";
+import "./Root.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
-import AppIcon from "../images/MitWeather-icon.png";
-import ProfileIcon from "../images/profile-icon.png";
-import NotificationIcon from "../images/notification-icon.png";
-import classes from "./Root.module.css";
+import * as Icon from "react-icons/fa";
+import { COLORS } from "../styles/COLORS";
+import styled from "styled-components";
 
 function Root() {
+  const navBarIconSize = 30;
+  const navBarIconColor = COLORS().white;
+  const navBarOnHoverStyle = `
+  *{
+    transition: 0.5s;
+    padding: 0.5rem;
+  }
+
+  :hover{
+    color: ${COLORS().primary};
+    transition: 0.3s;
+  }`;
+  const BellIcon = styled(Icon.FaBell)`
+    ${navBarOnHoverStyle}
+  `;
+  const UserIcon = styled(Icon.FaUser)`
+    ${navBarOnHoverStyle}
+  `;
+  const DashboardIcon = styled(Icon.FaChartPie)`
+    ${navBarOnHoverStyle}
+  `;
   return (
     <>
-      <header className={classes.header + " p-3"}>
+      <header className="header p-2">
         <div className="container">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <a
-              href="/"
-              className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none"
-            >
-              <img src={AppIcon} height="40" alt="AppIcon" />
-            </a>
-
             <div className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <Link to="/" className="nav-link px-2 text-white">
-                MitWeather
+              <Link to="/" className="nav-link px-2">
+                <h3 id="header-name">MitWeather</h3>
               </Link>
             </div>
 
@@ -31,17 +45,14 @@ function Root() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/recomendation" className="nav-link px-2 text-white">
-                Styles Guide
-              </Link>
               <Link to="/" className="nav-link px-2 text-white">
-                Dashboard
+                <DashboardIcon size={navBarIconSize}></DashboardIcon>
               </Link>
               <Link to="/notification" className="nav-link px-2 text-white">
-                <img src={NotificationIcon} height="40" alt="AppIcon" />
+                <BellIcon size={navBarIconSize}></BellIcon>
               </Link>
               <Link to="/profile" className="nav-link px-2 text-white">
-                <img src={ProfileIcon} height="40" alt="AppIcon" />
+                <UserIcon size={navBarIconSize}></UserIcon>
               </Link>
             </div>
           </div>

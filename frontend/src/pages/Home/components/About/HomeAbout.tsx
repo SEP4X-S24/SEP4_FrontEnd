@@ -1,47 +1,42 @@
 import React from "react";
-import classes from "./HomeAbout.module.css";
+import "./HomeAbout.css";
 import { About } from "../../services/DemoDataHome";
-import icon from "../../../../images/icon-1.png";
+import * as Icon from "react-icons/wi";
+import { COLORS } from "../../../../styles/COLORS";
 
 function HomeAbout({ about }: { about: About }) {
   const [currentTemperature, setCurrentTemperature] = React.useState(23);
   const [timeChecked, setTimeChecked] = React.useState("Monday, 08:45 AM");
+  const [humidity, setHumidity] = React.useState(61); // TODO: pass as parameter
+  const [windSpeed, setWindSpeed] = React.useState(8); // TODO: pass as parameter
   const [currentWeather, setCurrentWeather] = React.useState("Partly Cloudy");
-  const [location, setLocation] = React.useState("Horsens"
-
-  );
+  const [location, setLocation] = React.useState("Horsens");
 
   const handleUpdate = () => {
     setCurrentTemperature(23);
     setTimeChecked("Monday, 08:45 AM");
     setCurrentWeather("Partly Cloudy");
     setLocation("Horsens");
-  }
+  };
 
   return (
-    <div className={classes.About}>
-      <div className={classes.header}>
-        <div className={classes.About_current_temperature}>
-          <h3 className={classes.current_temperature}>{currentTemperature}°C</h3>
+    <div className="about d-flex flex-column justify-content-between align-items-center">
+      <div className="general-data d-flex flex-column justify-content-center align-items-center">
+        <h2>{location}</h2>
+        <h2 className="my-3">{currentTemperature}°</h2>
+        <h5>{currentWeather}</h5>
+      </div>
+      <Icon.WiDayCloudy size={100} color={COLORS().secondary} />
+      <div className="details-data d-flex flex-row justify-content-between">
+        <div>
+          <h5>Humidity: {humidity}%</h5>
+          <h5>Wind speed: {windSpeed}km/h</h5>
         </div>
-        <div className={classes.About_current_weather}>
-          <div className={classes.current_weather_icon}>
-            <img src={icon} alt="" className={classes.icon} />
-          </div>
-          <div className={classes.current_weather_block}>
-            <p className={classes.current_weather_time}>{timeChecked}</p>
-            <p className={classes.current_weather}>{currentWeather}</p>
-          </div>
+        <div className="location d-flex align-items-end">
+          <label>{timeChecked}</label>
         </div>
       </div>
-      <div className={classes.about_body}>
-        <h1 className={classes.location}>
-          {location}
-        </h1>
-      </div>
-      {/* <button onClick={handleUpdate}>Update</button> */}
     </div>
-
   );
 }
 

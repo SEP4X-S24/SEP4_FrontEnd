@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./HomeTable.module.css";
 import { Table } from "../../services/DemoDataHome";
-import icon from "../../../../images/icon-1.png";
 
 function HomeTable({ table }: { table: Table }) {
   return (
@@ -24,7 +23,6 @@ function HomeTable({ table }: { table: Table }) {
               <td>{entry.maxTemperature}°C</td>
               <td>{entry.humidity}%</td>
               <td>
-                <img src={icon} alt="Weather Icon" />
               </td>
             </tr>
           ))}

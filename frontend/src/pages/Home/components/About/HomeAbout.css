@@ -1,0 +1,14 @@
+.about{
+  color: var(--color-white)
+}
+
+.about{
+  background-color: var(--color-primary);
+  width: 580px;
+  border-radius: 35px;
+  padding: var(--space-big);
+}
+
+.about .details-data{
+  width: 100%;
+}
