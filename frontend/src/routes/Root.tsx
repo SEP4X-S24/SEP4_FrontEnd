@@ -3,7 +3,7 @@ import "./Root.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
-import { COLORS } from "../styles/COLORS";
+import { COLORS } from "../utils/COLORS";
 import styled from "styled-components";
 
 function Root() {

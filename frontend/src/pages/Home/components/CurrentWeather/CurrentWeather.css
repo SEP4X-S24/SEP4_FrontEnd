@@ -1,12 +1,8 @@
 .about{
   color: var(--color-white);
   height: 100%;
-  width: 100%;
-}
-
-.about{
   background-color: var(--color-primary);
-  width: 35%;
+  /* width: 35%; */
   border-radius: 35px;
   padding: var(--space-big);
 }

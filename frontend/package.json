@@ -13,6 +13,7 @@
     "@types/node": "^16.18.96",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
+    "date-fns": "^3.6.0",
     "primereact": "^10.6.3",
     "react": "^18.2.0",
     "react-bootstrap-icons": "^1.11.4",
