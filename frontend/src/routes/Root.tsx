@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Root.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
-import { COLORS } from "../utils/COLORS";
+import COLORS from "../utils/COLORS";
 import styled from "styled-components";
 
 function Root() {
   const navBarIconSize = 30;
-  const navBarIconColor = COLORS().white;
+  const navBarIconColor = COLORS.white;
   const navBarOnHoverStyle = `
   *{
     transition: 0.5s;
@@ -16,7 +16,7 @@ function Root() {
   }
 
   :hover{
-    color: ${COLORS().primary};
+    color: ${COLORS.primary};
     transition: 0.3s;
   }`;
   const BellIcon = styled(Icon.FaBell)`

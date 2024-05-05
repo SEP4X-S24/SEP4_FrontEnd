@@ -1,6 +1,6 @@
 import "./CurrentWeather.css";
 import * as Icon from "react-icons/wi";
-import { COLORS } from "../../../../utils/COLORS";
+import COLORS from "../../../../utils/COLORS";
 import CurrentWeather from "../../../../models/CurrentWeather";
 
 function CurrentWeatherComponent({currentWeather}:{currentWeather: CurrentWeather}) {
@@ -16,7 +16,7 @@ function CurrentWeatherComponent({currentWeather}:{currentWeather: CurrentWeathe
       </div>
       <div className="weather-icon-container">
         <Icon.WiDayCloudy
-          color={COLORS().secondary}
+          color={COLORS.secondary}
           style={{ width: "100%", height: "100%" }}
         />
       </div>
