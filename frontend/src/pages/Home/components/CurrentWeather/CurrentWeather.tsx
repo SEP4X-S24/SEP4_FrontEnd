@@ -21,10 +21,10 @@ function CurrentWeatherComponent({currentWeather}:{currentWeather: CurrentWeathe
         />
       </div>
       <div className="details-data d-flex flex-row justify-content-between">
-        <div>
+        {/* <div>
           <h5>Humidity: {currentWeather.humidity}%</h5>
           <h5>Wind speed: {currentWeather.windSpeed}km/h</h5>
-        </div>
+        </div> */}
         <div className="location d-flex align-items-end">
           <label>{currentWeather.timeChecked}</label>
         </div>

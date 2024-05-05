@@ -1,17 +1,22 @@
 import React from "react";
-import styles from "./WeatherHourlyForecast.module.css";
-import { FaRegClock } from "react-icons/fa";
-import HourlyForecast from "../../../../models/HourlyForecast";
+import styles from "./WeatherForecast.module.css";
 import WeatherEntry from "../WeatherEntry/WeatherEntry";
+import BasicForecast from "../../../../models/BasicForecast";
+import { IconType } from "react-icons";
 
-function WeatherHourlyForecast({
-  hourlyForecast,
+function WeatherForecast({
+  header,
+  HeaderIcon,
+  forecast,
 }: {
-  hourlyForecast: HourlyForecast[];
+  forecast: BasicForecast[],
+  header: string,
+  HeaderIcon: IconType
+  
 }) {
   const timeListEl = (
-    <div className="d-flex flex-row container-fluid p-0 column-gap-3 h-100">
-      {hourlyForecast.map((item, index) => <WeatherEntry key={index} item={item}/>)}
+    <div className="d-flex flex-row container-fluid p-0 column-gap-3 h-100 overflow-auto">
+      {forecast.map((item, index) => <WeatherEntry key={index} item={item}/>)}
     </div>
   );
 
@@ -20,7 +25,7 @@ function WeatherHourlyForecast({
       <div className={`${styles.weatherData} d-flex flex-column gap-3`} >
         <div className="weather-data-header d-flex flex-row gap-3 align-items-center h-25">
           <div className={`${styles.iconWrapper}`}>
-            <FaRegClock
+            <HeaderIcon
               style={{
                 width: "100%",
                 height: "100%",
@@ -28,7 +33,7 @@ function WeatherHourlyForecast({
               }}
             />
           </div>
-          <h5>Hourly forecast</h5>
+          <h5>{header}</h5>
         </div>
         <div className="h-75">{timeListEl}</div>
       </div>
@@ -36,4 +41,4 @@ function WeatherHourlyForecast({
   );
 }
 
-export default WeatherHourlyForecast;
+export default WeatherForecast;

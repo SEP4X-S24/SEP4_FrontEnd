@@ -1,13 +1,13 @@
-
 import { IconType } from 'react-icons';
 import * as Icon from "react-icons/wi";
 
-interface WeatherIconMapper {
+interface WeatherIconMapperEntry {
     [key: string]: IconType;
   }
 
+  // TODO: might need to change weather stateto more clear ones like: sunny, cloudy, snowy, etc...
   
-  const weatherIconMapper: WeatherIconMapper = {
+  const weatherIconMapper: WeatherIconMapperEntry = {
     "DaySunny": Icon.WiDaySunny,
     "NightClear": Icon.WiNightClear,
     "DayCloudy": Icon.WiDayCloudy,
