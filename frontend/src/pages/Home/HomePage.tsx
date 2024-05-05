@@ -33,31 +33,31 @@ function HomePage() {
   }
 
   return (
-    <div className="container-fluid weather-root d-flex align-items-center justify-content-center">
+    <div className="weather-root d-flex align-items-center justify-content-center">
       <div className="weather-container container-fluid row gap-4">
-        <div className="col-lg-4 p-0">
+        <div className="current-weather-container col-lg-4 flex-lg-wrap">
           <CurrentWeatherComponent currentWeather={currentWeather} />
         </div>
-        <div className="col-lg p-0 d-flex flex-column justify-content-between gap-3">
-          <div className="weather-right-row">
-            <WeatherForecast
-              header="Hourly forecast"
-              HeaderIcon={FaRegClock}
-              forecast={hourlyForecast}
-            />
-          </div>
-
-          <div className="weather-right-row">
-            <WeatherForecast
-              header="Daily forecast"
-              HeaderIcon={FaRegCalendarAlt}
-              forecast={dailyForecast}
-            />
-          </div>
-
-          <div className="d-flex flex-row justify-content-between gap-4 weather-right-row">
-            <Humidity value={35}></Humidity>
-            <Humidity value={61}></Humidity>
+        <div className="col-lg">
+          <div className="d-flex flex-column gap-3">
+            <div className="weather-right-row">
+              <WeatherForecast
+                header="Hourly forecast"
+                HeaderIcon={FaRegClock}
+                forecast={hourlyForecast}
+              />
+            </div>
+            <div className="weather-right-row">
+              <WeatherForecast
+                header="Daily forecast"
+                HeaderIcon={FaRegCalendarAlt}
+                forecast={dailyForecast}
+              />
+            </div>
+            <div className="d-flex justify-content-between gap-4 weather-right-row">
+              <Humidity value={35}></Humidity>
+              <Humidity value={61}></Humidity>
+            </div>
           </div>
         </div>
       </div>
