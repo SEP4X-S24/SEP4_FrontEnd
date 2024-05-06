@@ -38,7 +38,7 @@ function Footer() {
       <hr />
 
       <div className="bottom-section d-flex flex-row justify-content-between">
-        <p>Copyright © {currentYear} All Rights Reserved by MitWeather</p>
+        <p>Copyright © {currentYear}.<br/>All Rights Reserved by MitWeather</p>
         <ul className="social-icons d-flex flex-row">
           <li>
             <a className="facebook" href="https://www.facebook.com/">

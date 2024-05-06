@@ -1,0 +1,55 @@
+:root {
+  --space-extra-small: 7px;
+  --space-small: 12px;
+  --space-normal: 20px;
+  --space-big: 35px;
+  --space-large: 50px;
+}
+
+.gap{
+  gap: var(--space-big) !important;
+}
+
+@media only screen and (max-width: 600px) {
+  :root {
+    --space-extra-small: 3px;
+    --space-small: 8px;
+    --space-normal: 12px;
+    --space-big: 15px;
+    --space-large: 25px;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  :root {
+    --space-extra-small: 5px;
+    --space-small: 10px;
+    --space-normal: 15px;
+    --space-big: 20px;
+    --space-large: 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  :root {
+    --space-extra-small: 6px;
+    --space-small: 11px;
+    --space-normal: 18px;
+    --space-big: 27px;
+    --space-large: 35px;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  :root {
+    --space-extra-small: 7px;
+    --space-small: 12px;
+    --space-normal: 20px;
+    --space-big: 30px;
+    --space-large: 45px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+}
+

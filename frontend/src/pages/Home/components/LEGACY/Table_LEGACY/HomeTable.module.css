@@ -1,0 +1,80 @@
+.weatherTable {
+  width: 90%;
+  max-width: 800px;
+  margin: 32px auto;
+  border-collapse: collapse;
+  background-color: white;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.weatherTable thead {
+  background-color: #007bff; /* Primary Color */
+}
+
+.weatherTable th,
+.weatherTable td {
+  padding: 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.weatherTable th {
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 18px;
+}
+
+.weatherTable tbody tr {
+  opacity: 0;
+  animation: fadeInAnimation 0.85s forwards;
+  animation-delay: calc(var(--animation-order) * 100ms);
+}
+
+.weatherTable tbody tr:hover {
+  background-color: #f1f1f1;
+  transition: background-color 0.3s ease;
+}
+
+.weatherTable img {
+  width: 24px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.weatherTable tbody tr:hover img {
+  transform: scale(1.1);
+}
+
+@keyframes fadeInAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  text-align: center;
+  color: #007bff;
+  font-size: 32px;
+  font-family: "Montserrat", sans-serif;
+}
+
+@media (max-width: 768px) {
+  .weatherTable th,
+  .weatherTable td {
+    padding: 8px; /* smaller padding on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .weatherTable {
+    width: 100%;
+  }
+}

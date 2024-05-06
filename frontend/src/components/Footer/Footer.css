@@ -12,18 +12,18 @@
 .footer h4,
 .footer h5,
 .footer h6 {
-  color: var(--color-grey-1);
+  color: var(--color-gray-1);
 }
 
 .footer p,
-.footer label, 
+.footer label,
 .footer hr,
-.footer .a{
-  color: var(--color-grey-3);
+.footer .a {
+  color: var(--color-gray-2);
   font-size: 0.9rem;
 }
 
-.footer .a{
+.footer .a {
   margin: 0.3rem 0;
   text-decoration: none;
 }
@@ -36,7 +36,7 @@
   margin-bottom: 0;
 }
 
-.footer .a:hover{
+.footer .a:hover {
   color: var(--color-tertiary);
 }
 
@@ -45,7 +45,7 @@
   list-style: none;
 }
 
-hr{
+hr {
   width: 80%;
   margin: auto;
   margin-top: 20px;
@@ -58,34 +58,34 @@ hr{
   font-size: 13px !important;
   color: var(--color-info);
 }
-.social-icons .social-icon:hover{
+.social-icons .social-icon:hover {
   opacity: 0.7;
 }
 
-.main-section p{
+.main-section p {
   text-align: justify;
 }
 
-.footer-section{
+.footer-section {
   margin-inline: 1.3rem;
   padding: 0;
 }
 
-@media (max-width:767px) {
-  .main-section > *{
+@media (max-width: 767px) {
+  .main-section > * {
     margin: 0;
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
     margin-inline-end: auto;
   }
 
-  .footer{
+  .footer {
     padding-inline: 3rem;
   }
 }
 
-@media (min-width:767px) and (max-width: 900px) {
-  .footer{
+@media (min-width: 767px) and (max-width: 900px) {
+  .footer {
     padding-inline: 1rem;
   }
 }
