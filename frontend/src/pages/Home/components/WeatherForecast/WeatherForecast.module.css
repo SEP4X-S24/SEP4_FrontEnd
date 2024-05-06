@@ -1,8 +1,7 @@
 .weatherData {
-  height: fit-content;
   background-color: var(--color-primary);
   user-select: none;
-  border-radius: 35px;
+  border-radius: var(--round-corner-small);
   border: 2px solid var(--color-gray-3);
   color: var(--color-white);
   padding: var(--space-normal);
@@ -10,4 +9,6 @@
 
 .iconWrapper{
   width: 5%;
+  min-width: 30px;
 }
+

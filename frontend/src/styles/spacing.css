@@ -1,25 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 :root {
-  --color-black: #000000;
-  --color-white: #ffffff;
-  --color-primary-dark: #161a20;
-  --color-primary: #2e3642;
-  --color-primary-semi-transparent: rgba(46, 54, 66, 0.5);
-  --color-secondary: #c5c6de;
-  --color-tertiary: #09bc8a;
-  --color-gray-1: rgb(146, 146, 146);
-  --color-gray-2: rgb(207, 207, 207);
-
   --space-extra-small: 7px;
   --space-small: 12px;
   --space-normal: 20px;
   --space-big: 35px;
   --space-large: 50px;
+}
 
-  --text-regular: 24px;
-  --text-bold: 24px bold;
-  --text-small: 16px;
+.gap{
+  gap: var(--space-big) !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -64,3 +52,4 @@
 
 @media only screen and (min-width: 1200px) {
 }
+
