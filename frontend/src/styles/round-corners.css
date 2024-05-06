@@ -1,6 +1,7 @@
 :root{
+    --round-corner-xx-small: 1em;
     --round-corner-x-small: 1.4em;
-    --round-corner-small: 3em;
-    --round-corner-normal: 4em;
-    --round-corner-big: 7em;
+    --round-corner-small: 2em;
+    --round-corner-normal: 3em;
+    --round-corner-big: 5em;
 }

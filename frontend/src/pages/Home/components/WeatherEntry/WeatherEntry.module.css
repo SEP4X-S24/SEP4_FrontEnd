@@ -10,4 +10,11 @@
   background-color: var(--color-secondary);
   border-radius: var(--round-corner-x-small);
   height: 100%;
+  padding-top: var(--space-small);
+}
+
+@media only screen and (max-width: 600px) {
+  .weatherEntry {
+    border-radius: var(--round-corner-xx-small);
+  }
 }

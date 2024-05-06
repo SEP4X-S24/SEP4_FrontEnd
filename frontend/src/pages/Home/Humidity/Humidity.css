@@ -8,7 +8,7 @@
 
 .humidity-bar {
   flex: 1;
-  min-height: 10em !important;
+  min-height: 8vw;
   width: var(--width);
   position: relative;
   background-color: #ffe696;
@@ -26,4 +26,15 @@
 
 .humidity-marks {
   font-size: small;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .humidity-bar {
+    min-height: 12vw !important;
+  }
+
+  .humidity {
+    padding: 0 !important;
+  }
 }
