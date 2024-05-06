@@ -34,12 +34,12 @@ function HomePage() {
 
   return (
     <div className="weather-root d-flex align-items-center justify-content-center">
-      <div className="weather-container container-fluid row gap-3">
+      <div className="weather-container container-fluid row gap">
         <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
           <CurrentWeatherComponent currentWeather={currentWeather} />
         </div>
         <div className="col-lg p-0">
-          <div className="d-flex flex-column gap-3">
+          <div className="d-flex flex-column gap">
             <div>
               <WeatherForecast
                 header="Hourly forecast"

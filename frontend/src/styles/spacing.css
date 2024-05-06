@@ -6,6 +6,10 @@
   --space-large: 50px;
 }
 
+.gap{
+  gap: var(--space-big) !important;
+}
+
 @media only screen and (max-width: 600px) {
   :root {
     --space-extra-small: 3px;
@@ -49,4 +53,3 @@
 @media only screen and (min-width: 1200px) {
 }
 
-/* TODO: add gaps of bootstrap to breakpoints */
