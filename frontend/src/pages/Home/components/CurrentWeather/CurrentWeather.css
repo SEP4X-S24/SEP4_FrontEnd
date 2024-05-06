@@ -3,7 +3,7 @@
   width: 100% !important;
   height: 100%;
   background-color: var(--color-primary);
-  border-radius: 35px;
+  border-radius: var(--round-corner-small);
   padding: var(--space-big);
 }
 

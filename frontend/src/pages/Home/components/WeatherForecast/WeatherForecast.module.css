@@ -1,5 +1,4 @@
 .weatherData {
-  height: fit-content;
   background-color: var(--color-primary);
   user-select: none;
   border-radius: 35px;

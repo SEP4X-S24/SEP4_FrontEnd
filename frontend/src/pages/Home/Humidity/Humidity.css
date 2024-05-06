@@ -1,21 +1,18 @@
 .humidity {
-  --border-radius: 30px;
   --width: 25%;
-
-  min-height: 110px;
-  height: 17vh !important;
   background-color: var(--color-primary);
   color: var(--color-white);
-  border-radius: 25px;
+  border-radius: var(--round-corner-small);
   padding: 0;
 }
 
 .humidity-bar {
   flex: 1;
+  min-height: 10em !important;
   width: var(--width);
   position: relative;
   background-color: #ffe696;
-  border-radius: var(--border-radius);
+  border-radius: var(--round-corner-small);
   overflow: hidden;
 }
 

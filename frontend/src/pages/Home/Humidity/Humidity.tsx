@@ -3,7 +3,7 @@ import "./Humidity.css";
 function Humidity({ value }: { value: number }) {
 
   return (
-    <div className="humidity container row m-0">
+    <div className="humidity container row m-0 d-flex">
       <div className="col-6 d-flex flex-column justify-content-center align-items-center">
         <h5>Humidity</h5>
         <h3>{value}%</h3>
