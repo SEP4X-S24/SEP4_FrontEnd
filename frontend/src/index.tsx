@@ -7,6 +7,7 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
 import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
+import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 
 const router = createHashRouter([
   {
@@ -25,6 +26,10 @@ const router = createHashRouter([
       {
         path: "recomendation",
         element: <RecomendationPage />,
+      },
+      {
+        path: "style_demonstration",
+        element: <StyleDemonstration />,
       },
     ],
   },

@@ -3,6 +3,7 @@ import "./Root.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
+import { IoLogoCss3 } from "react-icons/io";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
 
@@ -28,6 +29,9 @@ function Root() {
   const DashboardIcon = styled(Icon.FaChartPie)`
     ${navBarOnHoverStyle}
   `;
+  const StyleIcon = styled(IoLogoCss3)`
+    ${navBarOnHoverStyle}
+  `;
   return (
     <>
       <header className="header p-2">
@@ -45,6 +49,9 @@ function Root() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
+              <Link to="/style_demonstration" className="nav-link px-2 text-white">
+                <StyleIcon size={navBarIconSize}></StyleIcon>
+              </Link>
               <Link to="/" className="nav-link px-2 text-white">
                 <DashboardIcon size={navBarIconSize}></DashboardIcon>
               </Link>
