@@ -1,6 +1,6 @@
 import React from "react";
 import "./Footer.css";
-import * as Icon from "react-bootstrap-icons";
+import * as SMIcon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -42,22 +42,22 @@ function Footer() {
         <ul className="social-icons d-flex flex-row">
           <li>
             <a className="facebook" href="https://www.facebook.com/">
-              <Icon.Facebook size={socialMediaIconSize} className="social-icon" />
+              <SMIcon.Facebook size={socialMediaIconSize} className="social-icon" />
             </a>
           </li>
           <li>
             <a className="instagram" href="https://www.instagram.com/">
-              <Icon.Instagram size={socialMediaIconSize} className="social-icon" />
+              <SMIcon.Instagram size={socialMediaIconSize} className="social-icon" />
             </a>
           </li>
           <li>
             <a className="telegram" href="https://www.telegram.com/">
-              <Icon.Telegram size={socialMediaIconSize} className="social-icon" />
+              <SMIcon.Telegram size={socialMediaIconSize} className="social-icon" />
             </a>
           </li>
           <li>
             <a className="linkedin" href="https://www.linkedin.com/">
-              <Icon.Linkedin size={socialMediaIconSize} className="social-icon" />
+              <SMIcon.Linkedin size={socialMediaIconSize} className="social-icon" />
             </a>
           </li>
         </ul>
