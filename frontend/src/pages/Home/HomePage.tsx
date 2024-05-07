@@ -8,6 +8,7 @@ import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
 import Humidity from "./Humidity/Humidity";
+import Wind from "./components/Wind/Wind";
 
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
@@ -56,7 +57,7 @@ function HomePage() {
             </div>
             <div className="d-flex justify-content-between gap-4 weather-right-row">
               <Humidity value={35}></Humidity>
-              <Humidity value={61}></Humidity>
+              <Wind value={20} direction={100} />
             </div>
           </div>
         </div>
