@@ -7,7 +7,7 @@ import DummyWeatherService from "./services/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
-import Humidity from "./Humidity/Humidity";
+import Humidity from "./components/Humidity/Humidity";
 
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(

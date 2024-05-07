@@ -3,12 +3,13 @@ import * as Icon from "react-icons/wi";
 import COLORS from "../../../../utils/COLORS";
 import CurrentWeather from "../../../../models/CurrentWeather";
 
-function CurrentWeatherComponent({currentWeather}:{currentWeather: CurrentWeather}) {
-
+function CurrentWeatherComponent({
+  currentWeather,
+}: {
+  currentWeather: CurrentWeather;
+}) {
   return (
-    <div
-      className="about d-flex flex-column justify-content-between align-items-center"
-    >
+    <div className="current-weather d-flex flex-column justify-content-between align-items-center">
       <div className="general-data d-flex flex-column justify-content-center align-items-center">
         <h2>{currentWeather.location}</h2>
         <h3 className="my-3">{currentWeather.currentTemperature}°</h3>

@@ -1,4 +1,4 @@
-.about{
+.current-weather {
   color: var(--color-white);
   width: 100% !important;
   height: 100%;
@@ -7,6 +7,6 @@
   padding: var(--space-big);
 }
 
-.about .details-data{
+.current-weather .details-data {
   width: 100%;
 }
