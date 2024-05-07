@@ -1,0 +1,20 @@
+.iconWrapper {
+  width: 50%;
+}
+
+.weatherEntry {
+  min-height: 90px;
+  min-width: 55px;
+  flex: 1;
+  color: var(--color-primary-dark);
+  background-color: var(--color-secondary);
+  border-radius: var(--round-corner-x-small);
+  height: 100%;
+  padding-top: var(--space-small);
+}
+
+@media only screen and (max-width: 600px) {
+  .weatherEntry {
+    border-radius: var(--round-corner-xx-small);
+  }
+}

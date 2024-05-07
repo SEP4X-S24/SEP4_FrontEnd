@@ -1,6 +1,12 @@
 import React from "react";
+import { useAuth } from "../../utils/AuthContext";
 
 function RecomendationPage() {
+  const { authenticated } = useAuth();
+  if (!authenticated) {
+    return <div>You are not Authentificated</div>;
+  }
+
   return (
     <div>
       <h1 className="heading-1">Heading 1</h1>

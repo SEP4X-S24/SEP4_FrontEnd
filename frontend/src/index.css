@@ -1,12 +1,13 @@
 @import "./styles/typography.css";
-@import "./styles/variables.css";
+@import "./styles/colors.css";
+@import "./styles/spacing.css";
+@import "./styles/round-corners.css";
 
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
