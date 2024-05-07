@@ -5,12 +5,15 @@
 
 .timer {
   user-select: none;
-  position: absolute;
+  /* position: absolute;
   bottom: calc(var(--space-large) - var(--space-large) / 2);
-  right: calc(var(--space-large));
+  right: calc(var(--space-large)); */
 }
 .immediateUpdate {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 992px) {

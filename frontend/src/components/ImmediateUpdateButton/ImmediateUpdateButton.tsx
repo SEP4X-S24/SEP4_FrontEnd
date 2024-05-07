@@ -1,6 +1,7 @@
 import Countdown from "react-countdown";
 import * as FaIcon from "react-icons/fa6";
-import styles from "./ImmediateUpdateButton.module.css"
+import styles from "./ImmediateUpdateButton.module.css";
+import { animated, useSpring } from "@react-spring/web";
 
 function ImmediateUpdateButton({
   isCurrentWeatherRequested,
@@ -9,9 +10,28 @@ function ImmediateUpdateButton({
   isCurrentWeatherRequested: boolean;
   setIsCurrentWeatherRequested: (value: boolean) => void;
 }) {
+
+  const timerSpring = useSpring({
+    transform: isCurrentWeatherRequested
+      ? "translateY(0%)"
+      : "translateY(100%)",
+    config: { tension: 800, friction: 10 },
+  });
+
+  const iconSpring = useSpring({
+    transform: isCurrentWeatherRequested ? "translateY(-5%)" : "translateY(0%)",
+    config: { tension: 500, friction: 10 }
+  });
+
   return (
     <div className={styles.immediateUpdate}>
-      <div className={styles.updateIconWrapper}>
+      <animated.div
+        className={styles.updateIconWrapper}
+        style={{
+          ...iconSpring,
+          zIndex: 1,
+        }}
+      >
         <FaIcon.FaArrowRotateRight
           style={{
             width: "100%",
@@ -24,21 +44,26 @@ function ImmediateUpdateButton({
             }
           }}
         />
-      </div>
-      {isCurrentWeatherRequested ? (
-        <div className={styles.timer}>
+      </animated.div>
+      <animated.div
+        className={styles.timer}
+        style={{
+          ...timerSpring,
+          zIndex: 1,
+        }}
+      >
+        {isCurrentWeatherRequested && (
           <Countdown
-            onStart={() => setIsCurrentWeatherRequested(true)}
             onComplete={() => {
               setIsCurrentWeatherRequested(false);
             }}
-            date={Date.now() + 3000*60}
+            date={Date.now() + 3000 * 60}
             renderer={(props) => (
               <label>{`${props.formatted.minutes}:${props.formatted.seconds}`}</label>
             )}
           />
-        </div>
-      ) : null}
+        )}
+      </animated.div>
     </div>
   );
 }

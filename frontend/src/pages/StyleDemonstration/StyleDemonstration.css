@@ -48,7 +48,7 @@
 }
 
 .x-small .space-el{
-    width: var(--space-extra-small);
+    width: var(--space-x-small);
 }
 
 .small .space-el{
