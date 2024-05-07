@@ -12,13 +12,3 @@
   width: 100%;
 }
 
-.update-icon-wrapper{
-  width: 2vw;
-  min-width: 25px;
-}
-
-.timer{
-  user-select: none;
-  position: absolute;
-  bottom: calc(var(--space-large) - var(--space-large)/2);
-}
