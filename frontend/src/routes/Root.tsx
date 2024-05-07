@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
+import { useAuth } from "../utils/AuthContext";
 
 function Root() {
   const navBarIconSize = 30;
@@ -28,6 +29,8 @@ function Root() {
   const DashboardIcon = styled(Icon.FaChartPie)`
     ${navBarOnHoverStyle}
   `;
+
+  const { authenticated } = useAuth();
   return (
     <>
       <header className="header p-2">
@@ -45,9 +48,14 @@ function Root() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/" className="nav-link px-2 text-white">
-                <DashboardIcon size={navBarIconSize}></DashboardIcon>
-              </Link>
+              {authenticated ? (
+                <Link to="/recomandation" className="nav-link px-2 text-white">
+                  <DashboardIcon size={navBarIconSize}></DashboardIcon>
+                </Link>
+              ) : (
+                <div></div>
+              )}
+
               <Link to="/notification" className="nav-link px-2 text-white">
                 <BellIcon size={navBarIconSize}></BellIcon>
               </Link>

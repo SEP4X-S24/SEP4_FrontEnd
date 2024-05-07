@@ -7,7 +7,7 @@ import DummyWeatherService from "./services/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
-import Humidity from "./Humidity/Humidity";
+import Humidity from "./components/Humidity/Humidity";
 import Wind from "./components/Wind/Wind";
 
 function HomePage() {
@@ -56,7 +56,7 @@ function HomePage() {
               />
             </div>
             <div className="d-flex justify-content-between gap-4 weather-right-row">
-              <Humidity value={35}></Humidity>
+              <Humidity value={35} />
               <Wind value={20} direction={100} />
             </div>
           </div>
