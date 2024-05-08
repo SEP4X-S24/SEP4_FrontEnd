@@ -14,13 +14,13 @@ function Header() {
   *{
     width: 100%;
     height: 100%;
-    transition: 0.3s;
-    padding: 0.5rem;
+    transition: 0.2s;
+    padding: 0.1rem;
   }
 
   :hover{
     color: ${COLORS.primary};
-    transition: 0.3s;
+    transition: 0.2s;
   }`;
 
   const navBarIconSize = 30;
