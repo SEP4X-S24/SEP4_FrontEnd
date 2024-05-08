@@ -1,10 +1,9 @@
-import Account from "../../models/Account";
+import Account from "../../models/Accounts";
 import AccountService from "../AccountService";
 
-
 const accounts: Account[] = [
-  { username: "Boss", password: "bosspass" },
-  { username: "sevastian", password: "passtest" },
+  { email: "Boss", password: "bosspass" },
+  { email: "sevastian", password: "passtest" },
 ];
 
 export default class DummyAccountService implements AccountService {
@@ -12,22 +11,23 @@ export default class DummyAccountService implements AccountService {
     localStorage.removeItem("token");
   }
 
-  async login(user: Account): Promise<string>{
+  async login(user: Account): Promise<string> {
     if (
       accounts.some(
-        (el) => el.username === user.username && el.password === user.password
+        (el) => el.email === user.email && el.password === user.password
       )
     ) {
-
       const token = "awo;iujrfw4ehcshrkghndkgbwsetrhserth";
       localStorage.setItem("token", token);
 
       return token;
     }
 
-    throw new Error("User is not registered. Doesn't exist in the accounts list")
+    throw new Error(
+      "User is not registered. Doesn't exist in the accounts list"
+    );
   }
-  
+
   async register(user: Account): Promise<string> {
     throw new Error("Method not implemented.");
   }

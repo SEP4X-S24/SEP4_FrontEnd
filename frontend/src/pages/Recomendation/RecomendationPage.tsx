@@ -2,8 +2,8 @@ import React from "react";
 import { useAuth } from "../../services/auth/AuthContext";
 
 function RecomendationPage() {
-  const { isAuthenticated } = useAuth();
-  if (!isAuthenticated) {
+  const { isAuthenticated: authenticated } = useAuth();
+  if (!authenticated) {
     return <div>You are not Authentificated</div>;
   }
 

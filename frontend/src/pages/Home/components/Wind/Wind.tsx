@@ -3,10 +3,10 @@ import windIcon from "../../../../images/wind-direction.png";
 import styles from "./Wind.module.css";
 
 function Wind({
-  value: speed,
+  speed: speed,
   direction,
 }: {
-  value: number;
+  speed: number;
   direction: number;
 }) {
   const rotationAngle = `rotate(${direction}deg)`;

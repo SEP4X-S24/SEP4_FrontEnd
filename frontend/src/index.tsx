@@ -1,3 +1,4 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
@@ -5,9 +6,10 @@ import HomePage from "./pages/Home/HomePage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
-import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
-import { isAuthenticated } from "./services/auth/Auth";
+import ProfileSetting from "./pages/Profile/ProfileSetting";
+import NotificationSetting from "./pages/Profile/NotificationSetting";
+import RecomendationSetting from "./pages/Profile/RecomendationSetting";
 import { AuthProvider } from "./services/auth/AuthContext";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import LoginPage from "./pages/Login/LoginPage";
@@ -25,19 +27,34 @@ const router = createHashRouter([
       {
         path: "profile",
         element: <ProfilePage />,
+        children: [
+          {
+            path: "", // This will match "/profile"
+            element: <ProfileSetting />,
+          },
+          {
+            path: "notificationsettings", // This will match "/profile/notificationSettings"
+            element: <NotificationSetting />,
+          },
+          {
+            path: "recomendationsettings", // This will match "/profile/notificationSettings"
+            element: <RecomendationSetting />,
+          }
+          // Add more children as needed
+        ],
       },
       {
         path: "recomendation",
         element: <RecomendationPage />,
       },
       {
-        path: "style_demonstration",
-        element: <StyleDemonstration />,
-      },
-      {
         path: "login",
         element: <LoginPage />,
       },
+      {
+        path: "style_demonstration",
+        element: <StyleDemonstration />,
+      }
     ],
   },
 ]);

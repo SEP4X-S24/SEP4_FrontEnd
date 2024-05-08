@@ -1,9 +1,9 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import Account from "../../models/Account";
-import DummyAccountService from "../impl/DummyAccountService";
+import Account from "../../models/Accounts";
 import AccountService from "../AccountService";
+import DummyAccountService from "../impl/DummyAccountService";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
