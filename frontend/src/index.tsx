@@ -4,11 +4,12 @@ import { createHashRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./pages/Home/HomePage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
-import Root from "./routes/Root";
 import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 import { isAuthenticated } from "./utils/Auth";
 import { AuthProvider } from "./utils/AuthContext";
+import Root from "./routes/Root";
+import LoginPage from "./pages/Login/LoginPage";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import ProfileSetting from "./pages/Profile/ProfileSetting";
 import NotificationSetting from "./pages/Profile/NotificationSetting";
@@ -48,6 +49,9 @@ const router = createHashRouter([
         element: <RecomendationPage />,
       },
       {
+        path: "login",
+        element: <LoginPage />,
+      },{
         path: "style_demonstration",
         element: <StyleDemonstration />,
       },
