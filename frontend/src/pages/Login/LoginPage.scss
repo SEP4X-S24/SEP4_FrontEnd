@@ -1,9 +1,9 @@
-$black: #000000;
-$white: #ffffff;
-$primaryDark: #161a20;
-$primary: #2e3642;
-$secondary: #c5c6de;
-$tertiary: #09bc8a;
+$black: var(--color-black);
+$white: var(--color-white);
+$primaryDark: var(--color-primary-dark);
+$primary: var(--color-primary);
+$secondary: var(--color-secondary);
+$tertiary: var(--color-tertiary);
 
 $body-text-small:16px;
 $body-text-bold:24px ;
