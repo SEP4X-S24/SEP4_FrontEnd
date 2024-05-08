@@ -1,0 +1,23 @@
+.updateIconWrapper {
+  width: 2vw;
+  min-width: 25px;
+}
+
+.timer {
+  user-select: none;
+  /* position: absolute;
+  bottom: calc(var(--space-large) - var(--space-large) / 2);
+  right: calc(var(--space-large)); */
+}
+.immediateUpdate {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (max-width: 992px) {
+  .immediateUpdate {
+    display: none;
+  }
+}
