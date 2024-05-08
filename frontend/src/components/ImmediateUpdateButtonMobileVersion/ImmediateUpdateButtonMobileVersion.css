@@ -1,0 +1,23 @@
+.update-icon-wrapper {
+  width: 2vw;
+  min-width: 25px;
+}
+
+.timer {
+  user-select: none;
+}
+
+.immediate-update-mobile {
+  display: none;
+  justify-content: center;
+  background-color: var(--color-primary);
+  padding: var(--space-big);
+  border-radius: var(--round-corner-x-small);
+  color: white;
+}
+
+@media screen and (max-width: 992px) {
+  .immediate-update-mobile {
+    display: flex;
+  }
+}

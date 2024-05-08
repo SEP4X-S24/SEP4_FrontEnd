@@ -7,7 +7,8 @@ import DummyWeatherService from "./services/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
-import Humidity from "./Humidity/Humidity";
+import Humidity from "./components/Humidity/Humidity";
+import ImmediateUpdateButtonMobileVersion from "../../components/ImmediateUpdateButtonMobileVersion/ImmediateUpdateButtonMobileVersion.module";
 
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
@@ -19,6 +20,9 @@ function HomePage() {
   const [dailyForecast, setDailyForecast] = useState<DailyForecast[] | null>(
     null
   );
+
+  const [isCurrentWeatherRequested, setIsCurrentWeatherRequested] =
+    useState(false);
 
   useEffect(() => {
     const dummyService = new DummyWeatherService();
@@ -36,7 +40,11 @@ function HomePage() {
     <div className="weather-root d-flex align-items-center justify-content-center">
       <div className="weather-container container-fluid row gap">
         <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
-          <CurrentWeatherComponent currentWeather={currentWeather} />
+          <CurrentWeatherComponent
+            currentWeather={currentWeather}
+            isCurrentWeatherRequested={isCurrentWeatherRequested}
+            setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+          />
         </div>
         <div className="col-lg p-0">
           <div className="d-flex flex-column gap">
@@ -60,6 +68,10 @@ function HomePage() {
             </div>
           </div>
         </div>
+        <ImmediateUpdateButtonMobileVersion
+          isCurrentWeatherRequested={isCurrentWeatherRequested}
+          setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+        />
       </div>
     </div>
   );
