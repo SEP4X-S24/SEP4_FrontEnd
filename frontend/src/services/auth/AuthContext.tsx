@@ -44,10 +44,10 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
     setUser(undefined);
     setToken("");
-    //TODO: local storage remove
+    await accountService.logout();
     setIsAuthenticated(false);
   };
 

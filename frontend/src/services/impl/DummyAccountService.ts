@@ -8,6 +8,10 @@ const accounts: Account[] = [
 ];
 
 export default class DummyAccountService implements AccountService {
+  async logout(): Promise<void> {
+    localStorage.removeItem("token");
+  }
+
   async login(user: Account): Promise<string>{
     if (
       accounts.some(
@@ -28,30 +32,3 @@ export default class DummyAccountService implements AccountService {
     throw new Error("Method not implemented.");
   }
 }
-
-// export async function login(
-//   username: string,
-//   password: string
-// ): Promise<string | null> {
-//   try {
-//     const response = await fetch("/account/login", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ username, password }),
-//     });
-//
-//     if (response.ok) {
-//       const data = await response.json();
-//       const token = data.token;
-//       localStorage.setItem("token", token);
-//     } else {
-//       console.error("Login failed:", response.statusText);
-//       return null;
-//     }
-//   } catch (error) {
-//     console.error("Error:", error);
-//     return null;
-//   }
-// }
