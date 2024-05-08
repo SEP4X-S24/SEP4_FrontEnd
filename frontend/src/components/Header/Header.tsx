@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import COLORS from "../../utils/COLORS";
 import styled from "styled-components";
