@@ -10,6 +10,9 @@ import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 import { isAuthenticated } from "./utils/Auth";
 import { AuthProvider } from "./utils/AuthContext";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
+import ProfileSetting from "./pages/Profile/ProfileSetting";
+import NotificationSetting from "./pages/Profile/NotificationSetting";
+import RecomendationSetting from "./pages/Profile/RecomendationSetting";
 
 const router = createHashRouter([
   {
@@ -24,6 +27,21 @@ const router = createHashRouter([
       {
         path: "profile",
         element: <ProfilePage />,
+        children: [
+          {
+            path: "", // This will match "/profile"
+            element: <ProfileSetting />,
+          },
+          {
+            path: "notificationsettings", // This will match "/profile/notificationSettings"
+            element: <NotificationSetting />,
+          },
+          {
+            path: "recomendationsettings", // This will match "/profile/notificationSettings"
+            element: <RecomendationSetting />,
+          },
+          // Add more children as needed
+        ],
       },
       {
         path: "recomendation",
