@@ -1,4 +1,6 @@
-body {
+.login_page {
+  width: 100vw;
+  height: 100vh;
   background-image: url(./Login\ page\ _\ Web\ layout.png);
   background-size: cover;
 }
@@ -37,33 +39,6 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
-}
-.login_container .login_form .form_input {
-  display: flex;
-  align-items: center;
-  background-color: var(--color-primary);
-  padding: 10px 18px 10px 18px;
-  border-radius: 15px;
-  color: var(--color-white);
-  margin-top: 20px;
-}
-.login_container .login_form .form_input .form_input_box {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-.login_container .login_form .form_input .form_input_box input {
-  background-color: var(--color-primary);
-  border: none;
-  color: var(--color-white);
-  font-size: 24px;
-  font-weight: 700;
-}
-.login_container .login_form .form_input .form_input_box input:focus {
-  outline: none;
-}
-.login_container .login_form .form_input .form_input_box label {
-  font-size: 16px;
 }
 .login_container .login_button {
   background-color: var(--color-tertiary);

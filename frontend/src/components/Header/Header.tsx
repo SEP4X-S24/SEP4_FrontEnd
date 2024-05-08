@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link } from "react-router-dom";
 import * as Icon from "react-icons/fa";
 import COLORS from "../../utils/COLORS";
 import styled from "styled-components";
@@ -71,6 +71,7 @@ function Header() {
                     <Link to="/profile" className="nav-link px-2 text-white">
                       <UserIcon size={navBarIconSize}></UserIcon>
                     </Link>
+                    <Link to="/login">Login</Link>
                   </div>
                 </div>
               </div>
