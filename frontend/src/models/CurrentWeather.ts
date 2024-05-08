@@ -5,4 +5,5 @@ export default interface CurrentWeather {
     timeChecked: string;
     humidity?: number;
     windSpeed?: number;
+    lightValue?: number; // TODO: rename
   }

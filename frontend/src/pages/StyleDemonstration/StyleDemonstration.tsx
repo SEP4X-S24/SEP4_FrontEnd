@@ -1,6 +1,16 @@
+import weatherIconMapper from "../../utils/WeatherIconMapper";
 import "./StyleDemonstration.css";
 
 function StyleDemonstration() {
+  const iconsShowcase = Array.from(weatherIconMapper.entries()).map(
+    ([weatherState, Icon]) => (
+      <div className="col-3 d-flex justify-content-between align-items-center px-5 mx-5" key={weatherState}>
+        <h3>{weatherState}:</h3>
+        <Icon size={100}/>
+      </div>
+    )
+  );
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <label className="style-demonstration-headers">Font size</label>
@@ -11,9 +21,8 @@ function StyleDemonstration() {
       <h5 className="mb-3">Heading 5</h5>
       <h6 className="mb-3">Heading 6 (not used)</h6>
 
-        <label className="style-demonstration-headers">Colors</label>
+      <label className="style-demonstration-headers">Colors</label>
       <div id="colors" className="d-flex align-items-center flex-column">
-
         <h3>Primary</h3>
         <div className="color-box primary">
           <label style={{ color: "white" }}>Text</label>
@@ -120,6 +129,13 @@ function StyleDemonstration() {
         <div className="style-demonstration-round-corners-big">
           <div className="style-demonstration-box"></div>
         </div>
+      </div>
+
+      <label className="style-demonstration-headers">Weather states</label>
+
+      <div className="icons-showcase container-fluid row m-5">
+
+        {iconsShowcase}
       </div>
     </div>
   );
