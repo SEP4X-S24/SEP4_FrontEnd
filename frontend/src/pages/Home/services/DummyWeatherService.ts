@@ -60,8 +60,8 @@ export default class DummyWeatherService implements WeatherService {
   }
 
   private genRandomWeatherState(): string {
-    const keys = Object.keys(weatherIconMapper);
+    const keys = Array.from(weatherIconMapper.keys());
     const randomIndex = Math.floor(Math.random() * keys.length);
     return keys[randomIndex];
-  }
+}
 }

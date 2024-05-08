@@ -1,38 +1,32 @@
-import { IconType } from 'react-icons';
+import { IconType } from "react-icons";
 import * as Icon from "react-icons/wi";
 
-interface WeatherIconMapperEntry {
-    [key: string]: IconType;
-  }
+const weatherIconMapper = new Map<string, IconType>();
 
-  // TODO: might need to change weather stateto more clear ones like: sunny, cloudy, snowy, etc...
-  
-  const weatherIconMapper: WeatherIconMapperEntry = {
-    "DaySunny": Icon.WiDaySunny,
-    "NightClear": Icon.WiNightClear,
-    "DayCloudy": Icon.WiDayCloudy,
-    "NightCloudy": Icon.WiNightCloudy,
-    "DayRain": Icon.WiDayRain,
-    "NightRain": Icon.WiNightRain,
-    "DayThunderstorm": Icon.WiDayThunderstorm,
-    "NightThunderstorm": Icon.WiNightThunderstorm,
-    "DaySnow": Icon.WiDaySnow,
-    "NightSnow": Icon.WiNightSnow,
-    "DaySleet": Icon.WiDaySleet,
-    "NightSleet": Icon.WiNightSleet,
-    "DayHail": Icon.WiDayHail,
-    "NightHail": Icon.WiNightHail,
-    "DayFog": Icon.WiDayFog,
-    "NightFog": Icon.WiNightFog,
-    "DayCloudyGusts": Icon.WiDayCloudyGusts,
-    "NightCloudyGusts": Icon.WiNightCloudyGusts,
-    "NightPartlyCloudy": Icon.WiNightPartlyCloudy,
-    "DayWindy": Icon.WiDayWindy,
-    "DayHaze": Icon.WiDayHaze,
-    "DayLightning": Icon.WiDayLightning,
-    "NightLightning": Icon.WiNightLightning,
-    "DayRainMix": Icon.WiDayRainMix,
-    "NightRainMix": Icon.WiNightRainMix,
-  };
-  
-  export default weatherIconMapper;
+weatherIconMapper.set("DaySunny", Icon.WiDaySunny);
+weatherIconMapper.set("NightClear", Icon.WiNightClear);
+weatherIconMapper.set("DayCloudy", Icon.WiDayCloudy);
+weatherIconMapper.set("NightCloudy", Icon.WiNightCloudy);
+weatherIconMapper.set("DayRain", Icon.WiDayRain);
+weatherIconMapper.set("NightRain", Icon.WiNightRain);
+weatherIconMapper.set("DayThunderstorm", Icon.WiDayThunderstorm);
+weatherIconMapper.set("NightThunderstorm", Icon.WiNightThunderstorm);
+weatherIconMapper.set("DaySnow", Icon.WiDaySnow);
+weatherIconMapper.set("NightSnow", Icon.WiNightSnow);
+weatherIconMapper.set("DaySleet", Icon.WiDaySleet);
+weatherIconMapper.set("NightSleet", Icon.WiNightSleet);
+weatherIconMapper.set("DayHail", Icon.WiDayHail);
+weatherIconMapper.set("NightHail", Icon.WiNightHail);
+weatherIconMapper.set("DayFog", Icon.WiDayFog);
+weatherIconMapper.set("NightFog", Icon.WiNightFog);
+weatherIconMapper.set("DayCloudyGusts", Icon.WiDayCloudyGusts);
+weatherIconMapper.set("NightCloudyGusts", Icon.WiNightCloudyGusts);
+weatherIconMapper.set("NightPartlyCloudy", Icon.WiNightPartlyCloudy);
+weatherIconMapper.set("DayWindy", Icon.WiDayWindy);
+weatherIconMapper.set("DayHaze", Icon.WiDayHaze);
+weatherIconMapper.set("DayLightning", Icon.WiDayLightning);
+weatherIconMapper.set("NightLightning", Icon.WiNightLightning);
+weatherIconMapper.set("DayRainMix", Icon.WiDayRainMix);
+weatherIconMapper.set("NightRainMix", Icon.WiNightRainMix);
+
+export default weatherIconMapper;
