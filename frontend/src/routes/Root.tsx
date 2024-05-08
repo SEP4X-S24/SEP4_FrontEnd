@@ -4,9 +4,10 @@ import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
+import { TbLogout, TbLogin } from "react-icons/tb";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
-import { useAuth } from "../utils/AuthContext";
+import { AuthProvider, useAuth } from "../utils/AuthContext";
 
 function Root() {
   const navBarIconSize = 30;
@@ -30,11 +31,17 @@ function Root() {
   const DashboardIcon = styled(Icon.FaChartPie)`
     ${navBarOnHoverStyle}
   `;
-
-  const { authenticated } = useAuth();
   const StyleIcon = styled(IoLogoCss3)`
     ${navBarOnHoverStyle}
   `;
+  const LoginIcon = styled(TbLogin)`
+    ${navBarOnHoverStyle}
+  `;
+  const LogoutIcon = styled(TbLogout)`
+    ${navBarOnHoverStyle}
+  `;
+
+  const { isAuthenticated: authenticated, login: login, logout: logout } = useAuth();
   return (
     <>
       <header className="header p-2">
@@ -56,9 +63,7 @@ function Root() {
                 <Link to="/recomandation" className="nav-link px-2 text-white">
                   <DashboardIcon size={navBarIconSize}></DashboardIcon>
                 </Link>
-              ) : (
-                <div></div>
-              )}
+              ) : null}
 
               <Link
                 to="/style_demonstration"
@@ -72,6 +77,14 @@ function Root() {
               <Link to="/profile" className="nav-link px-2 text-white">
                 <UserIcon size={navBarIconSize}></UserIcon>
               </Link>
+
+              <div className="nav-link px-2 text-white">
+                {authenticated ? (
+                  <LogoutIcon size={navBarIconSize} onClick={logout}></LogoutIcon>
+                ) : (
+                  <LoginIcon size={navBarIconSize} onClick={login}></LoginIcon>
+                )}
+              </div>
             </div>
           </div>
         </div>

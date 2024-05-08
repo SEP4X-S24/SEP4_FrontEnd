@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
 interface AuthContextProps {
-  authenticated: boolean;
+  isAuthenticated: boolean;
   login: () => void;
   logout: () => void;
 }
@@ -35,7 +35,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   return (
-    <AuthContext.Provider value={{ authenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated: authenticated, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );
