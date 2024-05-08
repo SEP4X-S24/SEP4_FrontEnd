@@ -7,6 +7,8 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
 import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
+import { isAuthenticated } from "./utils/Auth";
+import { AuthProvider } from "./utils/AuthContext";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 
 const router = createHashRouter([
@@ -37,7 +39,9 @@ const router = createHashRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 );
 

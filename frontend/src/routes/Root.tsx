@@ -6,6 +6,7 @@ import * as Icon from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
+import { useAuth } from "../utils/AuthContext";
 
 function Root() {
   const navBarIconSize = 30;
@@ -29,6 +30,8 @@ function Root() {
   const DashboardIcon = styled(Icon.FaChartPie)`
     ${navBarOnHoverStyle}
   `;
+
+  const { authenticated } = useAuth();
   const StyleIcon = styled(IoLogoCss3)`
     ${navBarOnHoverStyle}
   `;
@@ -49,11 +52,19 @@ function Root() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/style_demonstration" className="nav-link px-2 text-white">
+              {authenticated ? (
+                <Link to="/recomandation" className="nav-link px-2 text-white">
+                  <DashboardIcon size={navBarIconSize}></DashboardIcon>
+                </Link>
+              ) : (
+                <div></div>
+              )}
+
+              <Link
+                to="/style_demonstration"
+                className="nav-link px-2 text-white"
+              >
                 <StyleIcon size={navBarIconSize}></StyleIcon>
-              </Link>
-              <Link to="/" className="nav-link px-2 text-white">
-                <DashboardIcon size={navBarIconSize}></DashboardIcon>
               </Link>
               <Link to="/notification" className="nav-link px-2 text-white">
                 <BellIcon size={navBarIconSize}></BellIcon>
