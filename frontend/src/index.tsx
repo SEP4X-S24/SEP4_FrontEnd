@@ -7,9 +7,10 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
 import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
-import { isAuthenticated } from "./utils/Auth";
-import { AuthProvider } from "./utils/AuthContext";
+import { isAuthenticated } from "./services/auth/Auth";
+import { AuthProvider } from "./services/auth/AuthContext";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
+import LoginPage from "./pages/Login/LoginPage";
 
 const router = createHashRouter([
   {
@@ -32,6 +33,10 @@ const router = createHashRouter([
       {
         path: "style_demonstration",
         element: <StyleDemonstration />,
+      },
+      {
+        path: "login",
+        element: <LoginPage />,
       },
     ],
   },

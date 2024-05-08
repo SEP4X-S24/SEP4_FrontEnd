@@ -1,40 +1,34 @@
 import React, { useEffect } from "react";
 import "./Root.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
+import { TbLogout, TbLogin } from "react-icons/tb";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
-import { useAuth } from "../utils/AuthContext";
+import { AuthProvider, useAuth } from "../services/auth/AuthContext";
 
 function Root() {
   const navBarIconSize = 30;
-  const navBarIconColor = COLORS.white;
   const navBarOnHoverStyle = `
   *{
-    transition: 0.5s;
-    padding: 0.5rem;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    padding: 0.1rem;
   }
 
   :hover{
     color: ${COLORS.primary};
     transition: 0.3s;
   }`;
-  const BellIcon = styled(Icon.FaBell)`
-    ${navBarOnHoverStyle}
-  `;
-  const UserIcon = styled(Icon.FaUser)`
-    ${navBarOnHoverStyle}
-  `;
-  const DashboardIcon = styled(Icon.FaChartPie)`
+
+  const IconWrapper = styled.span`
     ${navBarOnHoverStyle}
   `;
 
-  const { authenticated } = useAuth();
-  const StyleIcon = styled(IoLogoCss3)`
-    ${navBarOnHoverStyle}
-  `;
+  const { isAuthenticated, user, login, logout } = useAuth();
   return (
     <>
       <header className="header p-2">
@@ -52,26 +46,46 @@ function Root() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              {authenticated ? (
+              {isAuthenticated ? (
                 <Link to="/recomandation" className="nav-link px-2 text-white">
-                  <DashboardIcon size={navBarIconSize}></DashboardIcon>
+                  <IconWrapper>
+                    <Icon.FaChartPie size={navBarIconSize} />
+                  </IconWrapper>
                 </Link>
-              ) : (
-                <div></div>
-              )}
+              ) : null}
 
               <Link
                 to="/style_demonstration"
                 className="nav-link px-2 text-white"
               >
-                <StyleIcon size={navBarIconSize}></StyleIcon>
+                <IconWrapper>
+                  <IoLogoCss3 size={navBarIconSize} />
+                </IconWrapper>
               </Link>
               <Link to="/notification" className="nav-link px-2 text-white">
-                <BellIcon size={navBarIconSize}></BellIcon>
+                <IconWrapper>
+                  <Icon.FaBell size={navBarIconSize} />
+                </IconWrapper>
               </Link>
               <Link to="/profile" className="nav-link px-2 text-white">
-                <UserIcon size={navBarIconSize}></UserIcon>
+                <IconWrapper>
+                  <Icon.FaUser size={navBarIconSize} />
+                </IconWrapper>
               </Link>
+
+              {isAuthenticated ? (
+                <div className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <TbLogout size={navBarIconSize} onClick={logout} />
+                  </IconWrapper>
+                </div>
+              ) : (
+                <Link to="/login" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <TbLogin size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              )}
             </div>
           </div>
         </div>
