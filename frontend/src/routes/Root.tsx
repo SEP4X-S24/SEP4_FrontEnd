@@ -3,6 +3,7 @@ import "./Root.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 import * as Icon from "react-icons/fa";
+import { IoLogoCss3 } from "react-icons/io";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
 import { useAuth } from "../utils/AuthContext";
@@ -31,6 +32,9 @@ function Root() {
   `;
 
   const { authenticated } = useAuth();
+  const StyleIcon = styled(IoLogoCss3)`
+    ${navBarOnHoverStyle}
+  `;
   return (
     <>
       <header className="header p-2">
@@ -56,6 +60,12 @@ function Root() {
                 <div></div>
               )}
 
+              <Link
+                to="/style_demonstration"
+                className="nav-link px-2 text-white"
+              >
+                <StyleIcon size={navBarIconSize}></StyleIcon>
+              </Link>
               <Link to="/notification" className="nav-link px-2 text-white">
                 <BellIcon size={navBarIconSize}></BellIcon>
               </Link>

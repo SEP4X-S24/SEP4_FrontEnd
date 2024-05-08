@@ -9,6 +9,7 @@ import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 import { isAuthenticated } from "./utils/Auth";
 import { AuthProvider } from "./utils/AuthContext";
+import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 
 const router = createHashRouter([
   {
@@ -27,6 +28,10 @@ const router = createHashRouter([
       {
         path: "recomendation",
         element: <RecomendationPage />,
+      },
+      {
+        path: "style_demonstration",
+        element: <StyleDemonstration />,
       },
     ],
   },
