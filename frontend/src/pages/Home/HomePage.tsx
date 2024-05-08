@@ -10,7 +10,8 @@ import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
 import Humidity from "./components/Humidity/Humidity";
 import Wind from "./components/Wind/Wind";
 import ImmediateUpdateButtonMobileVersion from "../../components/ImmediateUpdateButtonMobileVersion/ImmediateUpdateButtonMobileVersion.module";
-
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -38,6 +39,8 @@ function HomePage() {
   }
 
   return (
+    <>
+    <Header />
     <div className="weather-root d-flex align-items-center justify-content-center">
       <div className="weather-container container-fluid row gap">
         <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
@@ -76,6 +79,8 @@ function HomePage() {
         />
       </div>
     </div>
+    <Footer />
+    </>
   );
 }
 

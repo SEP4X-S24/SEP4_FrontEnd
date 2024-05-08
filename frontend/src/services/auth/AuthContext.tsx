@@ -1,9 +1,15 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
+import { useNavigate } from "react-router-dom";
+import Account from "../../models/Accounts";
+import AccountService from "../AccountService";
+import DummyAccountService from "../impl/DummyAccountService";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
-  login: () => void;
+  token: string;
+  user: Account | undefined;
+  login: (userData: Account) => void;
   logout: () => void;
 }
 
@@ -22,21 +28,32 @@ interface AuthProviderProps {
 }
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [authenticated, setAuthenticated] = useState(false);
+  const [user, setUser] = useState<Account | undefined>();
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [token, setToken] = useState("");
+  const accountService: AccountService = new DummyAccountService();
 
-  const login = () => {
-    // Perform login logic here...
-    setAuthenticated(true);
+  const login = async (userData: Account) => {
+    try {
+      setToken(await accountService.login(userData));
+      setUser(userData);
+      console.log(`LOGINED: ${token}`);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  const logout = () => {
-    // Perform logout logic here...
-    setAuthenticated(false);
+  const logout = async () => {
+    setUser(undefined);
+    setToken("");
+    await accountService.logout();
+    setIsAuthenticated(false);
   };
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated: authenticated, login, logout }}
+      value={{ isAuthenticated, token, user, login, logout }}
     >
       {children}
     </AuthContext.Provider>
