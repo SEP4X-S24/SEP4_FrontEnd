@@ -10,50 +10,26 @@ import styled from "styled-components";
 import { AuthProvider, useAuth } from "../services/auth/AuthContext";
 
 function Root() {
-  const [navBarOnHoverStyle, setNavBarOnHoverStyle] = useState("");
+  const navBarOnHoverStyle = `
+  *{
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    padding: 0.5rem;
+  }
 
-  useEffect(() => {
-    console.log(COLORS);
-    console.log(COLORS.black)
-
-    setNavBarOnHoverStyle(`
-    *{
-      transition: 0.5s;
-      padding: 0.5rem;
-    }
-  
-    :hover{
-      color: ${COLORS.primary};
-      transition: 0.3s;
-    }`);
-  }, []);
+  :hover{
+    color: ${COLORS.primary};
+    transition: 0.3s;
+  }`;
 
   const navBarIconSize = 30;
 
-  const BellIcon = styled(Icon.FaBell)`
-    ${navBarOnHoverStyle}
-  `;
-  const UserIcon = styled(Icon.FaUser)`
-    ${navBarOnHoverStyle}
-  `;
-  const DashboardIcon = styled(Icon.FaChartPie)`
-    ${navBarOnHoverStyle}
-  `;
-  const StyleIcon = styled(IoLogoCss3)`
-    ${navBarOnHoverStyle}
-  `;
-  const LoginIcon = styled(TbLogin)`
-    ${navBarOnHoverStyle}
-  `;
-  const LogoutIcon = styled(TbLogout)`
+  const IconWrapper = styled.span`
     ${navBarOnHoverStyle}
   `;
 
-  const {
-    isAuthenticated: authenticated,
-    login: login,
-    logout: logout,
-  } = useAuth();
+  const { isAuthenticated: authenticated, login, logout } = useAuth();
   return (
     <>
       <header className="header p-2">
@@ -73,7 +49,9 @@ function Root() {
             <div className="d-flex text-end align-items-center">
               {authenticated ? (
                 <Link to="/recomandation" className="nav-link px-2 text-white">
-                  <DashboardIcon size={navBarIconSize}></DashboardIcon>
+                  <IconWrapper>
+                    <Icon.FaChartPie size={navBarIconSize} />
+                  </IconWrapper>
                 </Link>
               ) : null}
 
@@ -81,24 +59,29 @@ function Root() {
                 to="/style_demonstration"
                 className="nav-link px-2 text-white"
               >
-                <StyleIcon size={navBarIconSize}></StyleIcon>
+                <IconWrapper>
+                  <IoLogoCss3 size={navBarIconSize} />
+                </IconWrapper>
               </Link>
               <Link to="/notification" className="nav-link px-2 text-white">
-                <BellIcon size={navBarIconSize}></BellIcon>
+                <IconWrapper>
+                  <Icon.FaBell size={navBarIconSize} />
+                </IconWrapper>
               </Link>
               <Link to="/profile" className="nav-link px-2 text-white">
-                <UserIcon size={navBarIconSize}></UserIcon>
+                <IconWrapper>
+                  <Icon.FaUser size={navBarIconSize} />
+                </IconWrapper>
               </Link>
 
               <div className="nav-link px-2 text-white">
-                {authenticated ? (
-                  <LogoutIcon
-                    size={navBarIconSize}
-                    onClick={logout}
-                  ></LogoutIcon>
-                ) : (
-                  <LoginIcon size={navBarIconSize} onClick={login}></LoginIcon>
-                )}
+                <IconWrapper>
+                  {authenticated ? (
+                    <TbLogin size={navBarIconSize} onClick={logout} />
+                  ) : (
+                    <TbLogout size={navBarIconSize} onClick={login} />
+                  )}
+                </IconWrapper>
               </div>
             </div>
           </div>
