@@ -7,11 +7,11 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
-import { AuthProvider } from "./services/auth/AuthContext";
-import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import ProfileSetting from "./pages/Profile/ProfileSetting";
 import NotificationSetting from "./pages/Profile/NotificationSetting";
 import RecomendationSetting from "./pages/Profile/RecomendationSetting";
+import { AuthProvider } from "./services/auth/AuthContext";
+import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import LoginPage from "./pages/Login/LoginPage";
 
 const router = createHashRouter([
@@ -39,7 +39,7 @@ const router = createHashRouter([
           {
             path: "recomendationsettings", // This will match "/profile/notificationSettings"
             element: <RecomendationSetting />,
-          },
+          }
           // Add more children as needed
         ],
       },
@@ -54,7 +54,7 @@ const router = createHashRouter([
       {
         path: "style_demonstration",
         element: <StyleDemonstration />,
-      },
+      }
     ],
   },
 ]);

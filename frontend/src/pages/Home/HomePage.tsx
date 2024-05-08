@@ -40,46 +40,46 @@ function HomePage() {
 
   return (
     <>
-    <Header />
-    <div className="weather-root d-flex align-items-center justify-content-center">
-      <div className="weather-container container-fluid row gap">
-        <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
-          <CurrentWeatherComponent
-            currentWeather={currentWeather}
+      <Header />
+      <div className="weather-root d-flex align-items-center justify-content-center">
+        <div className="weather-container container-fluid row gap">
+          <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
+            <CurrentWeatherComponent
+              currentWeather={currentWeather}
+              isCurrentWeatherRequested={isCurrentWeatherRequested}
+              setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+            />
+          </div>
+          <div className="col-lg p-0">
+            <div className="d-flex flex-column gap">
+              <div>
+                <WeatherForecast
+                  header="Hourly forecast"
+                  HeaderIcon={FaRegClock}
+                  forecast={hourlyForecast}
+                />
+              </div>
+              <div>
+                <WeatherForecast
+                  header="Daily forecast"
+                  HeaderIcon={FaRegCalendarAlt}
+                  forecast={dailyForecast}
+                />
+              </div>
+              <div className="d-flex justify-content-between gap-4 weather-right-row">
+                <Humidity value={currentWeather.humidity!} />
+                <Wind speed={currentWeather.windSpeed!} direction={100} />
+                {/* TODO: fetch wind direction from other API */}
+              </div>
+            </div>
+          </div>
+          <ImmediateUpdateButtonMobileVersion
             isCurrentWeatherRequested={isCurrentWeatherRequested}
             setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
           />
         </div>
-        <div className="col-lg p-0">
-          <div className="d-flex flex-column gap">
-            <div>
-              <WeatherForecast
-                header="Hourly forecast"
-                HeaderIcon={FaRegClock}
-                forecast={hourlyForecast}
-              />
-            </div>
-            <div>
-              <WeatherForecast
-                header="Daily forecast"
-                HeaderIcon={FaRegCalendarAlt}
-                forecast={dailyForecast}
-              />
-            </div>
-            <div className="d-flex justify-content-between gap-4 weather-right-row">
-              <Humidity value={currentWeather.humidity!} />
-              <Wind speed={currentWeather.windSpeed!} direction={100} /> 
-              {/* TODO: fetch wind direction from other API */}
-            </div>
-          </div>
-        </div>
-        <ImmediateUpdateButtonMobileVersion
-          isCurrentWeatherRequested={isCurrentWeatherRequested}
-          setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
-        />
       </div>
-    </div>
-    <Footer />
+      <Footer />
     </>
   );
 }

@@ -16,7 +16,7 @@ function LoginPage() {
       await login({ email: email, password: password });
       setPassword("");
       setEmail("");
-      navigate("/")
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
