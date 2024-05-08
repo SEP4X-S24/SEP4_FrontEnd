@@ -1,12 +1,19 @@
-import Root from "./routes/Root";
-import RecomendationPage from "./pages/Recomendation/RecomendationPage";
-import ProfileSetting from "./pages/Profile/ProfileSetting";
-import NotificationSetting from "./pages/Profile/NotificationSetting";
-import RecomendationSetting from "./pages/Profile/RecomendationSetting";
-import { AuthProvider } from "./services/auth/AuthContext";
-import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
-import LoginPage from "./pages/Login/LoginPage";
 import "./index.css";
+import HomePage from "./pages/Home/HomePage";
+import LoginPage from "./pages/Login/LoginPage";
+import NotFoundPage from "./pages/NotFound/NotFoundPage";
+import NotificationSetting from "./pages/Profile/NotificationSetting";
+import ProfilePage from "./pages/Profile/ProfilePage";
+import ProfileSetting from "./pages/Profile/ProfileSetting";
+import RecomendationSetting from "./pages/Profile/RecomendationSetting";
+import RecomendationPage from "./pages/Recomendation/RecomendationPage";
+import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
+import Root from "./routes/Root";
+import { AuthProvider } from "./services/auth/AuthContext";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createHashRouter, RouterProvider } from "react-router-dom";
+
 
 const router = createHashRouter([
   {
