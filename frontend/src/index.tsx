@@ -7,8 +7,7 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
 import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
-import { isAuthenticated } from "./utils/Auth";
-import { AuthProvider } from "./utils/AuthContext";
+import { AuthProvider } from "./services/auth/AuthContext";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 
 const router = createHashRouter([

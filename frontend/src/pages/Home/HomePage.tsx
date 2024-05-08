@@ -3,7 +3,7 @@ import CurrentWeatherComponent from "./components/CurrentWeather/CurrentWeather"
 import "./HomePage.css";
 import CurrentWeather from "../../models/CurrentWeather";
 import HourlyForecast from "../../models/HourlyForecast";
-import DummyWeatherService from "./services/DummyWeatherService";
+import DummyWeatherService from "../../services/impl/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
@@ -64,8 +64,9 @@ function HomePage() {
               />
             </div>
             <div className="d-flex justify-content-between gap-4 weather-right-row">
-              <Humidity value={35} />
-              <Wind value={20} direction={100} />
+              <Humidity value={currentWeather.humidity!} />
+              <Wind speed={currentWeather.windSpeed!} direction={100} /> 
+              {/* TODO: fetch wind direction from other API */}
             </div>
           </div>
         </div>

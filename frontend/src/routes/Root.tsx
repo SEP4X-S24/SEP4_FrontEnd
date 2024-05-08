@@ -7,7 +7,7 @@ import { IoLogoCss3 } from "react-icons/io";
 import { TbLogout, TbLogin } from "react-icons/tb";
 import COLORS from "../utils/COLORS";
 import styled from "styled-components";
-import { AuthProvider, useAuth } from "../utils/AuthContext";
+import { AuthProvider, useAuth } from "../services/auth/AuthContext";
 
 function Root() {
   const navBarIconSize = 30;
@@ -41,7 +41,11 @@ function Root() {
     ${navBarOnHoverStyle}
   `;
 
-  const { isAuthenticated: authenticated, login: login, logout: logout } = useAuth();
+  const {
+    isAuthenticated: authenticated,
+    login: login,
+    logout: logout,
+  } = useAuth();
   return (
     <>
       <header className="header p-2">
@@ -80,7 +84,10 @@ function Root() {
 
               <div className="nav-link px-2 text-white">
                 {authenticated ? (
-                  <LogoutIcon size={navBarIconSize} onClick={logout}></LogoutIcon>
+                  <LogoutIcon
+                    size={navBarIconSize}
+                    onClick={logout}
+                  ></LogoutIcon>
                 ) : (
                   <LoginIcon size={navBarIconSize} onClick={login}></LoginIcon>
                 )}
