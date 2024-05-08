@@ -1,3 +1,4 @@
+import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
@@ -5,7 +6,6 @@ import HomePage from "./pages/Home/HomePage";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 import Root from "./routes/Root";
-import "./index.css";
 import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 import { AuthProvider } from "./services/auth/AuthContext";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";

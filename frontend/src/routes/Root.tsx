@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Root.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
@@ -10,18 +10,26 @@ import styled from "styled-components";
 import { AuthProvider, useAuth } from "../services/auth/AuthContext";
 
 function Root() {
-  const navBarIconSize = 30;
-  const navBarIconColor = COLORS.white;
-  const navBarOnHoverStyle = `
-  *{
-    transition: 0.5s;
-    padding: 0.5rem;
-  }
+  const [navBarOnHoverStyle, setNavBarOnHoverStyle] = useState("");
 
-  :hover{
-    color: ${COLORS.primary};
-    transition: 0.3s;
-  }`;
+  useEffect(() => {
+    console.log(COLORS);
+    console.log(COLORS.black)
+
+    setNavBarOnHoverStyle(`
+    *{
+      transition: 0.5s;
+      padding: 0.5rem;
+    }
+  
+    :hover{
+      color: ${COLORS.primary};
+      transition: 0.3s;
+    }`);
+  }, []);
+
+  const navBarIconSize = 30;
+
   const BellIcon = styled(Icon.FaBell)`
     ${navBarOnHoverStyle}
   `;
