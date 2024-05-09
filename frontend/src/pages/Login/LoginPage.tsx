@@ -4,6 +4,7 @@ import "./LoginPage.css";
 import COLORS from "../../utils/COLORS";
 import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
 import InputBox from "../../components/InputBox/InputBox";
+import { Link } from "react-router-dom";
 
 
 
@@ -63,7 +64,7 @@ function LoginPage() {
         <h2 className="login_header">Login</h2>
         <div className="login_signin">
           <h5>Don't have an account? </h5>
-          <a href="/">Sign in</a>
+          <Link to={"/Register"}>Sign in</Link>
         </div>
         <form className="login_form" onSubmit={sendData}>
           <InputBox 

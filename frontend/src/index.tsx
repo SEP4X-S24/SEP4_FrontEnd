@@ -14,6 +14,7 @@ import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import ProfileSetting from "./pages/Profile/ProfileSetting";
 import NotificationSetting from "./pages/Profile/NotificationSetting";
 import RecomendationSetting from "./pages/Profile/RecomendationSetting";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 const router = createHashRouter([
   {
@@ -51,6 +52,10 @@ const router = createHashRouter([
       {
         path: "login",
         element: <LoginPage />,
+      },
+      {
+        path: "register",
+        element: <RegisterPage />,
       },{
         path: "style_demonstration",
         element: <StyleDemonstration />,
