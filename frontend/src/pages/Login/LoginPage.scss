@@ -14,11 +14,14 @@ $h3: 48px;
 $h4: 40px;
 $h5: 32px;
 
-body{
-        background-image: url(./Login\ page\ _\ Web\ layout.png);
+.login_page{
+        width: 100vw;
+        height: 100vh;
+        background-image: url(../../images/clouds.png);
         background-size: cover;
 }
 .login_container{
+        
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -54,36 +57,7 @@ body{
                 flex-direction: column;
                 width: 100%;
 
-                .form_input{
-                        display: flex;
-                        align-items: center;
-                        background-color: $primary;
-                        padding: 10px 18px 10px 18px;
-                        border-radius: 15px;
-                        color: $white;
-                        margin-top: 20px;
 
-                        .form_input_box{
-                                display: flex;
-                                flex-direction: column;
-                                width: 100%;
-                                input{
-                                        background-color: $primary;
-                                        border: none;
-                                        color: $white;
-                                        font-size: $body-text-bold;
-                                        font-weight: 700;
-                                        &:focus{
-                                                outline: none;
-                                        }
-                                }
-                                label{
-                                        font-size: $body-text-small;
-                                        
-                                }
-                        }
-
-                }
         }
         .login_button{
                 background-color: $tertiary;

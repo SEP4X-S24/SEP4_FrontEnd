@@ -1,5 +1,8 @@
 import React, { useEffect } from "react";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
+import * as Icon from "react-icons/fa";
+
 import COLORS from "../../utils/COLORS";
 import styled from "styled-components";
 import { useAuth } from "../../services/auth/AuthContext";

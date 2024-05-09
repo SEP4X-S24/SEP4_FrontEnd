@@ -1,21 +1,45 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
+
+import COLORS from "../../utils/COLORS";
+import InputBox from "../../components/InputBox/InputBox";
+import { Link } from "react-router-dom";
+
 import { FaEnvelope, FaEye } from "react-icons/fa6";
 import { useAuth } from "../../services/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+
+
+
 function LoginPage() {
+
+  let  email = "";
+  let password = "";
+
+  function handleEmail(data: string) {
+    email = data;
+  }
+  
+  function handlePassword(data: string) {
+    password = data;
+  }
+  function sendData(){
+    console.log(email +" "+ password);
+    }
+
   const { login } = useAuth();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
 
   async function handleLogin() {
     try {
       await login({ email: email, password: password });
-      setPassword("");
-      setEmail("");
+      email = "";
+      password = "";
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -23,54 +47,36 @@ function LoginPage() {
   }
   return (
     <>
+    <div className="login_page">
       <div className="login_container">
         <h2 className="login_header">Login</h2>
         <div className="login_signin">
           <h5>Don't have an account? </h5>
-          <a href="/">Sign in</a>
+          <Link to={"/Register"}>Sign in</Link>
         </div>
-        <div className="login_form">
-          <div className="form_input">
-            <div className="form_input_box">
-              <label htmlFor="">Email</label>
-              <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              ></input>
-            </div>
-            <FaEnvelope
-              style={{
-                width: "40px",
-                height: "40px",
-                fill: "var(--color-secondary)",
-              }}
-            />
-          </div>
-          <div className="form_input">
-            <div className="form_input_box">
-              <label htmlFor="">Password</label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              ></input>
-            </div>
-            <FaEye
-              style={{
-                width: "40px",
-                height: "40px",
-                fill: "var(--color-secondary)",
-              }}
-            />
-          </div>
-        </div>
-        <button className="login_button" onClick={handleLogin}>
-          Login
-        </button>
+
+        <form className="login_form" onSubmit={handleLogin}>
+          <InputBox 
+            label="Email" 
+            type="email" 
+            InputIcon={FaEnvelope} 
+            handleClick={handleEmail}/>
+
+          <InputBox 
+          label="Password" 
+          type="password" 
+          InputIcon={FaEye} 
+          handleClick={handlePassword}/>
+
+          <button type="submit" className="login_button">Login</button>
+
+        </form>        
+      </div>
+
       </div>
     </>
   );
 }
+
 
 export default LoginPage;

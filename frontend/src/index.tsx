@@ -1,3 +1,9 @@
+import Root from "./routes/Root";
+import { AuthProvider } from "./services/auth/AuthContext";
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { createHashRouter, RouterProvider } from "react-router-dom";
+
 import "./index.css";
 import HomePage from "./pages/Home/HomePage";
 import LoginPage from "./pages/Login/LoginPage";
@@ -6,13 +12,7 @@ import NotificationSetting from "./pages/Profile/NotificationSetting";
 import ProfilePage from "./pages/Profile/ProfilePage";
 import ProfileSetting from "./pages/Profile/ProfileSetting";
 import RecomendationSetting from "./pages/Profile/RecomendationSetting";
-import RecomendationPage from "./pages/Recomendation/RecomendationPage";
-import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
-import Root from "./routes/Root";
-import { AuthProvider } from "./services/auth/AuthContext";
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router-dom";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
 
 
 const router = createHashRouter([
@@ -53,6 +53,11 @@ const router = createHashRouter([
         element: <LoginPage />,
       },
       {
+
+        path: "register",
+        element: <RegisterPage />,
+      },{
+
         path: "style_demonstration",
         element: <StyleDemonstration />,
       }

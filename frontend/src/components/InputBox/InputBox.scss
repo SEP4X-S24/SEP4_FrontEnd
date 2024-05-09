@@ -1,0 +1,46 @@
+$black: var(--color-black);
+$white: var(--color-white);
+$primaryDark: var(--color-primary-dark);
+$primary: var(--color-primary);
+$secondary: var(--color-secondary);
+$tertiary: var(--color-tertiary);
+
+$body-text-small:16px;
+$body-text-bold:24px ;
+$body-text-regular:24px;
+$h1: 96px;
+$h2: 64px;
+$h3: 48px;
+$h4: 40px;
+$h5: 32px;
+
+.form_input{
+        display: flex;
+        align-items: center;
+        background-color: $primary;
+        padding: 10px 18px 10px 18px;
+        border-radius: 15px;
+        color: $white;
+        margin-top: 20px;
+
+        .form_input_box{
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                input{
+                        background-color: $primary;
+                        border: none;
+                        color: $white;
+                        font-size: $body-text-bold;
+                        font-weight: 700;
+                        &:focus{
+                                outline: none;
+                        }
+                }
+                label{
+                        font-size: $body-text-small;
+                        
+                }
+        }
+
+}
