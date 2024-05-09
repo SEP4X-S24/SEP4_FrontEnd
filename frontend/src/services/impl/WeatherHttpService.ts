@@ -15,25 +15,34 @@ export default class WeatherHttpService implements WeatherService {
     throw new Error("Method not implemented.");
   }
   async fetchCurrentWeather(): Promise<CurrentWeather> {
+    const requestOptions: RequestInit = {
+      method: "GET",
+      redirect: "follow",
+      mode: 'no-cors'
+    };
+
+
     return fetch(
-      "https://weatherstation4dev.azurewebsites.net/api/GetDefaultData"
+      "https://weatherstation4dev.azurewebsites.net/api/GetDefaultData", requestOptions
     )
       .then((response) => {
         if (!response.ok) {
           throw new Error(`Failed to fetch data ${response}`);
         }
-        return response.json();
+        return response.text();
       })
       .then((data) => {
+        const jsonData = JSON.parse(data);
+        console.log(jsonData)
         const currentWeather: CurrentWeather = {
-          currentTemperature: data.Value.CurrentTemp,
-          location: data.Value.Location,
-          currentWeather: data.Value.WeatherState,
+          currentTemperature: jsonData.Value.CurrentTemp,
+          location: jsonData.Value.Location,
+          currentWeather: jsonData.Value.WeatherState,
           timeChecked: `${format(
-            new Date(data.Value.TimeChecked),
+            new Date(jsonData.Value.TimeChecked),
             "EEEE dd.MM HH:mm"
           )}`,
-          humidity: data.Value.Humidity,
+          humidity: jsonData.Value.Humidity,
         };
 
         return currentWeather;

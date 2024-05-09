@@ -6,7 +6,7 @@ import AccountService from "../AccountService";
 import DummyAccountService from "../impl/DummyAccountService";
 
 interface AuthContextProps {
-  isAuthenticated: boolean;
+  isAuthenticated: () => boolean;
   token: string;
   user: Account | undefined;
   login: (userData: Account) => void;
@@ -29,8 +29,7 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<Account | undefined>();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
   const accountService: AccountService = new DummyAccountService();
 
   const login = async (userData: Account) => {
@@ -38,17 +37,19 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       setToken(await accountService.login(userData));
       setUser(userData);
       console.log(`LOGINED: ${token}`);
-      setIsAuthenticated(true);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const isAuthenticated = () => {
+    return token !== ""
+  }
+
   const logout = async () => {
     setUser(undefined);
     setToken("");
     await accountService.logout();
-    setIsAuthenticated(false);
   };
 
   return (
