@@ -71,7 +71,6 @@ function Header() {
                     <Link to="/profile" className="nav-link px-2 text-white">
                       <UserIcon size={navBarIconSize}></UserIcon>
                     </Link>
-                    <Link to="/login">Login</Link>
                   </div>
                 </div>
               </div>
