@@ -27,7 +27,7 @@ export default class WeatherHttpService implements WeatherService {
     )
       .then((response) => {
         if (!response.ok) {
-          throw new Error(`Failed to fetch data ${response}`);
+          throw new Error(`Failed to fetch data: ${response.status}`);
         }
         return response.text();
       })
