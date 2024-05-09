@@ -12,6 +12,7 @@ import Wind from "./components/Wind/Wind";
 import ImmediateUpdateButtonMobileVersion from "../../components/ImmediateUpdateButtonMobileVersion/ImmediateUpdateButtonMobileVersion.module";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
+import WeatherHttpService from "../../services/impl/WeatherHttpService";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -28,7 +29,9 @@ function HomePage() {
 
   useEffect(() => {
     const dummyService = new DummyWeatherService();
+    const service = new WeatherHttpService();
 
+    // service.fetchCurrentWeather().then((c) => setCurrentWeather(c))
     dummyService.fetchCurrentWeather().then((c) => setCurrentWeather(c));
     dummyService.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
     dummyService.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
