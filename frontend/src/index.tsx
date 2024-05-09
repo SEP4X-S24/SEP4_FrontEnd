@@ -13,7 +13,7 @@ import ProfilePage from "./pages/Profile/ProfilePage";
 import ProfileSetting from "./pages/Profile/ProfileSetting";
 import RecomendationSetting from "./pages/Profile/RecomendationSetting";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-
+import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 
 const router = createHashRouter([
   {
@@ -43,10 +43,6 @@ const router = createHashRouter([
           }
           // Add more children as needed
         ],
-      },
-      {
-        path: "recomendation",
-        element: <RecomendationPage />,
       },
       {
         path: "login",

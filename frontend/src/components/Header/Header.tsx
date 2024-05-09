@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
-import { Link } from "react-router-dom";
-import * as Icon from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 
 import COLORS from "../../utils/COLORS";
 import styled from "styled-components";
