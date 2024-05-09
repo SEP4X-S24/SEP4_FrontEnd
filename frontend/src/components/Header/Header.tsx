@@ -49,7 +49,7 @@ function Header() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              {isAuthenticated() ? (
+              {isAuthenticated ? (
                 <Link to="/recomandation" className="nav-link px-2 text-white">
                   <IconWrapper>
                     <Icon.FaChartPie size={navBarIconSize} />
@@ -76,14 +76,13 @@ function Header() {
                 </IconWrapper>
               </Link>
 
-              {isAuthenticated() ? (
+              {isAuthenticated ? (
                 <div className="nav-link px-2 text-white">
                   <IconWrapper>
                     <TbLogout
                       size={navBarIconSize}
                       onClick={() => {
                         logout()
-                        navigate("/login")
                       }}
                     />
                   </IconWrapper>
