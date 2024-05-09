@@ -2,8 +2,8 @@ import Account from "../../models/Accounts";
 import AccountService from "../AccountService";
 
 const accounts: Account[] = [
-  { email: "Boss", password: "bosspass" },
-  { email: "sevastian", password: "passtest" },
+  { email: "Boss@email.com", password: "bosspass" },
+  { email: "sevastian@email.com", password: "passtest" },
 ];
 
 export default class DummyAccountService implements AccountService {
