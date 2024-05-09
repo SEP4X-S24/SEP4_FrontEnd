@@ -1,10 +1,10 @@
 import { addDays, format } from "date-fns";
-import CurrentWeather from "../../../models/CurrentWeather";
-import DailyForecast from "../../../models/DailyForecast";
-import HourlyForecast from "../../../models/HourlyForecast";
-import Suggestion from "../../../models/Suggestion";
-import WeatherService from "./WeatherService";
-import weatherIconMapper from "../../../utils/WeatherIconMapper";
+import CurrentWeather from "../../models/CurrentWeather";
+import DailyForecast from "../../models/DailyForecast";
+import HourlyForecast from "../../models/HourlyForecast";
+import Suggestion from "../../models/Suggestion";
+import WeatherService from "../WeatherService";
+import weatherIconMapper from "../../utils/WeatherIconMapper";
 
 export default class DummyWeatherService implements WeatherService {
   async fetchWeatherHourlyForecast(): Promise<HourlyForecast[]> {
@@ -29,18 +29,18 @@ export default class DummyWeatherService implements WeatherService {
 
   async fetchWeatherDailyForecast(): Promise<DailyForecast[]> {
     const dailyForecast: DailyForecast[] = [];
-    
+
     for (let i = 0; i < 7; i++) {
       let date = new Date();
       date = addDays(date, i);
-  
+
       dailyForecast.push({
         time: format(date, "dd.MM"),
         temperature: Math.floor(Math.random() * 10) + 20,
         weatherState: this.genRandomWeatherState(),
       });
     }
-  
+
     return dailyForecast;
   }
 
@@ -60,7 +60,7 @@ export default class DummyWeatherService implements WeatherService {
   }
 
   private genRandomWeatherState(): string {
-    const keys = Object.keys(weatherIconMapper);
+    const keys = Array.from(weatherIconMapper.keys());
     const randomIndex = Math.floor(Math.random() * keys.length);
     return keys[randomIndex];
   }

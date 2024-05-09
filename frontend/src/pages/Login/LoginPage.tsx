@@ -1,48 +1,19 @@
 import React, { useState } from "react";
-import { login } from "../../services/AccountApi";
 import "./LoginPage.css";
+
 import COLORS from "../../utils/COLORS";
-import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
 import InputBox from "../../components/InputBox/InputBox";
 import { Link } from "react-router-dom";
 
+import { FaEnvelope, FaEye } from "react-icons/fa6";
+import { useAuth } from "../../services/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
-
-// function LoginPage() {
-//   const [username, setUsername] = useState("");
-//   const [password, setPassword] = useState("");
-
-//   async function handleLogin(username: string, password: string) {
-//     try {
-//       const token = await login(username, password);
-//     } catch (error) {
-//       // Handle login error
-//       console.log(error);
-//     }
-//   }
-
-//   return (
-//     <form onSubmit={(e) => handleLogin(username, password)}>
-//       <input
-//         type="text"
-//         value={username}
-//         onChange={(e) => setUsername(e.target.value)}
-//         placeholder="Username"
-//       />
-//       <input
-//         type="password"
-//         value={password}
-//         onChange={(e) => setPassword(e.target.value)}
-//         placeholder="Password"
-//       />
-//       <button type="submit">Login</button>
-//     </form>
-//   );
-// }
 
 
 
 function LoginPage() {
+
   let  email = "";
   let password = "";
 
@@ -57,6 +28,23 @@ function LoginPage() {
     console.log(email +" "+ password);
     }
 
+  const { login } = useAuth();
+
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+
+  async function handleLogin() {
+    try {
+      await login({ email: email, password: password });
+      email = "";
+      password = "";
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
   return (
     <>
     <div className="login_page">
@@ -66,7 +54,8 @@ function LoginPage() {
           <h5>Don't have an account? </h5>
           <Link to={"/Register"}>Sign in</Link>
         </div>
-        <form className="login_form" onSubmit={sendData}>
+
+        <form className="login_form" onSubmit={handleLogin}>
           <InputBox 
             label="Email" 
             type="email" 
@@ -83,6 +72,7 @@ function LoginPage() {
 
         </form>        
       </div>
+
       </div>
     </>
   );

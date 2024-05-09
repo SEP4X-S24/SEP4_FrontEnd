@@ -8,14 +8,14 @@ function Humidity({ value }: { value: number }) {
         <h3>{value}%</h3>
       </div>
       <div className="col d-flex flex-column justify-content-center align-content-center align-items-center p-0">
-        <text className="humidity-marks">100</text>
+        <label className="humidity-marks">100</label>
         <div className="humidity-bar">
           <div
             className="humidity-bar-filled"
             style={{ height: `${value}%` }}
           ></div>
         </div>
-        <text className="humidity-marks">0</text>
+        <label className="humidity-marks">0</label>
       </div>
     </div>
   );

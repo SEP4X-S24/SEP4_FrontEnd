@@ -9,20 +9,22 @@ function WeatherForecast({
   HeaderIcon,
   forecast,
 }: {
-  forecast: BasicForecast[],
-  header: string,
-  HeaderIcon: IconType
-  
+  forecast: BasicForecast[];
+  header: string;
+  HeaderIcon: IconType;
 }) {
   const timeListEl = (
     <div className="d-flex flex-row container-fluid p-0 column-gap-3 h-100 overflow-auto">
-      {forecast.map((item, index) => <WeatherEntry key={index} item={item}/>)}
+      {forecast.map((item, index) => {
+        console.log(item);
+        return <WeatherEntry key={index} item={item} />;
+      })}
     </div>
   );
 
   return (
     <>
-      <div className={`${styles.weatherData} d-flex flex-column gap-3`} >
+      <div className={`${styles.weatherData} d-flex flex-column gap-3`}>
         <div className="weather-data-header d-flex flex-row gap-3 align-items-center h-25">
           <div className={`${styles.iconWrapper}`}>
             <HeaderIcon
