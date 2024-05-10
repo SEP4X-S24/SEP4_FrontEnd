@@ -83,7 +83,6 @@ function Header() {
                       size={navBarIconSize}
                       onClick={() => {
                         logout()
-                        navigate("/login")
                       }}
                     />
                   </IconWrapper>

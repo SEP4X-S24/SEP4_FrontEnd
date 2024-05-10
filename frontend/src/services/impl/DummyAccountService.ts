@@ -29,6 +29,18 @@ export default class DummyAccountService implements AccountService {
   }
 
   async register(user: Account): Promise<string> {
-    throw new Error("Method not implemented.");
+    if (
+      accounts.every((el) => el.email !== user.email && el.password !== user.password)
+    ) {
+      accounts.push(user)
+      const token = "awo;iujrfw4ehcshrkghndkgbwsetrhserth";
+      localStorage.setItem("token", token);
+
+      return token;
+    }
+
+    throw new Error(
+      "User is already registered."
+    );
   }
 }

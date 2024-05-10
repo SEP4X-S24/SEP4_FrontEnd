@@ -9,7 +9,8 @@ interface AuthContextProps {
   isAuthenticated: boolean;
   token: string;
   user: Account | undefined;
-  login: (userData: Account) => void;
+  login: (userData: Account) => Promise<void>;
+  register: (userData: Account) => Promise<void>;
   logout: () => void;
 }
 
@@ -29,19 +30,20 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<Account | undefined>();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [isAuthenticated, setIsAuthenticated] = useState(token !== "");
   const accountService: AccountService = new DummyAccountService();
 
   const login = async (userData: Account) => {
-    try {
-      setToken(await accountService.login(userData));
-      setUser(userData);
-      console.log(`LOGINED: ${token}`);
-      setIsAuthenticated(true);
-    } catch (error) {
-      console.log(error);
-    }
+    setToken(await accountService.login(userData));
+    setIsAuthenticated(true);
+    setUser(userData);
+  };
+
+  const register = async (userData: Account) => {
+    setToken(await accountService.register(userData));
+    setIsAuthenticated(true);
+    setUser(userData);
   };
 
   const logout = async () => {
@@ -53,7 +55,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, token, user, login, logout }}
+      value={{ isAuthenticated, token, user, login, logout, register }}
     >
       {children}
     </AuthContext.Provider>

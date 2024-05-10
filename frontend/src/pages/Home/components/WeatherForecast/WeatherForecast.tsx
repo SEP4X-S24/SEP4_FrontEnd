@@ -16,7 +16,6 @@ function WeatherForecast({
   const timeListEl = (
     <div className="d-flex flex-row container-fluid p-0 column-gap-3 h-100 overflow-auto">
       {forecast.map((item, index) => {
-        console.log(item);
         return <WeatherEntry key={index} item={item} />;
       })}
     </div>
