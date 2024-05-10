@@ -17,8 +17,7 @@ export default class WeatherHttpService implements WeatherService {
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     const requestOptions: RequestInit = {
       method: "GET",
-      redirect: "follow",
-      mode: 'no-cors'
+      redirect: "follow"
     };
 
 
