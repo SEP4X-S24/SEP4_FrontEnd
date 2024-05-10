@@ -24,8 +24,10 @@ function ProfileSetting() {
 	function handlePassword(data: string) {
 		password = data;
 	}
+
   function sendData() {
-    console.log(firstname + " " + lastname);
+    // change on implementation of logic
+    console.log( firstname+" "+ lastname+" "+ email+" "+ password);
   }
   return (
 		<div className="profile_settings">
@@ -55,6 +57,7 @@ function ProfileSetting() {
 					handleClick={handlePassword}
 					InputIcon={FaEye}
 				/>
+
 				<button type="submit" className="profile_button">
 					Save
 				</button>
