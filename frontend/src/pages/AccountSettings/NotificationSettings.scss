@@ -1,0 +1,37 @@
+$black: var(--color-black);
+$white: var(--color-white);
+$primaryDark: var(--color-primary-dark);
+$primary: var(--color-primary);
+$secondary: var(--color-secondary);
+$tertiary: var(--color-tertiary);
+
+$body-text-small:16px;
+$body-text-bold:24px ;
+$body-text-regular:24px;
+$h1: 96px;
+$h2: 64px;
+$h3: 48px;
+$h4: 40px;
+$h5: 32px;
+
+.notification_settings{
+        width: 600px;
+        .notification_heading{
+                font-size: $h5;
+                color: $white;
+                margin-bottom: 20px;
+        }
+        .notification_form{
+                display: flex;
+                flex-direction: column;
+        }
+        .notification_button{
+                background-color: $primary;
+                color: $white;
+                font-size: $body-text-small;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                margin-top: 20px;
+        }
+}

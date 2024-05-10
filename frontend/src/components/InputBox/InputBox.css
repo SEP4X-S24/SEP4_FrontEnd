@@ -25,3 +25,19 @@
 .form_input .form_input_box label {
   font-size: 16px;
 }
+.form_input .form_checkbox_box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 0 10px 0;
+}
+.form_input .form_checkbox_box .checkbox_input {
+  width: 25px;
+  height: 25px;
+}
+.form_input .form_checkbox_box .checkbox_label {
+  font-size: 24px;
+  margin-left: 10px;
+  margin-bottom: 0;
+}

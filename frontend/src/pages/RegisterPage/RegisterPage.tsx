@@ -9,6 +9,7 @@ import { useAuth } from "../../services/auth/AuthContext";
 import Account from "../../models/Account";
 
 function RegisterPage() {
+
   let email = "";
   let password = "";
   let firstname = "";
