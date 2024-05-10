@@ -24,14 +24,8 @@ function LoginPage() {
   function handlePassword(data: string) {
     password = data;
   }
-  function sendData(){
-    console.log(email +" "+ password);
-    }
 
   const { login } = useAuth();
-
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
 
