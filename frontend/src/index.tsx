@@ -14,6 +14,7 @@ import ProfileSetting from "./pages/Profile/ProfileSetting";
 import RecomendationSetting from "./pages/Profile/RecomendationSetting";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
+import RecomandationPage from "./pages/Recomendation/RecomendationPage";
 
 const router = createHashRouter([
   {
@@ -40,7 +41,7 @@ const router = createHashRouter([
           {
             path: "recomendationsettings", // This will match "/profile/notificationSettings"
             element: <RecomendationSetting />,
-          }
+          },
           // Add more children as needed
         ],
       },
@@ -49,14 +50,17 @@ const router = createHashRouter([
         element: <LoginPage />,
       },
       {
-
         path: "register",
         element: <RegisterPage />,
-      },{
-
+      },
+      {
         path: "style_demonstration",
         element: <StyleDemonstration />,
-      }
+      },
+      {
+        path: "recomandation",
+        element: <RecomandationPage />,
+      },
     ],
   },
 ]);
