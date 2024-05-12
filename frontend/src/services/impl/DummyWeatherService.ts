@@ -13,7 +13,7 @@ export default class DummyWeatherService implements WeatherService {
     const currentData = await this.fetchCurrentWeather();
     hourlyForecast.push({
       time: "Now",
-      temperature: currentData.currentTemperature,
+      temperature: currentData.temperature,
       weatherState: currentData.weatherState,
     });
 
@@ -51,12 +51,12 @@ export default class DummyWeatherService implements WeatherService {
 
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     return {
-      currentTemperature: 28,
+      temperature: 28,
       weatherState: "A little cloudy.",
       location: "Horsens",
       time: `${format(new Date(), "EEEE dd.MM HH:mm")}`,
       humidity: 61,
-      windSpeed: 6,
+      light: 25
     };
   }
 

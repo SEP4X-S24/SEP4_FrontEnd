@@ -20,7 +20,7 @@ function CurrentWeatherComponent({
     <div className="current-weather d-flex flex-column justify-content-between align-items-center">
       <div className="general-data d-flex flex-column justify-content-center align-items-center">
         <h2>{currentWeather.location}</h2>
-        <h3 className="my-3">{currentWeather.currentTemperature}°</h3>
+        <h3 className="my-3">{currentWeather.temperature}°</h3>
         <h5>{currentWeather.weatherState}</h5>
       </div>
       <div className="weather-icon-container">

@@ -1,6 +1,6 @@
 .humidity {
-  user-select: none;
   --width: 25%;
+  user-select: none;
   background-color: var(--color-primary);
   color: var(--color-white);
   border-radius: var(--round-corner-small);

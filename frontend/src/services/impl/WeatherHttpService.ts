@@ -30,22 +30,15 @@ export default class WeatherHttpService implements WeatherService {
     const url = "https://api.open-meteo.com/v1/forecast";
     const responses = await fetchWeatherApi(url, params);
 
-    // Helper function to form time ranges
     const range = (start: number, stop: number, step: number) =>
       Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
 
-    // Process first location. Add a for-loop for multiple locations or weather models
     const response = responses[0];
 
-    // Attributes for timezone and location
     const utcOffsetSeconds = response.utcOffsetSeconds();
 
     const hourly = response.hourly()!;
 
-    // Filter data for the time range from now until seven hours after now
-    // const filteredTimeIndices = hourly.time().filter((time: bigint) => time >= currentTime && time <= sevenHoursAfter);
-
-    // Note: The order of weather variables in the URL query and the indices below need to match!
     const weatherData = {
       hourly: {
         time: range(
@@ -84,21 +77,25 @@ export default class WeatherHttpService implements WeatherService {
   fetchWeatherDailyForecast(): Promise<DailyForecast[]> {
     throw new Error("Method not implemented.");
   }
+
+
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     try {
       const response = await axios.get("/api/GetDefaultData");
-      console.log(`Response: ${response}`);
       const jsonData = response.data;
       console.log(jsonData);
+      const lastIndex: number = jsonData.Value.length - 1
+      console.log(jsonData.Value[lastIndex].Light);
       const currentWeather: CurrentWeather = {
-        currentTemperature: jsonData.Value[0].Temperature,
+        temperature: jsonData.Value[lastIndex].Temperature,
         location: "Horsens",
-        weatherState: jsonData.Value[0].WeatherState,
+        weatherState: jsonData.Value[lastIndex].WeatherState,
         time: `${format(
-          new Date(parseISO(jsonData.Value[0].Time)),
+          new Date(parseISO(jsonData.Value[lastIndex].Time)),
           "EEEE dd.MM HH:mm"
         )}`,
-        humidity: jsonData.Value[0].Humidity,
+        humidity: jsonData.Value[lastIndex].Humidity,
+        light: jsonData.Value[lastIndex].Light
       };
 
       return currentWeather;

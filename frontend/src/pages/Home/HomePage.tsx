@@ -8,11 +8,11 @@ import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
 import Humidity from "./components/Humidity/Humidity";
-import Wind from "./components/Wind/Wind";
 import ImmediateUpdateButtonMobileVersion from "../../components/ImmediateUpdateButtonMobileVersion/ImmediateUpdateButtonMobileVersion.module";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import LightComponent from "./components/Light/LightComponent";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -29,12 +29,8 @@ function HomePage() {
 
   useEffect(() => {
     const dummyService = new DummyWeatherService();
-    const service = new WeatherHttpService();
-
-    // service.fetchCurrentWeather().then((c) => setCurrentWeather(c))
-    dummyService.fetchCurrentWeather().then((c) => setCurrentWeather(c));
+    setCurrentWeather(JSON.parse(localStorage.getItem("current_weather")!));
     dummyService.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
-    // service.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
     dummyService.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
   }, []);
 
@@ -72,8 +68,7 @@ function HomePage() {
               </div>
               <div className="d-flex justify-content-between gap-4 weather-right-row">
                 <Humidity value={currentWeather.humidity!} />
-                <Wind speed={currentWeather.windSpeed!} direction={100} />
-                {/* TODO: fetch wind direction from other API */}
+                <LightComponent value={currentWeather.light!} />
               </div>
             </div>
           </div>

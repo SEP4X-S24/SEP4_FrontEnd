@@ -1,9 +1,7 @@
-export default interface CurrentWeather {
+import BasicForecast from "./BasicForecast";
+
+export default interface CurrentWeather extends BasicForecast {
   location: string;
-  currentTemperature: number;
-  weatherState: string;
-  time: string;
   humidity?: number;
-  windSpeed?: number;
-  light?: number; // TODO: rename
+  light?: number;
 }

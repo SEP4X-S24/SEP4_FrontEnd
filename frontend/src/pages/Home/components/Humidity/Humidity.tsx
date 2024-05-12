@@ -4,8 +4,8 @@ function Humidity({ value }: { value: number }) {
   return (
     <div className="humidity container row m-0 d-flex">
       <div className="col-6 d-flex flex-column justify-content-center align-items-center p-0">
-        <h5>Humidity</h5>
-        <h3>{value}%</h3>
+        <h4>Humidity</h4>
+        <h5>{value}%</h5>
       </div>
       <div className="col d-flex flex-column justify-content-center align-content-center align-items-center p-0">
         <label className="humidity-marks">100</label>

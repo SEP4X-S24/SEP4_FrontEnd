@@ -14,7 +14,10 @@ import ProfileSetting from "./pages/Profile/ProfileSetting";
 import RecomendationSetting from "./pages/Profile/RecomendationSetting";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
+import fetchCurrentWeatherData from "./services/impl/WeatherFetcher";
 
+
+fetchCurrentWeatherData();
 const router = createHashRouter([
   {
     path: "/",

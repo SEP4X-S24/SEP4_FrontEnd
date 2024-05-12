@@ -1,4 +1,4 @@
-import Account from "../../models/Accounts";
+import Account from "../../models/Account";
 import AccountService from "../AccountService";
 
 const accounts: Account[] = [
