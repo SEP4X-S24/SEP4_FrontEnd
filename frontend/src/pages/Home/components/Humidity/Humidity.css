@@ -1,0 +1,41 @@
+.humidity {
+  --width: 25%;
+  user-select: none;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--round-corner-small);
+  padding: 0;
+}
+
+.humidity-bar {
+  flex: 1;
+  min-height: 8vw;
+  width: var(--width);
+  position: relative;
+  background-color: #ffe696;
+  border-radius: var(--round-corner-small);
+  overflow: hidden;
+}
+
+.humidity-bar-filled {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffc200;
+}
+
+.humidity-marks {
+  font-size: small;
+}
+
+
+@media only screen and (max-width: 992px) {
+  .humidity-bar {
+    min-height: 12vw !important;
+  }
+
+  .humidity {
+    padding: 0 !important;
+  }
+}

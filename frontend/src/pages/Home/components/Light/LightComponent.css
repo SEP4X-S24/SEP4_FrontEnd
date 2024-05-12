@@ -1,0 +1,14 @@
+.light {
+  user-select: none;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--round-corner-small);
+  padding: 0;
+}
+
+.lightIcon {
+    width: 50%;
+    height: 50%;
+
+    fill: var(--color-secondary);
+}

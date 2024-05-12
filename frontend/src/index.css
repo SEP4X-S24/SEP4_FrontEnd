@@ -1,0 +1,26 @@
+@import "./styles/typography.css";
+@import "./styles/colors.css";
+@import "./styles/spacing.css";
+@import "./styles/round-corners.css";
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 100%;
+  color: var(--color-black);
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}

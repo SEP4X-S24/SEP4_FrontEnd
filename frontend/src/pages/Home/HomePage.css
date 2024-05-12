@@ -1,0 +1,51 @@
+.weather-root {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  height: fit-content;
+  background-image: url("../../images/rainy_back.jpg");
+  background-size: cover;
+  padding: var(--space-big);
+}
+
+.weather-container {
+  width: 90vw;
+  height: fit-content;
+
+  padding: var(--space-big);
+  border-radius: var(--round-corner-normal);
+  background-color: var(--color-primary-semi-transparent);
+}
+
+.weather-icon-container {
+  width: 30%;
+  height: 30%;
+}
+
+@media screen and (max-width: 2000px) and (min-width: 1300px) {
+  .weather-icon-container {
+    width: 40%;
+    height: 40%;
+  }
+}
+
+@media screen and (max-width: 1300px) and (min-width: 500px) {
+  .weather-icon-container {
+    width: 60%;
+    height: 60%;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 1300px) {
+  .weather-icon-container {
+    width: 30%;
+    height: 30%;
+  }
+}
+
+
+@media only screen and (max-width: 600px){
+  .weather-container {
+    width: 99%;
+  }
+}
