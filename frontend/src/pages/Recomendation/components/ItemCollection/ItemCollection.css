@@ -1,41 +1,79 @@
+/* ItemCollection.css */
 .item-collection {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
+  padding: 20px; /* Adjust padding as needed */
+  background-color: #fff; /* Optional: background color */
+  max-width: 1200px; /* Adjust based on layout requirements */
+  margin: auto; /* Centers the collection in the viewport */
 }
 
 .items-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(4, 1fr); /* Creates four columns */
+  gap: 20px; /* Space between items */
+  padding: 20px; /* Padding around the grid */
 }
 
 .item {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; /* Center items horizontally */
+  text-align: center; /* Center text */
+  background-color: #f9f9f9; /* Background color for each item */
   padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 8px; /* Rounded corners for the item cards */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .item img {
-  width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+  width: 100%; /* Ensures images take up all available width */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 150px; /* Limit image height */
+  object-fit: contain; /* Prevent distortion */
 }
 
 .item p {
-  margin: 0;
-  font-size: 16px;
-  color: #333;
+  font-size: 1rem; /* Font size for item names */
+  color: #333; /* Text color */
+  margin-top: 10px; /* Space between image and text */
 }
 
-.item button {
-  padding: 10px;
-  border: none;
-  background-color: blue;
+.view-all-btn {
+  padding: 10px 20px;
+  margin-top: 20px; /* Add some space above the button */
+  background-color: #09bc8a; /* Bootstrap primary color for example */
   color: white;
+  border: none;
   border-radius: 5px;
   cursor: pointer;
+  text-align: center;
+  display: block; /* Make it a block element to center it */
+  width: 200px; /* Fixed width */
+  margin-left: auto; /* Center the button horizontally */
+  margin-right: auto;
+}
+
+.view-all-btn:hover {
+  background-color: #07a075; /* Darker shade on hover */
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1024px) {
+  .items-grid {
+    grid-template-columns: repeat(3, 1fr); /* Three columns for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .items-grid {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Two columns for smaller tablets and large phones */
+  }
+}
+
+@media (max-width: 480px) {
+  .items-grid {
+    grid-template-columns: 1fr; /* One column for small phones */
+  }
 }
