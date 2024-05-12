@@ -81,7 +81,7 @@ export default class WeatherHttpService implements WeatherService {
 
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     try {
-      const response = await axios.get("/api/GetDefaultData");
+      const response = await axios.get("api/GetDefaultData");
       const jsonData = response.data;
       console.log(jsonData);
       const lastIndex: number = jsonData.Value.length - 1
