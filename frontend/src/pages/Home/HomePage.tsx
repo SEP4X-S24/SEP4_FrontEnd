@@ -34,6 +34,7 @@ function HomePage() {
     // service.fetchCurrentWeather().then((c) => setCurrentWeather(c))
     dummyService.fetchCurrentWeather().then((c) => setCurrentWeather(c));
     dummyService.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
+    // service.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
     dummyService.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
   }, []);
 

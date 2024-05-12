@@ -9,10 +9,7 @@ import * as Icon from "react-icons/fa";
 import { IoLogoCss3 } from "react-icons/io";
 import { TbLogout, TbLogin } from "react-icons/tb";
 
-function Header() {
-  const { isAuthenticated, login, logout } = useAuth();
-
-  const navBarOnHoverStyle = `
+const navBarOnHoverStyle = `
   *{
     width: 100%;
     height: 100%;
@@ -25,11 +22,14 @@ function Header() {
     transition: 0.2s;
   }`;
 
-  const navBarIconSize = 30;
+const navBarIconSize = 30;
 
-  const IconWrapper = styled.span`
-    ${navBarOnHoverStyle}
-  `;
+const IconWrapper = styled.span`
+  ${navBarOnHoverStyle}
+`;
+
+function Header() {
+  const { isAuthenticated, login, logout } = useAuth();
 
   const navigate = useNavigate();
   return (
@@ -82,7 +82,7 @@ function Header() {
                     <TbLogout
                       size={navBarIconSize}
                       onClick={() => {
-                        logout()
+                        logout();
                       }}
                     />
                   </IconWrapper>

@@ -21,7 +21,7 @@ function CurrentWeatherComponent({
       <div className="general-data d-flex flex-column justify-content-center align-items-center">
         <h2>{currentWeather.location}</h2>
         <h3 className="my-3">{currentWeather.currentTemperature}°</h3>
-        <h5>{currentWeather.currentWeather}</h5>
+        <h5>{currentWeather.weatherState}</h5>
       </div>
       <div className="weather-icon-container">
         <WiIcon.WiDayCloudy
@@ -31,7 +31,7 @@ function CurrentWeatherComponent({
       </div>
       <div className="details-data d-flex flex-row justify-content-between">
         <div className="d-flex justify-content-between w-100 align-items-center">
-          <label>{currentWeather.timeChecked}</label>
+          <label>{currentWeather.time}</label>
           <ImmediateUpdateButton
             isCurrentWeatherRequested={isCurrentWeatherRequested}
             setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}

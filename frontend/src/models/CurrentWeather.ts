@@ -1,9 +1,9 @@
 export default interface CurrentWeather {
-    location: string;
-    currentTemperature: number;
-    currentWeather: string;
-    timeChecked: string;
-    humidity?: number;
-    windSpeed?: number;
-    lightValue?: number; // TODO: rename
-  }
+  location: string;
+  currentTemperature: number;
+  weatherState: string;
+  time: string;
+  humidity?: number;
+  windSpeed?: number;
+  light?: number; // TODO: rename
+}

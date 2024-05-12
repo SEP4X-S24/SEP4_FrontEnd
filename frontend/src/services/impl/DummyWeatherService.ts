@@ -10,10 +10,11 @@ export default class DummyWeatherService implements WeatherService {
   async fetchWeatherHourlyForecast(): Promise<HourlyForecast[]> {
     const hourlyForecast: HourlyForecast[] = [];
 
+    const currentData = await this.fetchCurrentWeather();
     hourlyForecast.push({
-      time: `Now`,
-      temperature: Math.floor(Math.random() * 10) + 20,
-      weatherState: this.genRandomWeatherState(),
+      time: "Now",
+      temperature: currentData.currentTemperature,
+      weatherState: currentData.weatherState,
     });
 
     for (let i = 0; i < 6; i++) {
@@ -51,17 +52,20 @@ export default class DummyWeatherService implements WeatherService {
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     return {
       currentTemperature: 28,
-      currentWeather: "A little cloudy.",
+      weatherState: "A little cloudy.",
       location: "Horsens",
-      timeChecked: `${format(new Date(), "EEEE dd.MM HH:mm")}`,
+      time: `${format(new Date(), "EEEE dd.MM HH:mm")}`,
       humidity: 61,
       windSpeed: 6,
     };
   }
 
   private genRandomWeatherState(): string {
-    const keys = Array.from(weatherIconMapper.keys());
-    const randomIndex = Math.floor(Math.random() * keys.length);
-    return keys[randomIndex];
+    const mapSize = weatherIconMapper.size;
+    const randomIndex = Math.floor(Math.random() * mapSize);
+    const entriesArray = Array.from(weatherIconMapper.entries());
+    return (
+      entriesArray[randomIndex]?.[1]?.description || "No descriptions available"
+    );
   }
 }
