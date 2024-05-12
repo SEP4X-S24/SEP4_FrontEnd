@@ -1,56 +1,41 @@
-.collection-container {
+.item-collection {
+  width: 100%;
   padding: 20px;
-  background-color: #fff; /* Adjust as necessary */
+  box-sizing: border-box;
 }
 
-.item-grid {
+.items-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 items per row */
-  gap: 16px;
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
 }
 
-.item-card {
+.item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
 }
 
-.item-image {
-  width: 100%; /* Adjust size based on your requirement */
-  height: auto;
-}
-
-.item-info {
-  margin-top: 10px;
-}
-
-.item-name {
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.item-button,
-.view-all-button {
-  padding: 8px 16px;
-  background-color: #09bc8a; /* Example color */
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.view-all-button {
-  display: block;
+.item img {
   width: 100%;
-  margin-top: 20px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-@media (max-width: 768px) {
-  .item-grid {
-    grid-template-columns: repeat(
-      2,
-      1fr
-    ); /* 2 items per row on smaller screens */
-  }
+.item p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.item button {
+  padding: 10px;
+  border: none;
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }

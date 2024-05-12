@@ -1,50 +1,33 @@
 import React from "react";
-import "./ItemCollection.css"; // Ensure this CSS file is linked
+import "./ItemCollection.css";
+
+const items = [
+  { id: 1, name: "Rain Pants", imageUrl: "./Items/Umbrella.webp" },
+  { id: 2, name: "Raincoat", imageUrl: "/items/Raincoat.webp" },
+  { id: 3, name: "Rainhat", imageUrl: "/items/Rainhat.webp" },
+  { id: 4, name: "Rubber Shoes", imageUrl: "/items/RubberShoes.webp" },
+  { id: 5, name: "Umbrella", imageUrl: "/items/Umbrella.webp" },
+  { id: 6, name: "Waterproof Boots", imageUrl: "/items/WaterproofBoots.webp" },
+  {
+    id: 7,
+    name: "Waterproof Jacket",
+    imageUrl: "/items/WaterproofJacket.webp",
+  },
+];
 
 const ItemCollection: React.FC = () => {
-  const items = [
-    {
-      id: 1,
-      name: "Sneakers",
-      image: "/images/sneakers.jpg",
-      description: "Item name",
-    }, // Replace with actual data and paths
-    {
-      id: 2,
-      name: "Hoodie",
-      image: "/images/hoodie.jpg",
-      description: "Item name",
-    },
-    {
-      id: 3,
-      name: "Jeans",
-      image: "/images/jeans.jpg",
-      description: "Item name",
-    },
-    {
-      id: 4,
-      name: "T-shirt",
-      image: "/images/tshirt.jpg",
-      description: "Item name",
-    },
-  ];
-
   return (
-    <div className="collection-container">
+    <div className="item-collection">
       <h2>Check all suggested items</h2>
-      <h3>Collection</h3>
-      <div className="item-grid">
+      <div className="items-grid">
         {items.map((item) => (
-          <div key={item.id} className="item-card">
-            <img src={item.image} alt={item.name} className="item-image" />
-            <div className="item-info">
-              <span className="item-name">{item.description}</span>
-              <button className="item-button">View</button>
-            </div>
+          <div key={item.id} className="item">
+            <img src={item.imageUrl} alt={item.name} />
+            <p>{item.name}</p>
+            <button>View Item</button>
           </div>
         ))}
       </div>
-      <button className="view-all-button">VIEW ALL</button>
     </div>
   );
 };
