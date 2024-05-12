@@ -15,7 +15,6 @@ const WeatherOutfitBanner: React.FC = () => {
           <span className="tag">Sunny weather</span>
           <span className="tag">Other idea</span>
         </div>
-        <button className="find-more-btn">Find More</button>
       </div>
     </div>
   );

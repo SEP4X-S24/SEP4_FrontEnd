@@ -1,69 +1,95 @@
+/* WeatherOutfitBanner.css */
 .outfit-banner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ensures content starts from the left */
+  width: 100vw; /* Set the width to 100% of the viewport width */
+  height: 100vh; /* Set the height to 100% of the viewport height */
   background: url("./BackgroundPictures/picture001.webp") no-repeat center
     center; /* Adjust path as needed */
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px; /* Adjust based on your design needs */
-  color: var(--color-white);
-  text-align: center;
+  background-size: contain; /* Ensures the entire image is visible */
+  color: #fff; /* Text color set to white */
+  overflow: hidden; /* Ensures no scrolling on the banner */
+  background-color: #161a20;
 }
 
 .banner-content {
-  padding: var(--space-normal);
+  max-width: 600px; /* Restrict content width to half of the viewport */
+  padding: 20px 5%; /* Responsive padding, primarily horizontal */
+  text-align: left; /* Keeps text aligned to the left */
 }
 
-.outfit-banner h1 {
-  font-size: 2.5rem; /* Adjust size for responsiveness in media queries */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
 }
 
-.outfit-banner p {
-  font-size: 1rem;
+p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 
 .tags {
-  margin: var(--space-normal) 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
 }
 
 .tag {
-  display: inline-block;
-  background: var(--color-gray-2); /* Adjust the background as needed */
-  color: var(--color-black);
-  border-radius: var(--round-corner-small);
-  padding: 0.5rem;
-  margin-right: var(--space-small);
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
 }
 
 .find-more-btn {
-  background: var(--color-secondary); /* This should be a clickable color */
-  color: var(--color-black);
-  padding: 1rem;
-  border-radius: var(--round-corner-small);
-  font-size: 1rem;
+  padding: 8px 16px;
+  background-color: white;
+  color: black;
   border: none;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-/* Responsive adjustments */
-@media only screen and (max-width: 600px) {
-  .outfit-banner h1 {
-    font-size: 2rem;
-  }
-  .outfit-banner p,
-  .find-more-btn {
-    font-size: 0.8rem;
-  }
+.find-more-btn:hover {
+  background-color: #ccc;
 }
 
+/* Media Queries for responsiveness on mobile devices */
 @media (max-width: 768px) {
   .outfit-banner {
-    height: 200px;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top on small screens */
+    background-size: cover; /* Covers the smaller screen fully */
+    height: auto; /* Adjust height based on content */
+    padding: 20px 10px;
   }
-}
 
-@media (max-width: 480px) {
-  .outfit-banner {
-    height: 150px;
+  .banner-content {
+    text-align: center; /* Center text on small screens */
+    max-width: 100%; /* Full width on small screens */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .tags {
+    justify-content: center; /* Center tags on small screens */
+  }
+
+  .tag {
+    font-size: 0.7rem;
+  }
+
+  .find-more-btn {
+    padding: 8px 16px;
   }
 }
