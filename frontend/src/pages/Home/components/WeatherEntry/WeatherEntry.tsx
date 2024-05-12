@@ -3,12 +3,11 @@ import weatherIconMapper from "../../../../utils/WeatherIconMapper";
 import styles from "./WeatherEntry.module.css";
 
 function WeatherEntry({ item }: { item: BasicForecast }) {
-
-  if(!weatherIconMapper.has(item.weatherState)){
+  if (!weatherIconMapper.has(item.weatherState)) {
     return null;
   }
 
-  const Icon = weatherIconMapper.get(item.weatherState)!;
+  const Icon = weatherIconMapper.get(item.weatherState)?.Icon!;
 
   return (
     <div className="col">

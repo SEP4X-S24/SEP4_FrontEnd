@@ -2,14 +2,17 @@ import weatherIconMapper from "../../utils/WeatherIconMapper";
 import "./StyleDemonstration.css";
 
 function StyleDemonstration() {
-  const iconsShowcase = Array.from(weatherIconMapper.entries()).map(
-    ([weatherState, Icon]) => (
-      <div className="col-3 d-flex justify-content-between align-items-center px-5 mx-5" key={weatherState}>
+  const iconsShowcase = Array.from(weatherIconMapper.entries())
+    .filter((k) => typeof k === "string")
+    .map(([weatherState, Icon]) => (
+      <div
+        className="col-3 d-flex justify-content-between align-items-center px-5 mx-5"
+        key={weatherState}
+      >
         <h3>{weatherState}:</h3>
-        <Icon size={100}/>
+        <Icon.Icon size={100} />
       </div>
-    )
-  );
+    ));
 
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
@@ -134,7 +137,6 @@ function StyleDemonstration() {
       <label className="style-demonstration-headers">Weather states</label>
 
       <div className="icons-showcase container-fluid row m-5">
-
         {iconsShowcase}
       </div>
     </div>

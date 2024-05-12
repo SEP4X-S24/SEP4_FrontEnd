@@ -1,7 +1,7 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
 import { useNavigate } from "react-router-dom";
-import Account from "../../models/Accounts";
+import Account from "../../models/Account";
 import AccountService from "../AccountService";
 import DummyAccountService from "../impl/DummyAccountService";
 

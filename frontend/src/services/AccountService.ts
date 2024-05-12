@@ -1,4 +1,4 @@
-import Account from "../models/Accounts";
+import Account from "../models/Account";
 
 interface AccountService {
   login(user: Account): Promise<string>;
