@@ -21,7 +21,9 @@ function LoginPage() {
     setPassword(data);
   }
 
+
   const { isAuthenticated, login } = useAuth();
+
   const navigate = useNavigate();
 
   useEffect(() => {

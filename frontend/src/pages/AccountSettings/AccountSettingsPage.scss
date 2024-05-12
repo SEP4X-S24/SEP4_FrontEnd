@@ -1,0 +1,55 @@
+$black: var(--color-black);
+$white: var(--color-white);
+$primaryDark: var(--color-primary-dark);
+$primary: var(--color-primary);
+$secondary: var(--color-secondary);
+$tertiary: var(--color-tertiary);
+
+$body-text-small:16px;
+$body-text-bold:24px ;
+$body-text-regular:24px;
+$h1: 96px;
+$h2: 64px;
+$h3: 48px;
+$h4: 40px;
+$h5: 32px;
+
+.settings_page{
+        display: flex;
+
+        .settings_navbar{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 300px;
+                height: 100vh;
+                background-color: $primary;
+                color: $white;
+                padding: 50px 20px 0 20px;
+                border-right: 1px solid $secondary;
+
+                .settings_divider{
+                        height: 1px;
+                        width: 100%;
+                        background-color: $white;
+                        margin: 10px 0
+                }
+                .settings_link{
+                        display: flex;
+                        color: $white;
+                        font-size: $body-text-small;
+                        margin: 30px 0;
+
+
+                }
+                
+        }
+        .settings_container{
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                background-color: $primaryDark;
+                align-items: center;
+                padding: 40px 20px 40px 20px;
+        }
+}
