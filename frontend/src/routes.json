@@ -1,0 +1,9 @@
+{
+    "routes": [
+      {
+        "route": "/api/GetDefaultData",
+        "serve": "https://weatherstation4dev.azurewebsites.net"
+      }
+    ]
+  }
+  
