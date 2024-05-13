@@ -27,6 +27,7 @@
 }
 .register_container .register_signin h5 {
   font-size: 32px;
+  margin: 0;
   margin-right: 0.5rem;
 }
 .register_container .register_signin a {
