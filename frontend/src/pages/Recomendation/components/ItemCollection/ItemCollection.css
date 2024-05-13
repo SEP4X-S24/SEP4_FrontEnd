@@ -18,10 +18,9 @@
   flex-direction: column;
   align-items: center; /* Center items horizontally */
   text-align: center; /* Center text */
-  background-color: #f9f9f9; /* Background color for each item */
+  background-color: #fff; /* Background color for each item */
   padding: 10px;
   border-radius: 8px; /* Rounded corners for the item cards */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
 }
 
 .item img {
