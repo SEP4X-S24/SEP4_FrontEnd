@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import "./LoginPage.css";
-
-import COLORS from "../../utils/COLORS";
 import InputBox from "../../components/InputBox/InputBox";
 import { Link } from "react-router-dom";
 

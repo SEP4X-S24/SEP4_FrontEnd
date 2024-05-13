@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./ProfileSetting.css";
 import InputBox from "../../components/InputBox/InputBox";
 import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
