@@ -1,0 +1,95 @@
+/* WeatherOutfitBanner.css */
+.outfit-banner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Ensures content starts from the left */
+  width: 100vw; /* Set the width to 100% of the viewport width */
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  background: url("./BackgroundPictures/picture001.webp") no-repeat center
+    center; /* Adjust path as needed */
+  background-size: contain; /* Ensures the entire image is visible */
+  color: #fff; /* Text color set to white */
+  overflow: hidden; /* Ensures no scrolling on the banner */
+  background-color: #161a20;
+}
+
+.banner-content {
+  max-width: 600px; /* Restrict content width to half of the viewport */
+  padding: 20px 5%; /* Responsive padding, primarily horizontal */
+  text-align: left; /* Keeps text aligned to the left */
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+}
+
+.tag {
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 0.8rem;
+}
+
+.find-more-btn {
+  padding: 8px 16px;
+  background-color: white;
+  color: black;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.find-more-btn:hover {
+  background-color: #ccc;
+}
+
+/* Media Queries for responsiveness on mobile devices */
+@media (max-width: 768px) {
+  .outfit-banner {
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top on small screens */
+    background-size: cover; /* Covers the smaller screen fully */
+    height: auto; /* Adjust height based on content */
+    padding: 20px 10px;
+  }
+
+  .banner-content {
+    text-align: center; /* Center text on small screens */
+    max-width: 100%; /* Full width on small screens */
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .tags {
+    justify-content: center; /* Center tags on small screens */
+  }
+
+  .tag {
+    font-size: 0.7rem;
+  }
+
+  .find-more-btn {
+    padding: 8px 16px;
+  }
+}
