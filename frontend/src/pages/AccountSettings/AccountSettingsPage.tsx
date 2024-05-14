@@ -1,6 +1,7 @@
 import React from "react";
 import "./AccountSettingsPage.css";
 import { Link, Outlet } from "react-router-dom";
+import Footer from "../../components/Footer/Footer";
 
 function ProfilePage(){
 	return (
@@ -32,6 +33,7 @@ function ProfilePage(){
 					<Outlet />
 				</div>
 			</div>
+			<Footer />
 		</>
 	);
 }
