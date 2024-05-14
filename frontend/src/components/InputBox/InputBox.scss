@@ -26,7 +26,7 @@ $h5: 32px;
         .form_input_box{
                 display: flex;
                 flex-direction: column;
-                width: 100%;
+                width: 90%;
                 input{
                         background-color: $primary;
                         border: none;
@@ -59,4 +59,18 @@ $h5: 32px;
                 }
         }
 
+}
+
+@media screen and (max-width: 768px){
+
+        .form_input{
+
+                .form_checkbox_box{
+                        width: 100%;
+                        padding: 6px 0 6px 0;
+                        .checkbox_label{
+                                font-size: $body-text-small;
+                        }
+                }
+        }
 }
