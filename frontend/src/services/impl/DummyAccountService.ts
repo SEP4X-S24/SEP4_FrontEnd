@@ -15,7 +15,7 @@ export default class DummyAccountService implements AccountService {
   async login(user: Account): Promise<string> {
     if (
       accounts.some(
-        (el) => el.email === user.email && el.password === user.password
+        (el) => el.email.toLowerCase() === user.email.toLowerCase() && el.password === user.password
       )
     ) {
       const token = "awo;iujrfw4ehcshrkghndkgbwsetrhserth";
