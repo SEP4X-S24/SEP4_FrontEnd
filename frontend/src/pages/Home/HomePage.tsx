@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CurrentWeatherComponent from "./components/CurrentWeather/CurrentWeather";
 import "./HomePage.css";
 import CurrentWeather from "../../models/CurrentWeather";
@@ -13,6 +13,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import LightComponent from "./components/Light/LightComponent";
+import weatherFetcher from "../../services/impl/WeatherFetcher";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -27,11 +28,28 @@ function HomePage() {
   const [isCurrentWeatherRequested, setIsCurrentWeatherRequested] =
     useState(false);
 
+  const isWeatherLoadedRef = useRef(false);
+
   useEffect(() => {
     const dummyService = new DummyWeatherService();
-    setCurrentWeather(JSON.parse(localStorage.getItem("current_weather")!));
+
+    const fetchWeatherData = async () => {
+      const cachedWeather = localStorage.getItem("current_weather");
+      if (cachedWeather) {
+        setCurrentWeather(JSON.parse(cachedWeather));
+      } else {
+        if (!isWeatherLoadedRef.current) {
+          const fetchedWeather = await weatherFetcher.initCurrentWeatherFetch();
+          setCurrentWeather(fetchedWeather);
+        }
+      }
+    };
+
+    fetchWeatherData();
+
     dummyService.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
     dummyService.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
+    isWeatherLoadedRef.current = true;
   }, []);
 
   if (!currentWeather || !hourlyForecast || !dailyForecast) {
