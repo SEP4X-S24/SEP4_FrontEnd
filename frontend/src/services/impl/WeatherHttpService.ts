@@ -48,8 +48,8 @@ export default class WeatherHttpService implements WeatherService {
         )
           .filter(
             (t) =>
-              new Date((t + utcOffsetSeconds) * 1000).getTime() >
-              new Date().getTime()
+              new Date((t + utcOffsetSeconds) * 1000).getHours() >=
+              new Date().getHours()
           )
           .map((t) => new Date((t + utcOffsetSeconds) * 1000)),
         temperature2m: hourly.variables(0)!.valuesArray()!,
@@ -63,28 +63,84 @@ export default class WeatherHttpService implements WeatherService {
 
     const hourlyForecast: BasicForecast[] = [];
 
-    for (let i = 0; i < weatherData.hourly.time.length; i++) {
+    for (let i = 0; i < weatherData.hourly.time.length && i < 7; i++) {
       hourlyForecast.push({
-        temperature: weatherData.hourly.temperature2m[i],
-        time: format(weatherData.hourly.time[i], "hh:mm"),
-        weatherState: weatherIconMapper.get(weatherData.hourly.weatherCode[i])?.description!
+        temperature: Math.round(weatherData.hourly.temperature2m[i]),
+        time: format(weatherData.hourly.time[i], "HH:mm"),
+        weatherState: weatherIconMapper.get(weatherData.hourly.weatherCode[i])
+          ?.description!,
       });
     }
 
-    return this.dummyService.fetchWeatherHourlyForecast();
+    hourlyForecast[0].time = "Now";
+
+    return hourlyForecast;
   }
 
-  fetchWeatherDailyForecast(): Promise<DailyForecast[]> {
-    throw new Error("Method not implemented.");
-  }
+  async fetchWeatherDailyForecast(): Promise<DailyForecast[]> {
+    const params = {
+      latitude: 55.8607,
+      longitude: 9.8503,
+      daily: [
+        "weather_code",
+        "temperature_2m_max",
+        "temperature_2m_min",
+        "sunrise",
+        "sunset",
+      ],
+      timezone: "Europe/Berlin",
+    };
+    const url = "https://api.open-meteo.com/v1/forecast";
+    const responses = await fetchWeatherApi(url, params);
 
+    const range = (start: number, stop: number, step: number) =>
+      Array.from({ length: (stop - start) / step }, (_, i) => start + i * step);
+
+    const response = responses[0];
+
+    const utcOffsetSeconds = response.utcOffsetSeconds();
+
+    const daily = response.daily()!;
+
+    const weatherData = {
+      daily: {
+        time: range(
+          Number(daily.time()),
+          Number(daily.timeEnd()),
+          daily.interval()
+        ).map((t) => new Date((t + utcOffsetSeconds) * 1000)),
+        weatherCode: daily.variables(0)!.valuesArray()!,
+        temperature2mMax: daily.variables(1)!.valuesArray()!,
+        temperature2mMin: daily.variables(2)!.valuesArray()!,
+        sunrise: daily.variables(3)!.valuesArray()!,
+        sunset: daily.variables(4)!.valuesArray()!,
+      },
+    };
+
+    const dailyForecast: DailyForecast[] = [];
+
+    for (let i = 0; i < weatherData.daily.time.length && i < 7; i++) {
+      dailyForecast.push({
+        temperature: NaN,
+        maxTemperature: Math.round(weatherData.daily.temperature2mMax[i]),
+        minTemperature: Math.round(weatherData.daily.temperature2mMin[i]),
+        time: format(weatherData.daily.time[i], "dd.MM"),
+        weatherState: weatherIconMapper.get(weatherData.daily.weatherCode[i])
+          ?.description!,
+      });
+    }
+
+    return dailyForecast;
+  }
 
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     try {
-      const response = await axios.get("https://weatherstation4dev.azurewebsites.net/api/GetDefaultData");
+      const response = await axios.get(
+        "https://weatherstation4dev.azurewebsites.net/api/GetDefaultData"
+      );
       const jsonData = response.data;
       console.log(jsonData);
-      const lastIndex: number = jsonData.Value.length - 1
+      const lastIndex: number = jsonData.Value.length - 1;
       console.log(jsonData.Value[lastIndex].Light);
       const currentWeather: CurrentWeather = {
         temperature: jsonData.Value[lastIndex].Temperature,
@@ -95,7 +151,7 @@ export default class WeatherHttpService implements WeatherService {
           "EEEE dd.MM HH:mm"
         )}`,
         humidity: jsonData.Value[lastIndex].Humidity,
-        light: jsonData.Value[lastIndex].Light
+        light: jsonData.Value[lastIndex].Light,
       };
 
       return currentWeather;

@@ -6,14 +6,16 @@ import HourlyForecast from "../../models/HourlyForecast";
 import DummyWeatherService from "../../services/impl/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
-import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
+import { FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
 import Humidity from "./components/Humidity/Humidity";
 import ImmediateUpdateButtonMobileVersion from "../../components/ImmediateUpdateButtonMobileVersion/ImmediateUpdateButtonMobileVersion.module";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import LightComponent from "./components/Light/LightComponent";
 import weatherFetcher from "../../services/impl/WeatherFetcher";
+import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import WeatherEntry from "./components/WeatherEntry/WeatherEntry";
+import DailyWeatherEntry from "./components/DailyWeatherEntry/DailyWeatherEntry";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -32,6 +34,7 @@ function HomePage() {
 
   useEffect(() => {
     const dummyService = new DummyWeatherService();
+    const service = new WeatherHttpService();
 
     const fetchWeatherData = async () => {
       const cachedWeather = localStorage.getItem("current_weather");
@@ -47,8 +50,8 @@ function HomePage() {
 
     fetchWeatherData();
 
-    dummyService.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
-    dummyService.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
+    service.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
+    service.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
     isWeatherLoadedRef.current = true;
   }, []);
 
