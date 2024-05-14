@@ -24,11 +24,11 @@ function ProfileSetting() {
 		password = data;
 	}
 
-  function sendData() {
-    // change on implementation of logic
-    console.log( firstname+" "+ lastname+" "+ email+" "+ password);
-  }
-  return (
+	function sendData() {
+		// change on implementation of logic
+		console.log(firstname + " " + lastname + " " + email + " " + password);
+	}
+	return (
 		<div className="profile_settings">
 			<h2 className="profile_heading">Profile Settings</h2>
 			<form action="" onSubmit={sendData} className="profile_form">

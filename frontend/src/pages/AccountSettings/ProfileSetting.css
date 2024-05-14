@@ -19,3 +19,27 @@
   border-radius: 5px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .profile_settings {
+    width: 100%;
+  }
+  .profile_settings .profile_heading {
+    font-size: 32px;
+    color: var(--color-white);
+    margin-bottom: 20px;
+  }
+  .profile_settings .profile_form {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile_settings .profile_button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+}

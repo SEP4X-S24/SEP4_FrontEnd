@@ -54,10 +54,14 @@ function RegisterPage() {
 		} else if (email.length > 50) {
 			alert("Email must be less than 50 characters");
 			return;
-		} else if (firstname.length > 50 || lastname.length > 50 || firstname.length < 1 || lastname.length < 1) {
-      alert("First name and last name must be between 1 and 50 characters");
-    }
-    else {
+		} else if (
+			firstname.length > 50 ||
+			lastname.length > 50 ||
+			firstname.length < 1 ||
+			lastname.length < 1
+		) {
+			alert("First name and last name must be between 1 and 50 characters");
+		} else {
 			try {
 				const acc: Account = {
 					email: email,
