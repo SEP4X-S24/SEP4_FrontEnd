@@ -12,18 +12,18 @@ function ProfilePage(){
 					<div className="settings_links">
 						<div className="settings_link">
 							<Link to={""} className="nav-link" aria-current="page">
-								Profile Settings
+								Profile
 							</Link>
 						</div>
 						<div className="settings_link">
 							<Link to={`notificationSettings`} className="nav-link" >
-								Notifications Settings
+								Notifications
 							</Link>
 						</div>
 						<div className="settings_link">
 							
 							<Link to={`recomendationSettings`} className="nav-link">
-								Recomendation Settings
+								Recommendations
 							</Link>
 						</div>
 					</div>
