@@ -19,3 +19,27 @@
   border-radius: 5px;
   margin-top: 20px;
 }
+
+@media screen and (max-width: 768px) {
+  .notification_settings {
+    width: 100%;
+  }
+  .notification_settings .notification_heading {
+    font-size: 24px;
+    color: var(--color-white);
+    margin-bottom: 20px;
+  }
+  .notification_settings .notification_form {
+    display: flex;
+    flex-direction: column;
+  }
+  .notification_settings .notification_button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+}
