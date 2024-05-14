@@ -35,6 +35,7 @@ const router = createHashRouter([
           {
             path: "", // This will match "/profile"
             element: <ProfileSetting />,
+            
           },
           {
             path: "notificationsettings", // This will match "/profile/notificationSettings"
