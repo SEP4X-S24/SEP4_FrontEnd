@@ -8,7 +8,7 @@ const accounts: Account[] = [
 ];
 
 export default class DummyAccountService implements AccountService {
-  async logout(user: Account): Promise<void> {
+  async logout(): Promise<void> {
     localStorage.removeItem("token");
   }
 
