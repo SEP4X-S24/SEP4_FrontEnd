@@ -49,7 +49,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const logout = async () => {
     setUser(undefined);
     setToken("");
-    await accountService.logout();
+    await accountService.logout(user!);
     setIsAuthenticated(false);
   };
 

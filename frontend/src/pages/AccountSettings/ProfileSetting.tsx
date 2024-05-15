@@ -1,8 +1,10 @@
 import "./ProfileSetting.css";
 import InputBox from "../../components/InputBox/InputBox";
 import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
+import { useAuth } from "../../services/auth/AuthContext";
 
 function ProfileSetting() {
+	const {user} = useAuth()
 	let email = "";
 	let password = "";
 	let firstname = "";
