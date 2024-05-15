@@ -29,10 +29,6 @@ function RecomendationPage() {
     fetchRecommendationData();
   }, []);
 
-  if (!authenticated) {
-    return <div>You are not Authenticated</div>;
-  }
-
   return (
     <div className="app">
       <Header />
