@@ -5,7 +5,7 @@
   justify-content: space-around;
   align-items: center;
   padding: 20px;
-  background: #161a20; /* Updated background color */
+  background-color: var(--color-tertiary);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
