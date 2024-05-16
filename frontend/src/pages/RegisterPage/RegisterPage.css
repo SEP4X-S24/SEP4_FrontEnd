@@ -27,6 +27,7 @@
 }
 .register_container .register_signin h5 {
   font-size: 32px;
+  margin: 0;
   margin-right: 0.5rem;
 }
 .register_container .register_signin a {
@@ -51,4 +52,52 @@
   cursor: pointer;
   margin-top: 4rem;
   width: 100%;
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .register_container {
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+  }
+  .register_container .register_header {
+    font-size: 48px;
+    margin-bottom: 1rem;
+  }
+  .register_container .register_signin {
+    flex-direction: column;
+    margin-bottom: 0;
+  }
+  .register_container .register_signin h5 {
+    font-size: 24px;
+  }
+  .register_container .register_signin a {
+    font-size: 24px;
+  }
+  .register_container .register_button {
+    margin-top: 1rem;
+    font-size: 24px;
+  }
+}
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+  .register_page {
+    width: 100%;
+    height: 100%;
+  }
+  .register_page .register_container {
+    height: auto;
+    width: auto;
+    justify-content: center;
+    margin: 0;
+  }
+}
+@media screen and (min-width: 1024px) and (max-width: 1030px) and (orientation: landscape) {
+  .register_page {
+    width: 100%;
+    height: 100%;
+  }
+  .register_page .register_container {
+    height: auto;
+    margin: 0;
+  }
 }

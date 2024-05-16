@@ -42,7 +42,9 @@ $h5: 32px;
 
 		h5 {
 			font-size: $h5;
+			margin: 0;
 			margin-right: 0.5rem;
+
 		}
 		a {
 			text-decoration: none;
@@ -68,4 +70,55 @@ $h5: 32px;
 		margin-top: 4rem;
 		width: 100%;
 	}
+}
+
+@media screen and (max-width: 767px)  and (orientation: portrait){
+	.register_container {
+		width: 100%;
+		margin: 0;
+		padding: 20px;
+		.register_header {
+			font-size: $h3;
+			margin-bottom: 1rem;
+		}
+		.register_signin {
+			flex-direction: column;
+			margin-bottom: 0;
+			h5 {
+				font-size: $body-text-regular;
+			}
+			a {
+				font-size: $body-text-regular;
+			}
+		}
+		.register_button {
+			margin-top: 1rem;
+			font-size: $body-text-regular;
+		}
+	}
+}
+
+@media screen and (max-width: 1023px) and (orientation: landscape){
+        .register_page{
+                width: 100%;
+                height: 100%;
+
+                .register_container{
+                        height: auto;
+                        width: auto;
+                        justify-content: center;
+                        margin: 0;
+                }
+        }
+}
+@media screen and (min-width: 1024px) and (max-width: 1030px) and (orientation: landscape){
+        .register_page{
+                width: 100%;
+                height: 100%;
+                .register_container{
+                        height: auto;
+                        margin: 0;
+                }
+        }
+	
 }

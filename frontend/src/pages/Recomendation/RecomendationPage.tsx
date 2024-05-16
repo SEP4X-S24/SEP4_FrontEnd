@@ -1,26 +1,41 @@
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAuth } from "../../services/auth/AuthContext";
+import WeatherOutfitBanner from "./components/WeatherOutfitBanner/WeatherOutfitBanner";
+import WeatherInfo from "./components/WeatherInfo/WeatherInfo";
+import ItemCollection from "./components/ItemCollection/ItemCollection";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+import Banner from "./components/Banner/Banner";
+import Recommendation from "../../models/Recommendation";
+import RecommendationImplementation from "../../services/impl/RecommendationImplementation";
+import weatherFetcher from "../../services/impl/WeatherFetcher";
+import RecommendationFetcher from "../../services/impl/RecommendationFetcher";
 
 function RecomendationPage() {
   const { isAuthenticated: authenticated } = useAuth();
-  if (!authenticated) {
-    return <div>You are not Authentificated</div>;
-  }
+  const [currentRecomendation, setRecomendation] =
+    useState<Recommendation | null>(null);
+
+  useEffect(() => {
+    const fetchRecommendationData = async () => {
+      const cachedRecommendation = localStorage.getItem("recommendation");
+      if (cachedRecommendation) {
+        setRecomendation(JSON.parse(cachedRecommendation));
+      } else {
+        const fetchData = await RecommendationFetcher.initRecommendationFetch();
+        setRecomendation(fetchData);
+      }
+    };
+    fetchRecommendationData();
+  }, []);
 
   return (
-    <div>
-      <h1 className="heading-1">Heading 1</h1>
-      <h2 className="heading-2">Heading 2</h2>
-      <h3 className="heading-3">Heading 3</h3>
-      <h4 className="heading-4">Heading 4</h4>
-      <h5 className="subtitle">Subtitle 1</h5>
-      <h5 className="subtitle-2">Subtitle 2</h5>
-      <h5 className="subtitle-3">Subtitle 3</h5>
-      <h5 className="subtitle-4">Subtitle 4</h5>
-      <p className="body-text-regular">Body Text Regular</p>
-      <p className="body-text-regular-sm">Body Text Regular Small</p>
-      <p className="body-text-bold">Body Text Bold</p>
-      <p className="body-text-bold-sm">Body Text Bold Small</p>
+    <div className="app">
+      <Header />
+      <Banner recommendation={currentRecomendation} />
+      <WeatherInfo />
+      <Footer />
+      {/* Other components will follow */}
     </div>
   );
 }

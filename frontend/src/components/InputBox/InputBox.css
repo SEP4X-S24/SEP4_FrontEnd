@@ -10,7 +10,7 @@
 .form_input .form_input_box {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
 }
 .form_input .form_input_box input {
   background-color: var(--color-primary);
@@ -40,4 +40,14 @@
   font-size: 24px;
   margin-left: 10px;
   margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .form_input .form_checkbox_box {
+    width: 100%;
+    padding: 6px 0 6px 0;
+  }
+  .form_input .form_checkbox_box .checkbox_label {
+    font-size: 16px;
+  }
 }

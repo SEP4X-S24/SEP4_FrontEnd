@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import COLORS from "../../utils/COLORS";
-import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
 import "./InputBox.css";
 import { IconType } from "react-icons";
 

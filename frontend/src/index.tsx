@@ -12,12 +12,12 @@ import NotificationSetting from "./pages/AccountSettings/NotificationSetting";
 import ProfilePage from "./pages/AccountSettings/AccountSettingsPage";
 import ProfileSetting from "./pages/AccountSettings/ProfileSetting";
 import RecomendationSetting from "./pages/AccountSettings/RecomendationSetting";
+import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
-import fetchCurrentWeatherData from "./services/impl/WeatherFetcher";
+import weatherFetcher from "./services/impl/WeatherFetcher";
 
-
-fetchCurrentWeatherData();
+weatherFetcher.fetchCurrentWeatherPeriodicaly();
 const router = createHashRouter([
   {
     path: "/",
@@ -35,6 +35,7 @@ const router = createHashRouter([
           {
             path: "", // This will match "/profile"
             element: <ProfileSetting />,
+            
           },
           {
             path: "notificationsettings", // This will match "/profile/notificationSettings"
@@ -43,8 +44,7 @@ const router = createHashRouter([
           {
             path: "recomendationsettings", // This will match "/profile/notificationSettings"
             element: <RecomendationSetting />,
-          }
-          // Add more children as needed
+          },
         ],
       },
       {
@@ -52,14 +52,17 @@ const router = createHashRouter([
         element: <LoginPage />,
       },
       {
-
         path: "register",
         element: <RegisterPage />,
-      },{
-
+      },
+      {
         path: "style_demonstration",
         element: <StyleDemonstration />,
-      }
+      },
+      {
+        path: "recomandation",
+        element: <RecomendationPage />,
+      },
     ],
   },
 ]);

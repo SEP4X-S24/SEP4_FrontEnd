@@ -1,12 +1,12 @@
 .settings_page {
   display: flex;
+  height: 100vh;
 }
 .settings_page .settings_navbar {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 300px;
-  height: 100vh;
   background-color: var(--color-primary);
   color: var(--color-white);
   padding: 50px 20px 0 20px;
@@ -19,16 +19,56 @@
   margin: 10px 0;
 }
 .settings_page .settings_navbar .settings_link {
-  display: flex;
   color: var(--color-white);
   font-size: 16px;
   margin: 30px 0;
 }
 .settings_page .settings_container {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--color-primary-dark);
   align-items: center;
   padding: 40px 20px 40px 20px;
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+  .settings_page {
+    flex-direction: column;
+    height: auto;
+  }
+  .settings_page .settings_navbar {
+    width: 100%;
+    height: auto;
+    padding-top: 20px;
+    border-right: none;
+  }
+  .settings_page .settings_navbar .settings_links {
+    display: flex;
+    justify-content: center;
+    overflow: auto;
+    width: 100%;
+    margin: 10px 0;
+    padding: 0 2px 0 2px;
+  }
+  .settings_page .settings_navbar .settings_links .settings_link {
+    margin: 0 10px;
+    white-space: nowrap;
+  }
+  .settings_container {
+    width: 100%;
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 1023px) and (orientation: landscape) {
+  .settings_page {
+    height: 100%;
+  }
+  .settings_page .settings_navbar {
+    height: auto;
+  }
+  .settings_container {
+    height: auto;
+  }
 }
