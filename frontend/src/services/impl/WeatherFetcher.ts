@@ -25,7 +25,7 @@ const weatherFetcher = {
         });
       }
     };
-    
+
     const fetchCurrentWeatherInterval = setInterval(
       fetchCurrentWeather,
       60 * 1000
