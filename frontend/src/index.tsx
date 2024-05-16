@@ -16,6 +16,7 @@ import RecomendationPage from "./pages/Recomendation/RecomendationPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import weatherFetcher from "./services/impl/WeatherFetcher";
+import DashboardPage from "./pages/Dashboard/DashboardPage";
 
 weatherFetcher.fetchCurrentWeatherPeriodicaly();
 const router = createHashRouter([
@@ -35,7 +36,6 @@ const router = createHashRouter([
           {
             path: "", // This will match "/profile"
             element: <ProfileSetting />,
-            
           },
           {
             path: "notificationsettings", // This will match "/profile/notificationSettings"
@@ -62,6 +62,10 @@ const router = createHashRouter([
       {
         path: "recomandation",
         element: <RecomendationPage />,
+      },
+      {
+        path: "dashboard",
+        element: <DashboardPage />,
       },
     ],
   },

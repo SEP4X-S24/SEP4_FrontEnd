@@ -63,7 +63,7 @@ function Header() {
                   <IoLogoCss3 size={navBarIconSize} />
                 </IconWrapper>
               </Link>
-              <Link to="/notification" className="nav-link px-2 text-white">
+              <Link to="/dashboard" className="nav-link px-2 text-white">
                 <IconWrapper>
                   <Icon.FaBell size={navBarIconSize} />
                 </IconWrapper>
