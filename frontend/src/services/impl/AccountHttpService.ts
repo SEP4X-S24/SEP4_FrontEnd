@@ -19,12 +19,17 @@ export default class AccountHttpService implements AccountService {
         Cookies.set("jwtToken", token);
         console.log(token);
         return token;
-      } else {
-        throw new Error(`Login failed with status code: ${response.status}`);
       }
+
+      return ""
     } catch (error) {
-      console.error("Error during login:", error);
-      throw error;
+      if (axios.isAxiosError(error) && error.response) {
+        const serverErrorMessage = error.response.data?.error || "Unknown server error";
+        throw new Error(`Error during login: ${serverErrorMessage}`);
+      } else {
+        console.error("Error during login:", error);
+        throw error;
+      }
     }
   }
 
@@ -34,23 +39,23 @@ export default class AccountHttpService implements AccountService {
 
   async register(user: Account): Promise<void> {
     try {
-      const response = await axios.post(`${this.BASE_API_URL}/RegisterAccount`, {
+      await axios.post(`${this.BASE_API_URL}/RegisterAccount`, {
         firstname: user.firstname!,
         lastname: user.lastname!,
         password: user.password,
-        preferences: "I really like rainbow colors. Also I like to wear something the beauty of my body",
+        preferences: "I really like rainbow colors. Also I like to wear something furry things to highlight beauty of my body",
         email: user.email,
         onNotifications: "false",
       });
   
-      if (response.status === 200) {
-        console.log(response.data);
-      } else {
-        throw new Error(`Registration failed with status code: ${response.status}`);
-      }
     } catch (error) {
-      console.error("Error during registration:", error);
-      throw error;
+      if (axios.isAxiosError(error) && error.response) {
+        const serverErrorMessage = error.response.data?.error || "Unknown server error";
+        throw new Error(`Error during registration: ${serverErrorMessage}`);
+      } else {
+        console.error("Error during registration:", error);
+        throw error;
+      }
     }
   }
   
