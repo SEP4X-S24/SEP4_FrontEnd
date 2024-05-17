@@ -24,8 +24,7 @@ export default class WeatherHttpService implements WeatherService {
         "wind_speed_10m",
         "wind_direction_10m",
       ],
-      timezone: "Europe/Berlin",
-      forecast_days: 1,
+      timezone: "Europe/Berlin"
     };
     const url = "https://api.open-meteo.com/v1/forecast";
     const responses = await fetchWeatherApi(url, params);
@@ -46,12 +45,12 @@ export default class WeatherHttpService implements WeatherService {
           Number(hourly.timeEnd()),
           hourly.interval()
         )
-          .filter(
-            (t) =>
-              new Date((t + utcOffsetSeconds) * 1000).getHours() >=
-              new Date().getHours()
-          )
-          .map((t) => new Date((t + utcOffsetSeconds) * 1000)),
+          // .filter(
+          //   (t) =>
+          //     new Date(t * 1000).getHours() >=
+          //     new Date().getHours()
+          // )
+          .map((t) => new Date((t) * 1000)),
         temperature2m: hourly.variables(0)!.valuesArray()!,
         relativeHumidity2m: hourly.variables(1)!.valuesArray()!,
         apparentTemperature: hourly.variables(2)!.valuesArray()!,

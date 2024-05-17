@@ -30,15 +30,8 @@ function RegisterPage() {
 		password = data;
 	}
 
-	const { isAuthenticated, register, user } = useAuth();
+	const { register } = useAuth();
 	const navigate = useNavigate();
-
-	useEffect(() => {
-		if (isAuthenticated) {
-			console.log(user);
-			navigate("/");
-		}
-	}, [isAuthenticated, navigate, user]);
 
 	async function handleRegister(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
@@ -71,6 +64,7 @@ function RegisterPage() {
 				};
 
 				await register(acc);
+				navigate('/login')
 			} catch (error: Error | any) {
 				alert(error.message);
 			} finally {

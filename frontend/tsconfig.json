@@ -18,9 +18,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "paths": {
+      "crypto": [
+        "./node_modules/crypto-browserify"
+      ],
+      "stream": [
+        "./node_modules/stream-browserify"
+      ]
+    }
   },
   "include": [
     "src"
-  ]
+, "webpack.config.js"  ]
 }
