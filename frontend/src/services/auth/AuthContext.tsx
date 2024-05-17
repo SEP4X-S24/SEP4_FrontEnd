@@ -43,10 +43,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const register = async (userData: Account) => {
-    setToken(await accountService.register(userData));
-    setIsAuthenticated(true);
-    setUser(userData);
-  };
+    await accountService.register(userData);
+  }
 
   const logout = async () => {
     await accountService.logout();
