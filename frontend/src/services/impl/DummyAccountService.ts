@@ -29,17 +29,14 @@ export default class DummyAccountService implements AccountService {
     );
   }
 
-  async register(user: Account): Promise<string> {
+  async register(user: Account): Promise<void> {
     if (
       accounts.every(
         (el) => el.email !== user.email && el.password !== user.password
       )
     ) {
       accounts.push(user);
-      const token = "awo;iujrfw4ehcshrkghndkgbwsetrhserth";
-      localStorage.setItem("token", token);
-
-      return token;
+      return;
     }
 
     throw new Error("User is already registered.");

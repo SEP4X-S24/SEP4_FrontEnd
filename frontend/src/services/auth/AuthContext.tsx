@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import Account from "../../models/Account";
 import AccountService from "../AccountService";
 import DummyAccountService from "../impl/DummyAccountService";
+import AccountHttpService from "../impl/AccountHttpService";
+import Cookies from "js-cookie";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
@@ -30,9 +32,9 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<Account | undefined>();
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState(Cookies.get("jwtToken") || "");
   const [isAuthenticated, setIsAuthenticated] = useState(token !== "");
-  const accountService: AccountService = new DummyAccountService();
+  const accountService: AccountService = new AccountHttpService();
 
   const login = async (userData: Account) => {
     setToken(await accountService.login(userData));
@@ -41,15 +43,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   };
 
   const register = async (userData: Account) => {
-    setToken(await accountService.register(userData));
-    setIsAuthenticated(true);
-    setUser(userData);
-  };
+    await accountService.register(userData);
+  }
 
   const logout = async () => {
+    await accountService.logout();
     setUser(undefined);
     setToken("");
-    await accountService.logout();
     setIsAuthenticated(false);
   };
 
