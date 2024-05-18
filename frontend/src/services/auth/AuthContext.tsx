@@ -12,6 +12,7 @@ interface AuthContextProps {
   login: (userData: Account) => Promise<void>;
   register: (userData: Account) => Promise<void>;
   logout: () => void;
+  update: (userData: Account) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -36,8 +37,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     if (token) {
-      setUser(AccountHttpService.decodeToken());
-      console.log(user);
+      setUser(AccountHttpService.getUser() );
     }
   }, [token]);
 
@@ -57,10 +57,14 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setToken("");
     setIsAuthenticated(false);
   };
+  const update = async (userData: Account) => {
+    await accountService.update(userData);
+    setUser(await accountService.getUser());
+  };
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, token, user, login, logout, register }}
+      value={{ isAuthenticated, token, user, login, logout, register, update }}
     >
       {children}
     </AuthContext.Provider>

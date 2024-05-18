@@ -60,6 +60,34 @@ export default class AccountHttpService implements AccountService {
 			}
 		}
 	}
+async update(user: Account): Promise<void> {
+    try {
+      const token = Cookies.get("jwtToken");
+      if (token) {
+        await axios.put(`${this.BASE_API_URL}/UpdateAccount`, {
+          unique_name: user.userid,
+          firstname: user.firstname!,
+          lastname: user.lastname!,
+          password: user.password,
+          preferences:
+            "I really like rainbow colors. Also I like to wear something furry things to highlight beauty of my body",
+          email: user.email,
+          onNotifications: "false",
+        });
+      } else {
+        throw new Error("No token found");
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        const serverErrorMessage =
+          error.response.data?.error || "Unknown server error";
+        throw new Error(`Error during update: ${serverErrorMessage}`);
+      } else {
+        console.error("Error during update:", error);
+        throw error;
+      }
+    }
+  }
 
 	async getUser(): Promise<Account> {
 		try {
@@ -67,6 +95,7 @@ export default class AccountHttpService implements AccountService {
 			if (token) {
 				let decoded = JSON.parse(JSON.stringify(jwtDecode(token)));
 				let account: Account = {
+          userid : decoded.unique_name,
 					email: decoded.email,
 					firstname: decoded.given_name,
 					lastname: decoded.family_name,
@@ -89,6 +118,28 @@ export default class AccountHttpService implements AccountService {
 			console.log(decoded);
 		} else {
 			console.log("No token found");
+		}
+	};
+
+	public static getUser = () => {
+		try {
+			const token = Cookies.get("jwtToken");
+			if (token) {
+				let decoded = JSON.parse(JSON.stringify(jwtDecode(token)));
+				let account: Account = {
+					userid: decoded.unique_name,
+					email: decoded.email,
+					firstname: decoded.given_name,
+					lastname: decoded.family_name,
+					password: decoded.password,
+				};
+				return account;
+			} else {
+				throw new Error("No token found");
+			}
+		} catch (error) {
+			console.error("Error decoding token:", error);
+			throw error;
 		}
 	};
 }
