@@ -1,17 +1,10 @@
-.dashboard-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.humidity-chart-container,
 .weather-summary-container {
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin: 20px 0;
-  width: 48%; /* Each component takes up half of the container's width */
+  width: 48%; /* Adjust width as needed */
 }
 
 .chart-header {
@@ -26,19 +19,10 @@
   margin: 0;
 }
 
-.chart-value {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-.chart-change {
-  font-size: 0.8em;
-  color: green;
-}
-
 .chart-wrapper {
-  height: 400px; /* Fixed height for the chart */
+  height: 300px; /* Fixed height for the chart */
   position: relative;
+  margin-bottom: 20px;
 }
 
 .weather-summary-details {
@@ -61,7 +45,6 @@
 }
 
 @media (max-width: 768px) {
-  .humidity-chart-container,
   .weather-summary-container {
     padding: 10px;
     width: 100%; /* Full width on smaller screens */
@@ -71,16 +54,8 @@
     font-size: 1.2em;
   }
 
-  .chart-value {
-    font-size: 1em;
-  }
-
-  .chart-change {
-    font-size: 0.7em;
-  }
-
   .chart-wrapper {
-    height: 300px; /* Adjust height for smaller screens */
+    height: 200px; /* Adjust height for smaller screens */
   }
 
   .weather-summary-item {
