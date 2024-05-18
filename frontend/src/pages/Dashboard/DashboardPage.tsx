@@ -16,8 +16,10 @@ function DashboardPage() {
         <DashboardFilter />
         <Summary />
         <TemperatureGrath />
-        <AverageHumidity />
-        <WeatherStateSummary />
+        <div className="dashboard-container">
+          <AverageHumidity />
+          <WeatherStateSummary />
+        </div>
       </div>
       <Footer />
     </div>

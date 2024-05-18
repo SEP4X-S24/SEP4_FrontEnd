@@ -7,6 +7,16 @@ import WeatherService from "../WeatherService";
 import weatherIconMapper from "../../utils/WeatherIconMapper";
 
 export default class DummyWeatherService implements WeatherService {
+  async fetchWeatherImmediately(token: string): Promise<CurrentWeather> {
+    return {
+      temperature: 28,
+      weatherState: "A little cloudy.",
+      location: "Horsens",
+      time: `${format(new Date(), "EEEE dd.MM HH:mm")}`,
+      humidity: 61,
+      light: 25
+    };
+  }
   async fetchWeatherHourlyForecast(): Promise<HourlyForecast[]> {
     const hourlyForecast: HourlyForecast[] = [];
 

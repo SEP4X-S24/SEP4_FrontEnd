@@ -1,6 +1,7 @@
 // weatherFetcher.js
 
-import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import WeatherHttpService from "./WeatherHttpService";
+
 const service = new WeatherHttpService();
 
 const weatherFetcher = {
@@ -25,7 +26,7 @@ const weatherFetcher = {
         });
       }
     };
-    
+
     const fetchCurrentWeatherInterval = setInterval(
       fetchCurrentWeather,
       60 * 1000

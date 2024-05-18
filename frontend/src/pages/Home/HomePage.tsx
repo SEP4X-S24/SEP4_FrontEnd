@@ -13,9 +13,10 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import LightComponent from "./components/Light/LightComponent";
 import weatherFetcher from "../../services/impl/WeatherFetcher";
-import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import WeatherEntry from "./components/WeatherEntry/WeatherEntry";
 import DailyWeatherEntry from "./components/DailyWeatherEntry/DailyWeatherEntry";
+import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import { useAuth } from "../../services/auth/AuthContext";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -31,6 +32,7 @@ function HomePage() {
     useState(false);
 
   const isWeatherLoadedRef = useRef(false);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const dummyService = new DummyWeatherService();
@@ -69,6 +71,7 @@ function HomePage() {
               currentWeather={currentWeather}
               isCurrentWeatherRequested={isCurrentWeatherRequested}
               setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+              setCurrentWeather={(weather) => setCurrentWeather(weather)}
             />
           </div>
           <div className="col-lg p-0">
@@ -93,10 +96,13 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <ImmediateUpdateButtonMobileVersion
-            isCurrentWeatherRequested={isCurrentWeatherRequested}
-            setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
-          />
+          {isAuthenticated ? (
+            <ImmediateUpdateButtonMobileVersion
+              isCurrentWeatherRequested={isCurrentWeatherRequested}
+              setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+              setCurrentWeather={(weather) => setCurrentWeather(weather)}
+            />
+          ) : null}
         </div>
       </div>
       <Footer />
