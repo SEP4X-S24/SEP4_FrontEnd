@@ -2,7 +2,7 @@ import "./CurrentWeather.css";
 import * as WiIcon from "react-icons/wi";
 import COLORS from "../../../../utils/COLORS";
 import CurrentWeather from "../../../../models/CurrentWeather";
-import { useState } from "react";
+
 import ImmediateUpdateButton from "../../../../components/ImmediateUpdateButton/ImmediateUpdateButton";
 import { useAuth } from "../../../../services/auth/AuthContext";
 
