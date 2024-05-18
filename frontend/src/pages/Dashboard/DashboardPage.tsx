@@ -44,8 +44,12 @@ function DashboardPage() {
         <TemperatureGrath
           temperatureGrathData={dashboardData.temperatureGrath}
         />
-        <AverageHumidity />
-        <WeatherStateSummary />
+        <div className="dashboard-container">
+          <AverageHumidity averageHumidity={dashboardData.averageHumidity} />
+          <WeatherStateSummary
+            weatherStateData={dashboardData.weatherStateSummary}
+          />
+        </div>
       </div>
       <Footer />
     </div>
