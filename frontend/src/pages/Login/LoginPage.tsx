@@ -1,84 +1,94 @@
 import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
-
-import COLORS from "../../utils/COLORS";
 import InputBox from "../../components/InputBox/InputBox";
 import { Link } from "react-router-dom";
 
 import { FaEnvelope, FaEye } from "react-icons/fa6";
 import { useAuth } from "../../services/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Account from "../../models/Account";
 
 function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+	const [email, handleEmail] = useState("");
+	const [password, handlePassword] = useState("");
 
-  function handleEmail(data: string) {
-    setEmail(data);
-  }
+	const handleEmailChange = (e: any) => {
+		handleEmail(e.target.value);
+	};
+	const handlePasswordChange = (e: any) => {
+		handlePassword(e.target.value);
+	};
 
-  function handlePassword(data: string) {
-    setPassword(data);
-  }
+	const { isAuthenticated, login } = useAuth();
 
+	const navigate = useNavigate();
 
-  const { isAuthenticated, login } = useAuth();
+	useEffect(() => {
+		if (isAuthenticated) {
+			navigate("/");
+		}
+	}, [isAuthenticated, navigate]);
 
-  const navigate = useNavigate();
+	async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+		event.preventDefault();
+		if (!email || !password) {
+			alert("Please fill all the fields");
+			return;
+		} else if (password.length < 6 || password.length > 20) {
+			alert("Password must be between 6 and 20 characters");
+			return;
+		} else if (email.length > 50) {
+			alert("Email must be less than 50 characters");
+			return;
+		} else {
+			try {
+				const acc: Account = { email: email, password: password };
+				await login(acc);
+				console.log(acc.email + " " + acc.password);
+			} catch (error: Error | any) {
+				alert(error.message);
+			} finally {
+				handleEmail("");
+				handlePassword("");
+			}
+		}
+	}
 
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated, navigate]);
+	return (
+		<>
+			<div className="login_page">
+				<div className="login_container">
+					<h2 className="login_header">Login</h2>
+					<div className="login_signin">
+						<h5>Don't have an account? </h5>
+						<Link to={"/Register"}>Sign in</Link>
+					</div>
 
-  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+					<form className="login_form" onSubmit={handleLogin}>
+						<InputBox
+							label="Email"
+							type="email"
+							value={email}
+							InputIcon={FaEnvelope}
+							handleClick={handleEmailChange}
+						/>
 
-    try {
-      await login({ email: email, password: password });
-    } catch (error: Error | any) {
-      alert(error.message);
-    } finally {
-      setEmail("")
-      setPassword("")
-    }
-  }
+						<InputBox
+							label="Password"
+							type="password"
+							value={password}
+							InputIcon={FaEye}
+							handleClick={handlePasswordChange}
+						/>
 
-  
-  return (
-    <>
-      <div className="login_page">
-        <div className="login_container">
-          <h2 className="login_header">Login</h2>
-          <div className="login_signin">
-            <h5>Don't have an account? </h5>
-            <Link to={"/Register"}>Sign in</Link>
-          </div>
-
-          <form className="login_form" onSubmit={handleLogin}>
-            <InputBox
-              label="Email"
-              type="email"
-              InputIcon={FaEnvelope}
-              handleClick={handleEmail}
-            />
-
-            <InputBox
-              label="Password"
-              type="password"
-              InputIcon={FaEye}
-              handleClick={handlePassword}
-            />
-
-            <button type="submit" className="login_button">
-              Login
-            </button>
-          </form>
-        </div>
-      </div>
-    </>
-  );
+						<button type="submit" className="login_button">
+							Login
+						</button>
+					</form>
+				</div>
+			</div>
+		</>
+	);
 }
 
 export default LoginPage;

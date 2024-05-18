@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CurrentWeatherComponent from "./components/CurrentWeather/CurrentWeather";
 import "./HomePage.css";
 import CurrentWeather from "../../models/CurrentWeather";
@@ -6,13 +6,17 @@ import HourlyForecast from "../../models/HourlyForecast";
 import DummyWeatherService from "../../services/impl/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
-import { FaRegCalendar, FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
+import { FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
 import Humidity from "./components/Humidity/Humidity";
 import ImmediateUpdateButtonMobileVersion from "../../components/ImmediateUpdateButtonMobileVersion/ImmediateUpdateButtonMobileVersion.module";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
-import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import LightComponent from "./components/Light/LightComponent";
+import weatherFetcher from "../../services/impl/WeatherFetcher";
+import WeatherEntry from "./components/WeatherEntry/WeatherEntry";
+import DailyWeatherEntry from "./components/DailyWeatherEntry/DailyWeatherEntry";
+import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import { useAuth } from "../../services/auth/AuthContext";
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -27,11 +31,30 @@ function HomePage() {
   const [isCurrentWeatherRequested, setIsCurrentWeatherRequested] =
     useState(false);
 
+  const isWeatherLoadedRef = useRef(false);
+  const { isAuthenticated } = useAuth();
+
   useEffect(() => {
     const dummyService = new DummyWeatherService();
-    setCurrentWeather(JSON.parse(localStorage.getItem("current_weather")!));
-    dummyService.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
-    dummyService.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
+    const service = new WeatherHttpService();
+
+    const fetchWeatherData = async () => {
+      const cachedWeather = localStorage.getItem("current_weather");
+      if (cachedWeather) {
+        setCurrentWeather(JSON.parse(cachedWeather));
+      } else {
+        if (!isWeatherLoadedRef.current) {
+          const fetchedWeather = await weatherFetcher.initCurrentWeatherFetch();
+          setCurrentWeather(fetchedWeather);
+        }
+      }
+    };
+
+    fetchWeatherData();
+
+    service.fetchWeatherHourlyForecast().then((h) => setHourlyForecast(h));
+    service.fetchWeatherDailyForecast().then((d) => setDailyForecast(d));
+    isWeatherLoadedRef.current = true;
   }, []);
 
   if (!currentWeather || !hourlyForecast || !dailyForecast) {
@@ -48,6 +71,7 @@ function HomePage() {
               currentWeather={currentWeather}
               isCurrentWeatherRequested={isCurrentWeatherRequested}
               setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+              setCurrentWeather={(weather) => setCurrentWeather(weather)}
             />
           </div>
           <div className="col-lg p-0">
@@ -72,10 +96,13 @@ function HomePage() {
               </div>
             </div>
           </div>
-          <ImmediateUpdateButtonMobileVersion
-            isCurrentWeatherRequested={isCurrentWeatherRequested}
-            setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
-          />
+          {isAuthenticated ? (
+            <ImmediateUpdateButtonMobileVersion
+              isCurrentWeatherRequested={isCurrentWeatherRequested}
+              setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+              setCurrentWeather={(weather) => setCurrentWeather(weather)}
+            />
+          ) : null}
         </div>
       </div>
       <Footer />

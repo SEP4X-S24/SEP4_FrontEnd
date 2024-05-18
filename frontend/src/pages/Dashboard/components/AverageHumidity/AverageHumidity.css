@@ -1,0 +1,60 @@
+.humidity-chart-container {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 50%; /* Set the width to half of the container */
+  float: left; /* Align to the left */
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.chart-value {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.chart-change {
+  font-size: 0.8em;
+  color: green;
+}
+
+.chart-wrapper {
+  height: 400px; /* Fixed height for the chart */
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .humidity-chart-container {
+    padding: 10px;
+    width: 100%; /* Full width on smaller screens */
+    float: none; /* Reset float on smaller screens */
+  }
+
+  .chart-header h2 {
+    font-size: 1.2em;
+  }
+
+  .chart-value {
+    font-size: 1em;
+  }
+
+  .chart-change {
+    font-size: 0.7em;
+  }
+
+  .chart-wrapper {
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}

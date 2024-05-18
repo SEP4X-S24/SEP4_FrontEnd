@@ -1,8 +1,11 @@
 import React from "react";
 import styles from "./WeatherForecast.module.css";
-import WeatherEntry from "../WeatherEntry/WeatherEntry";
 import BasicForecast from "../../../../models/BasicForecast";
 import { IconType } from "react-icons";
+import HourlyForecast from "../../../../models/HourlyForecast";
+import DailyForecast from "../../../../models/DailyForecast";
+import DailyWeatherEntry from "../DailyWeatherEntry/DailyWeatherEntry";
+import WeatherEntry from "../WeatherEntry/WeatherEntry";
 
 function WeatherForecast({
   header,
@@ -16,7 +19,11 @@ function WeatherForecast({
   const timeListEl = (
     <div className="d-flex flex-row container-fluid p-0 column-gap-3 h-100 overflow-auto">
       {forecast.map((item, index) => {
-        return <WeatherEntry key={index} item={item} />;
+        if (isDailyForecast(item)) {
+          return <DailyWeatherEntry key={index} item={item} minTemperature={item.minTemperature!} maxTemperature={item.maxTemperature!} />;
+        } else {
+          return <WeatherEntry key={index} item={item} />;
+        }
       })}
     </div>
   );
@@ -40,6 +47,14 @@ function WeatherForecast({
       </div>
     </>
   );
+}
+
+function isDailyForecast(obj: any): obj is DailyForecast {
+  return obj && obj.maxTemperature !== undefined;
+}
+
+function isHourlyForecast(obj: any): obj is HourlyForecast {
+  return obj && obj.additionalProperty !== undefined;
 }
 
 export default WeatherForecast;

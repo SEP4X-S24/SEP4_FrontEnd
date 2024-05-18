@@ -35,3 +35,28 @@ $h5: 32px;
                 margin-top: 20px;
         }
 }
+
+@media screen and (max-width: 768px){
+        .profile_settings{
+                width: 100%;
+                
+                .profile_heading{
+                        font-size: $h5;
+                        color: $white;
+                        margin-bottom: 20px;
+                }
+                .profile_form{
+                        display: flex;
+                        flex-direction: column;
+                }
+                .profile_button{
+                        background-color: $primary;
+                        color: $white;
+                        font-size: $body-text-small;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 5px;
+                        margin-top: 20px;
+                }
+        }
+}

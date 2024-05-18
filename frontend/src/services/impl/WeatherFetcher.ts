@@ -1,40 +1,41 @@
 // weatherFetcher.js
 
-import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import WeatherHttpService from "./WeatherHttpService";
 
-const fetchCurrentWeatherData = () => {
-  const service = new WeatherHttpService();
-  service.fetchCurrentWeather().then((c) => {
+const service = new WeatherHttpService();
+
+const weatherFetcher = {
+  async initCurrentWeatherFetch() {
+    const c = await service.fetchCurrentWeather();
     localStorage.setItem("current_weather", JSON.stringify(c));
     console.log(
       `Init weather data fetched: ${new Date().toLocaleTimeString()}`
     );
-  });
+    return c;
+  },
+  fetchCurrentWeatherPeriodicaly() {
+    const fetchCurrentWeather = () => {
+      const minutes = new Date().getMinutes();
+      console.log(`Checking time: ${minutes}`);
+      if (minutes === 30 || minutes === 0) {
+        service.fetchCurrentWeather().then((c) => {
+          localStorage.setItem("current_weather", JSON.stringify(c));
+          console.log(
+            `Current weather data fetched: ${new Date().toLocaleTimeString()}`
+          );
+        });
+      }
+    };
 
-  const fetchCurrentWeather = () => {
-    const minutes = new Date().getMinutes();
-    console.log(`Checking time: ${minutes}`);
-    if (minutes === 30 || minutes === 0) {
-      service.fetchCurrentWeather().then((c) => {
-        localStorage.setItem("current_weather", JSON.stringify(c));
-        console.log(
-          `Current weather data fetched: ${new Date().toLocaleTimeString()}`
-        );
-      });
-    }
-  };
+    const fetchCurrentWeatherInterval = setInterval(
+      fetchCurrentWeather,
+      60 * 1000
+    );
 
-  // Fetch current weather initially
-  fetchCurrentWeather();
-
-  const fetchCurrentWeatherInterval = setInterval(
-    fetchCurrentWeather,
-    60 * 1000
-  );
-
-  return () => {
-    clearInterval(fetchCurrentWeatherInterval);
-  };
+    return () => {
+      clearInterval(fetchCurrentWeatherInterval);
+    };
+  },
 };
 
-export default fetchCurrentWeatherData;
+export default weatherFetcher;

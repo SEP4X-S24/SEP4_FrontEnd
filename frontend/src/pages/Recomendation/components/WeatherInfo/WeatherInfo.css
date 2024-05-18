@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
+.weather-info-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--color-tertiary);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.weather-detail {
+  text-align: center;
+  flex: 1;
+  color: white; /* All text within weather-detail is now white */
+  font-family: "Poppins", sans-serif !important; /* Setting the font family */
+  font-weight: 600; /* Normal font weight */
+}
+
+.weather-icon {
+  width: 40px;
+  margin-bottom: 8px;
+}
+
+.weather-value {
+  display: block;
+  font-size: 1.5rem;
+}
+
+.weather-label {
+  font-size: 0.9rem;
+}
+
+.weather-detail-text {
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
+  .weather-info-container {
+    flex-direction: column; /* Items are now stacked vertically on smaller screens */
+  }
+
+  .weather-detail {
+    margin-bottom: 10px; /* Space between items when stacked */
+  }
+}

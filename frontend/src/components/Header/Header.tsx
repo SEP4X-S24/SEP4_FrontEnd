@@ -49,13 +49,11 @@ function Header() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              {isAuthenticated ? (
-                <Link to="/recomandation" className="nav-link px-2 text-white">
-                  <IconWrapper>
-                    <Icon.FaChartPie size={navBarIconSize} />
-                  </IconWrapper>
-                </Link>
-              ) : null}
+              <Link to="/recomandation" className="nav-link px-2 text-white">
+                <IconWrapper>
+                  <Icon.FaChartPie size={navBarIconSize} />
+                </IconWrapper>
+              </Link>
 
               <Link
                 to="/style_demonstration"
@@ -65,7 +63,7 @@ function Header() {
                   <IoLogoCss3 size={navBarIconSize} />
                 </IconWrapper>
               </Link>
-              <Link to="/notification" className="nav-link px-2 text-white">
+              <Link to="/dashboard" className="nav-link px-2 text-white">
                 <IconWrapper>
                   <Icon.FaBell size={navBarIconSize} />
                 </IconWrapper>

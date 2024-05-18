@@ -1,9 +1,9 @@
 // AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
 import Account from "../../models/Account";
 import AccountService from "../AccountService";
-import DummyAccountService from "../impl/DummyAccountService";
+import AccountHttpService from "../impl/AccountHttpService";
+import Cookies from "js-cookie";
 
 interface AuthContextProps {
   isAuthenticated: boolean;
@@ -12,6 +12,7 @@ interface AuthContextProps {
   login: (userData: Account) => Promise<void>;
   register: (userData: Account) => Promise<void>;
   logout: () => void;
+  update: (userData: Account) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -30,32 +31,40 @@ interface AuthProviderProps {
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<Account | undefined>();
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState(Cookies.get("jwtToken") || "");
   const [isAuthenticated, setIsAuthenticated] = useState(token !== "");
-  const accountService: AccountService = new DummyAccountService();
+  const accountService: AccountService = new AccountHttpService();
+
+  useEffect(() => {
+    if (token) {
+      setUser(AccountHttpService.getUser() );
+    }
+  }, [token]);
 
   const login = async (userData: Account) => {
     setToken(await accountService.login(userData));
     setIsAuthenticated(true);
-    setUser(userData);
+    setUser(await accountService.getUser());
   };
 
   const register = async (userData: Account) => {
-    setToken(await accountService.register(userData));
-    setIsAuthenticated(true);
-    setUser(userData);
+    await accountService.register(userData);
   };
 
   const logout = async () => {
+    await accountService.logout();
     setUser(undefined);
     setToken("");
-    await accountService.logout();
     setIsAuthenticated(false);
+  };
+  const update = async (userData: Account) => {
+    await accountService.update(userData);
+    setUser(await accountService.getUser());
   };
 
   return (
     <AuthContext.Provider
-      value={{ isAuthenticated, token, user, login, logout, register }}
+      value={{ isAuthenticated, token, user, login, logout, register, update }}
     >
       {children}
     </AuthContext.Provider>
