@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 // import { login } from "../../services/AccountApi";
 import "./RegisterPage.css";
 // import COLORS from "../../utils/COLORS";
@@ -9,26 +9,25 @@ import { useAuth } from "../../services/auth/AuthContext";
 import Account from "../../models/Account";
 
 function RegisterPage() {
-	let email = "";
-	let password = "";
-	let firstname = "";
-	let lastname = "";
 
-	function handleFirstname(data: string) {
-		firstname = data;
-	}
+	const [email, handleEmail] = useState("");
+	const [password, handlePassword] = useState("");
+	const [firstname, handleFirstname] = useState("");
+	const [lastname, handleLastname] = useState("");
 
-	function handleLastname(data: string) {
-		lastname = data;
+	const handleEmailChange = (e : any) => {
+		handleEmail(e.target.value);
 	}
-
-	function handleEmail(data: string) {
-		email = data;
+	const handlePasswordChange = (e : any) => {
+		handlePassword(e.target.value);
 	}
-
-	function handlePassword(data: string) {
-		password = data;
+	const handleFirstnameChange = (e : any) => {
+		handleFirstname(e.target.value);
 	}
+	const handleLastnameChange = (e : any) => {
+		handleLastname(e.target.value);
+	}
+	
 
 	const { register } = useAuth();
 	const navigate = useNavigate();
@@ -41,9 +40,6 @@ function RegisterPage() {
 		} else if (password.length < 6 || password.length > 20) {
 			alert("Password must be between 6 and 20 characters");
 			return;
-		} else if (!email.includes("@") || !email.includes(".")) {
-			alert("Please enter a valid email");
-			return;
 		} else if (email.length > 50) {
 			alert("Email must be less than 50 characters");
 			return;
@@ -54,6 +50,7 @@ function RegisterPage() {
 			lastname.length < 1
 		) {
 			alert("First name and last name must be between 1 and 50 characters");
+			return
 		} else {
 			try {
 				const acc: Account = {
@@ -62,16 +59,16 @@ function RegisterPage() {
 					firstname: firstname,
 					lastname: lastname,
 				};
-
 				await register(acc);
 				navigate('/login')
 			} catch (error: Error | any) {
 				alert(error.message);
 			} finally {
-				email = "";
-				password = "";
-				firstname = "";
-				lastname = "";
+				handleEmail("");
+				handlePassword("");
+				handleFirstname("");
+				handleLastname("");
+				console.log(email, password, firstname, lastname, "kek");
 			}
 		}
 	}
@@ -90,26 +87,30 @@ function RegisterPage() {
 							label="First Name"
 							type="text"
 							InputIcon={FaAddressCard}
-							handleClick={handleFirstname}
+							value={firstname}
+							handleClick={handleFirstnameChange}
 						/>
 						<InputBox
 							label="Last Name"
 							type="text"
 							InputIcon={FaAddressCard}
-							handleClick={handleLastname}
+							value={lastname}
+							handleClick={handleLastnameChange}
 						/>
 						<InputBox
 							label="Email"
 							type="email"
 							InputIcon={FaEnvelope}
-							handleClick={handleEmail}
+							value={email}
+							handleClick={handleEmailChange}
 						/>
 
 						<InputBox
 							label="Password"
 							type="password"
 							InputIcon={FaEye}
-							handleClick={handlePassword}
+							value={password}
+							handleClick={handlePasswordChange}
 						/>
 
 						<button type="submit" className="register_button">

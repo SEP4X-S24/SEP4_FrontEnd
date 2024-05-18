@@ -7,7 +7,7 @@ const accounts: Account[] = [
   { email: "dan@email.com", password: "1234" },
 ];
 
-export default class DummyAccountService implements AccountService {
+export default class DummyAccountService {
   async logout(): Promise<void> {
     localStorage.removeItem("token");
   }
