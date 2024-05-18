@@ -8,9 +8,41 @@ import { fetchWeatherApi } from "openmeteo";
 import BasicForecast from "../../models/BasicForecast";
 import axios from "axios";
 import weatherIconMapper from "../../utils/WeatherIconMapper";
+import Cookies from "js-cookie";
 
 export default class WeatherHttpService implements WeatherService {
+  
   private dummyService: WeatherService = new DummyWeatherService();
+
+  async fetchWeatherImmediately(token: string): Promise<CurrentWeather> {
+    try {
+      const response = await axios.get(
+        "https://weatherstation4dev.azurewebsites.net/api/GetInstantData", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      );
+      const jsonData = response.data;
+      console.log(jsonData)
+      const currentWeather: CurrentWeather = {
+        temperature: jsonData.Temperature,
+        location: "Horsens",
+        weatherState: jsonData.WeatherState,
+        time: `${format(
+          new Date(parseISO(jsonData.Time)),
+          "EEEE dd.MM HH:mm"
+        )}`,
+        humidity: jsonData.Humidity,
+        light: jsonData.Light,
+      };
+
+      return currentWeather;
+    } catch (error) {
+      console.error("Error fetching CurrentWeather data:", error);
+      return this.dummyService.fetchCurrentWeather();
+    }
+  }
 
   async fetchWeatherHourlyForecast(): Promise<HourlyForecast[]> {
     const params = {
@@ -45,11 +77,11 @@ export default class WeatherHttpService implements WeatherService {
           Number(hourly.timeEnd()),
           hourly.interval()
         )
-          // .filter(
-          //   (t) =>
-          //     new Date(t * 1000).getHours() >=
-          //     new Date().getHours()
-          // )
+          .filter(
+            (t) =>
+              new Date(t * 1000).getHours() ===
+              new Date().getHours() || new Date(t * 1000).getTime() > new Date().getTime()
+          )
           .map((t) => new Date((t) * 1000)),
         temperature2m: hourly.variables(0)!.valuesArray()!,
         relativeHumidity2m: hourly.variables(1)!.valuesArray()!,
@@ -139,18 +171,18 @@ export default class WeatherHttpService implements WeatherService {
       );
       const jsonData = response.data;
       console.log(jsonData);
-      const lastIndex: number = jsonData.Value.length - 1;
-      console.log(jsonData.Value[lastIndex].Light);
+      const lastIndex: number = jsonData.length - 1;
+      console.log(jsonData[lastIndex].Light);
       const currentWeather: CurrentWeather = {
-        temperature: jsonData.Value[lastIndex].Temperature,
+        temperature: jsonData[lastIndex].Temperature,
         location: "Horsens",
-        weatherState: jsonData.Value[lastIndex].WeatherState,
+        weatherState: jsonData[lastIndex].WeatherState,
         time: `${format(
-          new Date(parseISO(jsonData.Value[lastIndex].Time)),
+          new Date(parseISO(jsonData[lastIndex].Time)),
           "EEEE dd.MM HH:mm"
         )}`,
-        humidity: jsonData.Value[lastIndex].Humidity,
-        light: jsonData.Value[lastIndex].Light,
+        humidity: jsonData[lastIndex].Humidity,
+        light: jsonData[lastIndex].Light,
       };
 
       return currentWeather;

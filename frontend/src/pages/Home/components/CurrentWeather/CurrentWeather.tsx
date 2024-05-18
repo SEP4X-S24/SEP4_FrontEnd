@@ -4,18 +4,20 @@ import COLORS from "../../../../utils/COLORS";
 import CurrentWeather from "../../../../models/CurrentWeather";
 import { useState } from "react";
 import ImmediateUpdateButton from "../../../../components/ImmediateUpdateButton/ImmediateUpdateButton";
+import { useAuth } from "../../../../services/auth/AuthContext";
 
 function CurrentWeatherComponent({
   currentWeather,
   isCurrentWeatherRequested,
-  setIsCurrentWeatherRequested
+  setIsCurrentWeatherRequested,
+  setCurrentWeather,
 }: {
   currentWeather: CurrentWeather;
   isCurrentWeatherRequested: boolean;
   setIsCurrentWeatherRequested: (value: boolean) => void;
+  setCurrentWeather: (weather: CurrentWeather) => void;
 }) {
-  
-
+  const { isAuthenticated } = useAuth();
   return (
     <div className="current-weather d-flex flex-column justify-content-between align-items-center">
       <div className="general-data d-flex flex-column justify-content-center align-items-center">
@@ -32,10 +34,13 @@ function CurrentWeatherComponent({
       <div className="details-data d-flex flex-row justify-content-between">
         <div className="d-flex justify-content-between w-100 align-items-center">
           <label>{currentWeather.time}</label>
-          <ImmediateUpdateButton
-            isCurrentWeatherRequested={isCurrentWeatherRequested}
-            setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
-          />
+          {isAuthenticated ? (
+            <ImmediateUpdateButton
+              isCurrentWeatherRequested={isCurrentWeatherRequested}
+              setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+              setCurrentWeather={(weather) => setCurrentWeather(weather)}
+            />
+          ) : null}
         </div>
       </div>
     </div>

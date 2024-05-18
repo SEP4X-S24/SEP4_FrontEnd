@@ -6,4 +6,5 @@ export default interface WeatherService {
   fetchWeatherHourlyForecast(): Promise<HourlyForecast[]>;
   fetchWeatherDailyForecast(): Promise<DailyForecast[]>;
   fetchCurrentWeather(): Promise<CurrentWeather>;
+  fetchWeatherImmediately(token: string): Promise<CurrentWeather>;
 }

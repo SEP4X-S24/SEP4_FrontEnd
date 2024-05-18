@@ -1,20 +1,33 @@
 import Countdown from "react-countdown";
 import * as FaIcon from "react-icons/fa6";
 import "./ImmediateUpdateButtonMobileVersion.css";
+import CurrentWeather from "../../models/CurrentWeather";
+import WeatherHttpService from "../../services/impl/WeatherHttpService";
+import { useAuth } from "../../services/auth/AuthContext";
 
 function ImmediateUpdateButtonMobileVersion({
   isCurrentWeatherRequested,
   setIsCurrentWeatherRequested,
+  setCurrentWeather,
 }: {
   isCurrentWeatherRequested: boolean;
   setIsCurrentWeatherRequested: (value: boolean) => void;
+  setCurrentWeather: (weather: CurrentWeather) => void;
 }) {
+  const service = new WeatherHttpService();
+  const { isAuthenticated, token } = useAuth();
+
   return (
     <div
       className="immediate-update-mobile"
-      onClick={() => {
+      onClick={async () => {
         if (!isCurrentWeatherRequested) {
           setIsCurrentWeatherRequested(true);
+
+          service.fetchWeatherImmediately(token).then((w) => {
+            setCurrentWeather(w);
+            setIsCurrentWeatherRequested(false);
+          });
         }
       }}
     >
@@ -32,18 +45,7 @@ function ImmediateUpdateButtonMobileVersion({
           </div>
         </div>
       ) : (
-        <div>
-          <Countdown
-            onStart={() => setIsCurrentWeatherRequested(true)}
-            onComplete={() => {
-              setIsCurrentWeatherRequested(false);
-            }}
-            date={Date.now() + 3000 * 60}
-            renderer={(props) => (
-              <h3>{`${props.formatted.minutes}:${props.formatted.seconds}`}</h3>
-            )}
-          />
-        </div>
+        <div>Loading...</div>
       )}
     </div>
   );
