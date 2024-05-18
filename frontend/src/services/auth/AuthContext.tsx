@@ -1,5 +1,11 @@
 // AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import Account from "../../models/Account";
 import AccountService from "../AccountService";
@@ -36,6 +42,13 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [isAuthenticated, setIsAuthenticated] = useState(token !== "");
   const accountService: AccountService = new AccountHttpService();
 
+  useEffect(() => {
+    if (token) {
+      setUser(AccountHttpService.decodeToken());
+      console.log(user);
+    }
+  }, [token]);
+
   const login = async (userData: Account) => {
     setToken(await accountService.login(userData));
     setIsAuthenticated(true);
@@ -44,7 +57,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   const register = async (userData: Account) => {
     await accountService.register(userData);
-  }
+  };
 
   const logout = async () => {
     await accountService.logout();

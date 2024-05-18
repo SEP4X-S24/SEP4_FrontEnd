@@ -60,13 +60,15 @@ export default class AccountHttpService implements AccountService {
   }
   
 
-  public static decodeToken = () => {
+  public static decodeToken(): Account | undefined {
     const token = Cookies.get("jwtToken");
     if (token) {
-      const decoded = jwtDecode(token);
+      const decoded = jwtDecode<Account>(token);
       console.log(decoded);
+      return decoded;
     } else {
       console.log("No token found");
+      return undefined;
     }
   };
 }
