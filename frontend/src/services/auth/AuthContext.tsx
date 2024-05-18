@@ -1,9 +1,7 @@
 // AuthContext.tsx
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import { useNavigate } from "react-router-dom";
 import Account from "../../models/Account";
 import AccountService from "../AccountService";
-import DummyAccountService from "../impl/DummyAccountService";
 import AccountHttpService from "../impl/AccountHttpService";
 import Cookies from "js-cookie";
 
@@ -39,7 +37,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const login = async (userData: Account) => {
     setToken(await accountService.login(userData));
     setIsAuthenticated(true);
-    setUser(userData);
+    setUser(await accountService.getUser());
   };
 
   const register = async (userData: Account) => {
