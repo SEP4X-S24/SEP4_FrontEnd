@@ -8,16 +8,19 @@ function InputBox({
 	InputIcon,
 	handleClick,
 	checked,
+	value
 }: {
 	label: string;
 	type: string;
 	InputIcon?: IconType;
 	handleClick: any;
 	checked?: boolean;
+	value?: any;
 }) {
-		const [value, setValue] = useState("");
-		const [data, setData] = useState(false);
-		const handleCheck= () => { setData(!data); handleClick(data); }
+		// const [value, setValue] = useState("");
+		// const [data, setData] = useState(false);
+		// const handleCheck= () => { setData(!data); handleClick(data); }
+		// setValue('');
 
 	if(type === "checkbox") {
 		
@@ -28,8 +31,9 @@ function InputBox({
 					<p className="checkbox_label">{label}</p>
 					<input className="checkbox_input"
 					type={type} 
-					checked={data} 
-					onChange={handleCheck}>
+					// checked={data} 
+					// onChange={handleCheck}
+					>
 					</input>
 				</div>
 			</div>
@@ -41,9 +45,8 @@ function InputBox({
 				<label htmlFor="">{label}</label>
 				<input
 					type={type}
+					onChange={handleClick}
 					value={value}
-					onChange={(e) => setValue(e.target.value)}
-					onSubmit={handleClick(value)}
 				></input>
 			</div>
 			{InputIcon && (

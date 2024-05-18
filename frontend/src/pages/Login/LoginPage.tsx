@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./LoginPage.css";
 import InputBox from "../../components/InputBox/InputBox";
 import { Link } from "react-router-dom";
@@ -6,18 +6,18 @@ import { Link } from "react-router-dom";
 import { FaEnvelope, FaEye } from "react-icons/fa6";
 import { useAuth } from "../../services/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
+import Account from "../../models/Account";
 
 function LoginPage() {
-	let email = "";
-	let password = "";
+	const [email, handleEmail] = useState("");
+	const [password, handlePassword] = useState("");
 
-	function handleEmail(data: string) {
-		email = data;
-	}
-
-	function handlePassword(data: string) {
-		password = data;
-	}
+	const handleEmailChange = (e: any) => {
+		handleEmail(e.target.value);
+	};
+	const handlePasswordChange = (e: any) => {
+		handlePassword(e.target.value);
+	};
 
 	const { isAuthenticated, login } = useAuth();
 
@@ -37,20 +37,19 @@ function LoginPage() {
 		} else if (password.length < 6 || password.length > 20) {
 			alert("Password must be between 6 and 20 characters");
 			return;
-		} else if (!email.includes("@") || !email.includes(".")) {
-			alert("Please enter a valid email");
-			return;
 		} else if (email.length > 50) {
 			alert("Email must be less than 50 characters");
 			return;
 		} else {
 			try {
-				await login({ email: email, password: password });
+				const acc: Account = { email: email, password: password };
+				await login(acc);
+				console.log(acc.email + " " + acc.password);
 			} catch (error: Error | any) {
 				alert(error.message);
 			} finally {
-				email = "";
-				password = "";
+				handleEmail("");
+				handlePassword("");
 			}
 		}
 	}
@@ -69,15 +68,17 @@ function LoginPage() {
 						<InputBox
 							label="Email"
 							type="email"
+							value={email}
 							InputIcon={FaEnvelope}
-							handleClick={handleEmail}
+							handleClick={handleEmailChange}
 						/>
 
 						<InputBox
 							label="Password"
 							type="password"
+							value={password}
 							InputIcon={FaEye}
-							handleClick={handlePassword}
+							handleClick={handlePasswordChange}
 						/>
 
 						<button type="submit" className="login_button">
