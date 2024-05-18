@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import "chart.js/auto"; // Import Chart.js auto registration
 import TemperatureGrathObject from "../../../../models/Dashboard/TemperatureGrathObject";
+import "./TemperatureGraph.css"; // Import the CSS file
 
 // Register necessary Chart.js components
 Chart.register(
@@ -70,6 +71,7 @@ function TemperatureGraph({
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: true,
@@ -111,9 +113,9 @@ function TemperatureGraph({
   }, [temperatureGrathData]);
 
   return (
-    <div>
+    <div className="temperature-graph-container">
       <h2>Temperature Graph</h2>
-      <div>
+      <div className="temperature-graph-canvas">
         <canvas ref={canvasRef}></canvas>
       </div>
     </div>
