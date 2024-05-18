@@ -39,7 +39,6 @@ function TemperatureGraph({
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Extract labels and data for min and max temperatures
     const labels = temperatureGrathData.map((item) => item.date);
     const minTemperatures = temperatureGrathData.map(
       (item) => item.minTemperature

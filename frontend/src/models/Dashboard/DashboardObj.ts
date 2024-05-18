@@ -5,7 +5,7 @@ import WeatherStateObj from "./WeatherStateObj";
 
 export default interface DashboardObj {
   summary: SummaryObj;
-  temperaureGrath: TemperatureGrathObject[];
+  temperatureGrath: TemperatureGrathObject[];
   averageHumidity: AverageHumidityObj[];
   weatherStateSummary: WeatherStateObj;
 }
