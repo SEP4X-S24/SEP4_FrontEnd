@@ -4,9 +4,11 @@ import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
 import { useAuth } from "../../services/auth/AuthContext";
 import { useState } from "react";
 import Account from "../../models/Account";
+import { useNavigate } from "react-router-dom";
 
 function ProfileSetting() {
 	const { user, update } = useAuth();
+	const navigate = useNavigate();
 
 	const [email = user?.email, handleEmail] = useState(user?.email);
 	const [password, handlePassword] = useState("");
@@ -28,7 +30,28 @@ function ProfileSetting() {
 		handleLastname(e.target.value);
 	};
 
-	async function sendData(event: React.FormEvent<HTMLFormElement>) {
+	async function updateFunc(email: any, password: any, firstname: any, lastname: any) {
+			try {	
+				
+				const acc: Account = {
+					email: email, 
+					password: password,
+					firstname: firstname,
+					lastname: lastname,
+				};
+				console.log("sending");
+				await update(acc);
+				console.log("sent");
+				navigate("/profile")
+				alert("Account updated succesfully");
+			} catch (error: Error | any) {
+				alert(error.message);
+			} finally {
+				console.log(email, password, firstname, lastname, "kek");
+			}
+	}
+
+	function sendData(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
 		if (!email || !password || !firstname || !lastname) {
 			alert("Please fill all the fields");
@@ -47,23 +70,10 @@ function ProfileSetting() {
 		) {
 			alert("First name and last name must be between 1 and 50 characters");
 			return;
+		}else if (email === user?.email){
+			updateFunc("", password, firstname, lastname);
 		} else {
-			try {
-				const acc: Account = {
-					userid: user?.userid,
-					email: email,
-					password: password,
-					firstname: firstname,
-					lastname: lastname,
-				};
-				await update(acc);
-				console.log("success");
-			} catch (error: Error | any) {
-				alert(error.message);
-			} finally {
-
-				console.log(email, password, firstname, lastname, "kek");
-			}
+			updateFunc(email, password, firstname, lastname);
 		}
 	}
 	return (
