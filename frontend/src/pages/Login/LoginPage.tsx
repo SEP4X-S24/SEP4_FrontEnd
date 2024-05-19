@@ -48,8 +48,7 @@ function LoginPage() {
 			} catch (error: Error | any) {
 				alert(error.message);
 			} finally {
-				handleEmail("");
-				handlePassword("");
+\				handlePassword("");
 			}
 		}
 	}
