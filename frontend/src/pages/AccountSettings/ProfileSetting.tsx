@@ -4,14 +4,15 @@ import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
 import { useAuth } from "../../services/auth/AuthContext";
 import { useState } from "react";
 import Account from "../../models/Account";
-import { update } from "@react-spring/web";
 
 function ProfileSetting() {
-	const { user } = useAuth();
+	const { user, update } = useAuth();
 
 	const [email = user?.email, handleEmail] = useState(user?.email);
 	const [password, handlePassword] = useState("");
-	const [firstname = user?.firstname, handleFirstname] = useState(user?.firstname	);
+	const [firstname = user?.firstname, handleFirstname] = useState(
+		user?.firstname
+	);
 	const [lastname = user?.lastname, handleLastname] = useState(user?.lastname);
 
 	const handleEmailChange = (e: any) => {
@@ -55,15 +56,12 @@ function ProfileSetting() {
 					firstname: firstname,
 					lastname: lastname,
 				};
-				// await update(acc);
-				// display some success message
+				await update(acc);
+				console.log("success");
 			} catch (error: Error | any) {
 				alert(error.message);
 			} finally {
-				handleEmail("");
-				handlePassword("");
-				handleFirstname("");
-				handleLastname("");
+
 				console.log(email, password, firstname, lastname, "kek");
 			}
 		}
