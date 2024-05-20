@@ -3,6 +3,7 @@
   padding: 1.1rem 5rem;
   background-color: var(--color-primary-dark);
   margin-top: auto;
+  position: relative;
   padding: 1rem;
 }
 

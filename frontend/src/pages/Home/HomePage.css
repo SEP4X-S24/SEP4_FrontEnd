@@ -11,7 +11,6 @@
 .weather-container {
   width: 90vw;
   height: fit-content;
-
   padding: var(--space-big);
   border-radius: var(--round-corner-normal);
   background-color: var(--color-primary-semi-transparent);
@@ -43,8 +42,7 @@
   }
 }
 
-
-@media only screen and (max-width: 600px){
+@media only screen and (max-width: 600px) {
   .weather-container {
     width: 99%;
   }

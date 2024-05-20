@@ -18,7 +18,6 @@ import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import weatherFetcher from "./services/impl/WeatherFetcher";
 import DashboardPage from "./pages/Dashboard/DashboardPage";
 
-
 weatherFetcher.fetchCurrentWeatherPeriodicaly();
 const router = createHashRouter([
   {
