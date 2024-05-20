@@ -17,11 +17,11 @@ function DashboardPage() {
 
   const handleTimelineChange = (date: string) => {
     const service = new DashboardImplementation();
-    if (date == "12 months") {
+    if (date === "12 months") {
       service.fetchDataFor_12Month().then((d) => setDashboardData(d));
-    } else if (date == "30 days") {
+    } else if (date === "30 days") {
       service.fetchDataFor_30Day().then((d) => setDashboardData(d));
-    } else if (date == "7 days") {
+    } else if (date === "7 days") {
       service.fetchDataFor_7Day().then((d) => setDashboardData(d));
     }
   };

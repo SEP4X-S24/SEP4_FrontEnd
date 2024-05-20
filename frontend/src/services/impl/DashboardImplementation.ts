@@ -1,13 +1,6 @@
-import AverageHumidityObj from "../../models/Dashboard/AverageHumidityObj";
 import DashboardObj from "../../models/Dashboard/DashboardObj";
-import SummaryObj from "../../models/Dashboard/SummaryObj";
-import TemperatureGrathObject from "../../models/Dashboard/TemperatureGrathObject";
-import WeatherStateObj from "../../models/Dashboard/WeatherStateObj";
 import DashboardService from "../DashboardService";
-import { subDays, parseISO, isAfter } from "date-fns";
 import axios from "axios";
-import { fetchWeatherApi } from "openmeteo";
-import { each } from "chart.js/dist/helpers/helpers.core";
 
 interface WeatherData {
   Id: number;
