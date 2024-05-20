@@ -49,23 +49,14 @@ function Header() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/recomandation" className="nav-link px-2 text-white">
+              <Link to="/dashboard" className="nav-link px-2 text-white">
                 <IconWrapper>
                   <Icon.FaChartPie size={navBarIconSize} />
                 </IconWrapper>
               </Link>
-
-              <Link
-                to="/style_demonstration"
-                className="nav-link px-2 text-white"
-              >
+              <Link to="/recommendation" className="nav-link px-2 text-white">
                 <IconWrapper>
-                  <IoLogoCss3 size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
-              <Link to="/dashboard" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaBell size={navBarIconSize} />
+                  <Icon.FaTshirt size={navBarIconSize} />
                 </IconWrapper>
               </Link>
               <Link to="/profile" className="nav-link px-2 text-white">
