@@ -18,11 +18,6 @@ function ProfilePage() {
               </Link>
             </div>
             <div className="settings_link">
-              <Link to={`notificationSettings`} className="nav-link">
-                Notifications
-              </Link>
-            </div>
-            <div className="settings_link">
               <Link to={`recomendationSettings`} className="nav-link">
                 Recommendations
               </Link>
