@@ -27,29 +27,57 @@ const apiURL = {
 };
 
 export default class implements DashboardService {
-  private async fetchDataFromAPI() {
+  async fetchDataFor_12Month(): Promise<DashboardObj> {
+    const token = Cookies.get("jwtToken");
+
     try {
-      const response = await axios.get(
-        "https://weatherstation4dev.azurewebsites.net/api/GetDefaultData"
-      );
+      const response = await axios.get(apiURL.Year, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const jsonData = response.data;
-      console.log(jsonData);
-      localStorage.setItem("weatherData", JSON.stringify(jsonData));
+      const dashboardData: DashboardObj = {
+        summary: jsonData.summary,
+        averageHumidity: jsonData.averageHumidity,
+        temperatureGrath: jsonData.temperatureGraph,
+        weatherStateSummary: jsonData.weatherStateSummary,
+      };
+      console.log("Data for Year");
+      console.log(dashboardData);
+      return dashboardData;
     } catch (error) {
-      console.error("Error fetching CurrentWeather data:", error);
+      console.error("Error fetching data:", error);
+      throw error;
     }
   }
 
-  fetchDataFor_12Month(): Promise<DashboardObj> {
-    throw new Error("Not implemented Method");
-  }
-
-  fetchDataFor_30Day(): Promise<DashboardObj> {
-    throw new Error("Not implemented Method");
+  async fetchDataFor_30Day(): Promise<DashboardObj> {
+    const token = Cookies.get("jwtToken");
+    try {
+      const response = await axios.get(apiURL.Month, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const jsonData = response.data;
+      const dashboardData: DashboardObj = {
+        summary: jsonData.summary,
+        averageHumidity: jsonData.averageHumidity,
+        temperatureGrath: jsonData.temperatureGraph,
+        weatherStateSummary: jsonData.weatherStateSummary,
+      };
+      console.log("Data for Month");
+      console.log(dashboardData);
+      return dashboardData;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      throw error; // Ensure the promise is rejected with the error
+    }
   }
 
   async fetchDataFor_7Day(): Promise<DashboardObj> {
-    const token = Cookies.get("jwtToken"); /// Here I should add token
+    const token = Cookies.get("jwtToken");
 
     try {
       const response = await axios.get(apiURL.Week, {
@@ -58,13 +86,14 @@ export default class implements DashboardService {
         },
       });
       const jsonData = response.data;
-      console.log(jsonData);
       const dashboardData: DashboardObj = {
         summary: jsonData.summary,
         averageHumidity: jsonData.averageHumidity,
-        temperatureGrath: jsonData.temperatureGrath,
+        temperatureGrath: jsonData.temperatureGraph,
         weatherStateSummary: jsonData.weatherStateSummary,
       };
+      console.log("Data for Week");
+      console.log(dashboardData);
       return dashboardData;
     } catch (error) {
       console.error("Error fetching data:", error);
