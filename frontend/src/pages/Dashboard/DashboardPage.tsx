@@ -1,34 +1,81 @@
 import React, { useEffect, useState } from "react";
 import DashboardFilter from "./components/Filter/DashboardFilter";
 import Summary from "./components/Summary/Summary";
-import TemperatureGrath from "./components/TemperatureGrath/TemperatureGrath";
+import TemperatureGraph from "./components/TemperatureGrath/TemperatureGraph";
 import AverageHumidity from "./components/AverageHumidity/AverageHumidity";
 import WeatherStateSummary from "./components/WeatherStateSummary/WeatherStateSummary";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import "./DashboardPage.css";
 import DashboardImplementation from "../../services/impl/DashboardImplementation";
-import TemperatureGrathObject from "../../models/Dashboard/TemperatureGrathObject";
 import DashboardObj from "../../models/Dashboard/DashboardObj";
+import DemoDashboardData from "../../services/impl/Demo/DemoDashboardData";
 
-function DashboardPage() {
+const DashboardPage: React.FC = () => {
   const [dashboardData, setDashboardData] = useState<DashboardObj | null>(null);
   const [selectedView, setSelectedView] = useState<string>("");
 
   const handleTimelineChange = (date: string) => {
     const service = new DashboardImplementation();
     if (date === "12 months") {
-      service.fetchDataFor_12Month().then((d) => setDashboardData(d));
+      service
+        .fetchDataFor_12Month()
+        .then((d) => setDashboardData(d))
+        .catch((err) => {
+          console.error("Error fetching data for 12 months:", err);
+          setDashboardData({
+            summary: {},
+            temperatureGrath: [],
+            averageHumidity: [],
+            weatherStateSummary: {},
+          });
+        });
     } else if (date === "30 days") {
-      service.fetchDataFor_30Day().then((d) => setDashboardData(d));
+      service
+        .fetchDataFor_30Day()
+        .then((d) => setDashboardData(d))
+        .catch((err) => {
+          console.error("Error fetching data for 30 days:", err);
+          setDashboardData({
+            summary: {},
+            temperatureGrath: [],
+            averageHumidity: [],
+            weatherStateSummary: {},
+          });
+        });
     } else if (date === "7 days") {
-      service.fetchDataFor_7Day().then((d) => setDashboardData(d));
+      service
+        .fetchDataFor_7Day()
+        .then((d) => setDashboardData(d))
+        .catch((err) => {
+          console.error("Error fetching data for 7 days:", err);
+          setDashboardData({
+            summary: {},
+            temperatureGrath: [],
+            averageHumidity: [],
+            weatherStateSummary: {},
+          });
+        });
     }
   };
 
   useEffect(() => {
     const service = new DashboardImplementation();
-    service.fetchDataFor_7Day().then((d) => setDashboardData(d));
+    const fetchDataForWeek = async () => {
+      try {
+        const fetchedData = await service.fetchDataFor_7Day();
+        setDashboardData(fetchedData);
+      } catch (error) {
+        console.error("Error fetching data for 7 days:", error);
+        setDashboardData({
+          summary: {},
+          temperatureGrath: [],
+          averageHumidity: [],
+          weatherStateSummary: {},
+        });
+      }
+    };
+    fetchDataForWeek();
   }, []);
 
   if (dashboardData == null) {
@@ -41,9 +88,7 @@ function DashboardPage() {
       <div className="container dashboard">
         <DashboardFilter onViewChange={handleTimelineChange} />
         <Summary summary={dashboardData.summary} />
-        <TemperatureGrath
-          temperatureGrathData={dashboardData.temperatureGrath}
-        />
+        <TemperatureGraph temperatureGraph={dashboardData.temperatureGrath} />
         <div className="dashboard-container">
           <AverageHumidity averageHumidity={dashboardData.averageHumidity} />
           <WeatherStateSummary
@@ -54,6 +99,6 @@ function DashboardPage() {
       <Footer />
     </div>
   );
-}
+};
 
 export default DashboardPage;

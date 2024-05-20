@@ -1,29 +1,43 @@
 /* TemperatureGraph.css */
+
 .temperature-graph-container {
-  width: 100%;
-  max-width: 100%;
-  margin: 20px auto; /* Center the graph and add margin */
-  padding: 10px;
-  box-sizing: border-box; /* Include padding and border in element's total width and height */
-  background-color: #f9f9f9; /* Light background color for better visibility */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
   background: #fff;
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  width: 100%; /* Set the width to full width */
+  float: none; /* Remove float */
 }
 
-.temperature-graph-canvas {
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-header h2 {
+  font-size: 1.5em;
+  margin: 0;
+}
+
+.chart-wrapper {
+  height: 400px; /* Fixed height for the chart */
   position: relative;
-  height: 100%;
-  width: 100%;
 }
 
-/* Media query for smaller screens */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .temperature-graph-container {
+    padding: 10px;
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .chart-header h2 {
+    font-size: 1.2em;
+  }
+
+  .chart-wrapper {
     height: 300px; /* Adjust height for smaller screens */
-    padding: 5px; /* Reduce padding for smaller screens */
   }
 }
