@@ -10,19 +10,21 @@ import "./DashboardPage.css";
 import DashboardImplementation from "../../services/impl/DashboardImplementation";
 import TemperatureGrathObject from "../../models/Dashboard/TemperatureGrathObject";
 import DashboardObj from "../../models/Dashboard/DashboardObj";
+import DemoDashboardData from "../../services/impl/Demo/DemoDashboardData";
 
 function DashboardPage() {
   const [dashboardData, setDashboardData] = useState<DashboardObj | null>(null);
   const [selectedView, setSelectedView] = useState<string>("");
 
   const handleTimelineChange = (date: string) => {
+    const demoService = new DemoDashboardData();
     const service = new DashboardImplementation();
     if (date == "12 months") {
-      service.fetchDataFor_12Month().then((d) => setDashboardData(d));
+      demoService.fetchDataFor_12Month().then((d) => setDashboardData(d));
     } else if (date == "30 days") {
-      service.fetchDataFor_30Day().then((d) => setDashboardData(d));
+      demoService.fetchDataFor_30Day().then((d) => setDashboardData(d));
     } else if (date == "7 days") {
-      service.fetchDataFor_7Day().then((d) => setDashboardData(d));
+      demoService.fetchDataFor_7Day().then((d) => setDashboardData(d));
     }
   };
 
