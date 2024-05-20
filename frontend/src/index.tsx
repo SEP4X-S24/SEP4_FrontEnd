@@ -61,7 +61,7 @@ const router = createHashRouter([
         element: <StyleDemonstration />,
       },
       {
-        path: "recomandation",
+        path: "recommendation",
         element: <RecomendationPage />,
       },
       {

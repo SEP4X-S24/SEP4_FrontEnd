@@ -20,40 +20,32 @@ function Footer() {
           <div className="footer-section menu-section col-md col-sm-12 d-flex flex-column">
             <h3>Menu</h3>
             <Link className="a" to="/">
-              {" "}
-              Home{" "}
+              Home
             </Link>
             <Link className="a" to="/profile">
-              {" "}
-              Profile{" "}
+              Profile
             </Link>
             <Link className="a" to="/dashboard">
-              {" "}
-              Dashboard{" "}
+              Dashboard
             </Link>
-            <Link className="a" to="/recomandation">
-              {" "}
-              Recomandations{" "}
+            <Link className="a" to="/recommendation">
+              Recommendations
             </Link>
           </div>
 
           <div className="footer-section menu-section col-md col-sm-12 d-flex flex-column">
             <h3>Quick links</h3>
             <Link className="a" to="/">
-              {" "}
-              About us{" "}
+              About us
             </Link>
             <Link className="a" to="/profile">
-              {" "}
-              Profile{" "}
+              Profile
             </Link>
             <Link className="a" to="/dashboard">
-              {" "}
-              Dashboard{" "}
+              Dashboard
             </Link>
             <Link className="a" to="/notification">
-              {" "}
-              Notification preferences{" "}
+              Notification preferences
             </Link>
           </div>
         </div>
