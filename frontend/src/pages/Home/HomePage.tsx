@@ -13,10 +13,9 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import LightComponent from "./components/Light/LightComponent";
 import weatherFetcher from "../../services/impl/WeatherFetcher";
-import WeatherEntry from "./components/WeatherEntry/WeatherEntry";
-import DailyWeatherEntry from "./components/DailyWeatherEntry/DailyWeatherEntry";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import { useAuth } from "../../services/auth/AuthContext";
+
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
     null
@@ -27,10 +26,8 @@ function HomePage() {
   const [dailyForecast, setDailyForecast] = useState<DailyForecast[] | null>(
     null
   );
-
   const [isCurrentWeatherRequested, setIsCurrentWeatherRequested] =
     useState(false);
-
   const isWeatherLoadedRef = useRef(false);
   const { isAuthenticated } = useAuth();
 
@@ -62,51 +59,53 @@ function HomePage() {
   }
 
   return (
-    <>
+    <div className="page-container">
       <Header />
-      <div className="weather-root d-flex align-items-center justify-content-center">
-        <div className="weather-container container-fluid row gap">
-          <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
-            <CurrentWeatherComponent
-              currentWeather={currentWeather}
-              isCurrentWeatherRequested={isCurrentWeatherRequested}
-              setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
-              setCurrentWeather={(weather) => setCurrentWeather(weather)}
-            />
-          </div>
-          <div className="col-lg p-0">
-            <div className="d-flex flex-column gap">
-              <div>
-                <WeatherForecast
-                  header="Hourly forecast"
-                  HeaderIcon={FaRegClock}
-                  forecast={hourlyForecast}
-                />
-              </div>
-              <div>
-                <WeatherForecast
-                  header="Daily forecast"
-                  HeaderIcon={FaRegCalendarAlt}
-                  forecast={dailyForecast}
-                />
-              </div>
-              <div className="d-flex justify-content-between gap-4 weather-right-row">
-                <Humidity value={currentWeather.humidity!} />
-                <LightComponent value={currentWeather.light!} />
+      <div className="content-wrap">
+        <div className="weather-root d-flex align-items-center justify-content-center">
+          <div className="weather-container container-fluid row gap">
+            <div className="current-weather-container col-lg-4 p-0 flex-lg-wrap">
+              <CurrentWeatherComponent
+                currentWeather={currentWeather}
+                isCurrentWeatherRequested={isCurrentWeatherRequested}
+                setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+                setCurrentWeather={(weather) => setCurrentWeather(weather)}
+              />
+            </div>
+            <div className="col-lg p-0">
+              <div className="d-flex flex-column gap">
+                <div>
+                  <WeatherForecast
+                    header="Hourly forecast"
+                    HeaderIcon={FaRegClock}
+                    forecast={hourlyForecast}
+                  />
+                </div>
+                <div>
+                  <WeatherForecast
+                    header="Daily forecast"
+                    HeaderIcon={FaRegCalendarAlt}
+                    forecast={dailyForecast}
+                  />
+                </div>
+                <div className="d-flex justify-content-between gap-4 weather-right-row">
+                  <Humidity value={currentWeather.humidity!} />
+                  <LightComponent value={currentWeather.light!} />
+                </div>
               </div>
             </div>
+            {isAuthenticated ? (
+              <ImmediateUpdateButtonMobileVersion
+                isCurrentWeatherRequested={isCurrentWeatherRequested}
+                setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
+                setCurrentWeather={(weather) => setCurrentWeather(weather)}
+              />
+            ) : null}
           </div>
-          {isAuthenticated ? (
-            <ImmediateUpdateButtonMobileVersion
-              isCurrentWeatherRequested={isCurrentWeatherRequested}
-              setIsCurrentWeatherRequested={setIsCurrentWeatherRequested}
-              setCurrentWeather={(weather) => setCurrentWeather(weather)}
-            />
-          ) : null}
         </div>
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 

@@ -30,7 +30,7 @@ function RecomendationPage() {
   }, []);
 
   return (
-    <div className="app">
+    <div className="app page-container">
       <Header />
       <Banner recommendation={currentRecomendation} />
       <WeatherInfo />

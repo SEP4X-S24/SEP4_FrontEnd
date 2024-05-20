@@ -83,7 +83,7 @@ const DashboardPage: React.FC = () => {
   }
 
   return (
-    <div>
+    <div className="page-container">
       <Header />
       <div className="container dashboard">
         <DashboardFilter onViewChange={handleTimelineChange} />
