@@ -60,34 +60,50 @@ export default class AccountHttpService implements AccountService {
 			}
 		}
 	}
-async update(user: Account): Promise<void> {
-    try {
-      const token = Cookies.get("jwtToken");
-      if (token) {
-        await axios.put(`${this.BASE_API_URL}/UpdateAccount`, {
-          unique_name: user.userid,
-          firstname: user.firstname!,
-          lastname: user.lastname!,
-          password: user.password,
-          preferences:
-            "I really like rainbow colors. Also I like to wear something furry things to highlight beauty of my body",
-          email: user.email,
-          onNotifications: "false",
-        });
-      } else {
-        throw new Error("No token found");
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        const serverErrorMessage =
-          error.response.data?.error || "Unknown server error";
-        throw new Error(`Error during update: ${serverErrorMessage}`);
-      } else {
-        console.error("Error during update:", error);
-        throw error;
-      }
-    }
-  }
+	async update(user: Account): Promise<void> {
+		try {
+			const oldtoken = Cookies.get("jwtToken");
+
+			if (oldtoken) {
+				const response = await axios.post(
+					`${this.BASE_API_URL}/UpdateAccount`,
+					{
+						firstname: user.firstname,
+						lastname: user.lastname,
+						password: user.password,
+						preferences:
+							"I really like rainbow colors. Also I like to wear something furry things to highlight beauty of my body",
+						email: user.email,
+						onNotifications: "false",
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${oldtoken}`,
+						},
+					}
+				);
+
+				if (response.status === 200) {
+					const token = response.data.token;
+					Cookies.set("jwtToken", token);
+					console.log(token);
+					return token;
+				}
+				alert("Account updated successfully")
+			} else {
+				throw new Error("No token found");
+			}
+		} catch (error) {
+			if (axios.isAxiosError(error) && error.response) {
+				const serverErrorMessage =
+					error.response.data?.error || "Unknown server error";
+				throw new Error(`Error during update: ${serverErrorMessage}`);
+			} else {
+				console.error("Error during update:", error);
+				throw error;
+			}
+		}
+	}
 
 	async getUser(): Promise<Account> {
 		try {
@@ -95,7 +111,7 @@ async update(user: Account): Promise<void> {
 			if (token) {
 				let decoded = JSON.parse(JSON.stringify(jwtDecode(token)));
 				let account: Account = {
-          userid : decoded.unique_name,
+					userid: decoded.unique_name,
 					email: decoded.email,
 					firstname: decoded.given_name,
 					lastname: decoded.family_name,

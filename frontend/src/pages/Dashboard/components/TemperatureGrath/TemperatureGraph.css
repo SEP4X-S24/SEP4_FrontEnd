@@ -1,0 +1,29 @@
+/* TemperatureGraph.css */
+.temperature-graph-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 20px auto; /* Center the graph and add margin */
+  padding: 10px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  background-color: #f9f9f9; /* Light background color for better visibility */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.temperature-graph-canvas {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .temperature-graph-container {
+    height: 300px; /* Adjust height for smaller screens */
+    padding: 5px; /* Reduce padding for smaller screens */
+  }
+}
