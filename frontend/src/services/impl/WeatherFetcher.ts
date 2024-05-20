@@ -16,7 +16,6 @@ const weatherFetcher = {
   fetchCurrentWeatherPeriodicaly() {
     const fetchCurrentWeather = () => {
       const minutes = new Date().getMinutes();
-      console.log(`Checking time: ${minutes}`);
       if (minutes === 30 || minutes === 0) {
         service.fetchCurrentWeather().then((c) => {
           localStorage.setItem("current_weather", JSON.stringify(c));

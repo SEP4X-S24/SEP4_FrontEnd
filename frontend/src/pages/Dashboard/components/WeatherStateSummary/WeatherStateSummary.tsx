@@ -56,7 +56,7 @@ function WeatherStateSummary({
             className="weather-summary-color"
             style={{ backgroundColor: "#6A5ACD" }}
           ></span>
-          <span>Rainy</span>
+          <span>Little Cloudy</span>
           <span>{weatherStateData.rainy}</span>
         </div>
         <div className="weather-summary-item">
