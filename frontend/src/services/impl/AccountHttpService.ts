@@ -7,6 +7,43 @@ import { jwtDecode } from "jwt-decode";
 export default class AccountHttpService implements AccountService {
 	private BASE_API_URL = "https://weatherstation4dev.azurewebsites.net/api";
 
+	async updatePreferences(preferences: string): Promise<void> {
+		try {
+			const oldtoken = Cookies.get("jwtToken");
+
+			if (oldtoken) {
+				const response = await axios.post(
+					`${this.BASE_API_URL}/SetPreferences`,
+					{
+						preferences: preferences,
+					},
+					{
+						headers: {
+							Authorization: `Bearer ${oldtoken}`,
+						},
+					}
+				);
+
+				if (response.status === 200) {
+					console.log(response.data.msg);
+					localStorage.removeItem("recommendation")
+				}
+				alert("Account preferences updated successfully")
+			} else {
+				throw new Error("No token found");
+			}
+		} catch (error) {
+			if (axios.isAxiosError(error) && error.response) {
+				const serverErrorMessage =
+					error.response.data?.error || "Unknown server error";
+				throw new Error(`Error during update: ${serverErrorMessage}`);
+			} else {
+				console.error("Error during update preferences:", error);
+				throw error;
+			}
+		}
+	}
+
 	async login(user: Account): Promise<string> {
 		try {
 			const response = await axios.post(`${this.BASE_API_URL}/LoginAccount`, {
@@ -60,9 +97,10 @@ export default class AccountHttpService implements AccountService {
 			}
 		}
 	}
-	async update(user: Account): Promise<void> {
+	async update(user: Account, newPassword: string): Promise<void> {
 		try {
 			const oldtoken = Cookies.get("jwtToken");
+			console.log(`New password: ${newPassword}`)
 
 			if (oldtoken) {
 				const response = await axios.post(
@@ -70,9 +108,8 @@ export default class AccountHttpService implements AccountService {
 					{
 						firstname: user.firstname,
 						lastname: user.lastname,
-						password: user.password,
-						preferences:
-							"I really like rainbow colors. Also I like to wear something furry things to highlight beauty of my body",
+						currentPassword: user.password,
+						newPassword: newPassword,
 						email: user.email,
 						onNotifications: "false",
 					},

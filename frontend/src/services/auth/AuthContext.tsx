@@ -12,7 +12,7 @@ interface AuthContextProps {
   login: (userData: Account) => Promise<void>;
   register: (userData: Account) => Promise<void>;
   logout: () => void;
-  update: (userData: Account) => Promise<void>;
+  update: (userData: Account, newPassword: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextProps | undefined>(undefined);
@@ -57,8 +57,8 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setToken("");
     setIsAuthenticated(false);
   };
-  const update = async (userData: Account) => {
-    await accountService.update(userData);
+  const update = async (userData: Account, newPassword: string) => {
+    await accountService.update(userData, newPassword);
     setUser(await accountService.getUser());
   };
 

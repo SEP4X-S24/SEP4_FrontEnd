@@ -12,27 +12,33 @@ import weatherFetcher from "../../services/impl/WeatherFetcher";
 import RecommendationFetcher from "../../services/impl/RecommendationFetcher";
 
 function RecomendationPage() {
-  const { isAuthenticated: authenticated } = useAuth();
-  const [currentRecomendation, setRecomendation] =
+  const { isAuthenticated, token } = useAuth();
+  const [currentRecommendation, setRecommendation] =
     useState<Recommendation | null>(null);
+  const isRecommendationLoadedRef = useRef(false);
 
   useEffect(() => {
     const fetchRecommendationData = async () => {
       const cachedRecommendation = localStorage.getItem("recommendation");
       if (cachedRecommendation) {
-        setRecomendation(JSON.parse(cachedRecommendation));
+        setRecommendation(JSON.parse(cachedRecommendation));
       } else {
-        const fetchData = await RecommendationFetcher.initRecommendationFetch();
-        setRecomendation(fetchData);
+        if (!isRecommendationLoadedRef.current) {
+          const fetchData = await RecommendationFetcher.initRecommendationFetch(
+            token
+          );
+          setRecommendation(fetchData);
+        }
       }
     };
     fetchRecommendationData();
+    isRecommendationLoadedRef.current = true;
   }, []);
 
   return (
     <div className="app page-container">
       <Header />
-      <Banner recommendation={currentRecomendation} />
+      <Banner recommendation={currentRecommendation} />
       <WeatherInfo />
       <Footer />
       {/* Other components will follow */}

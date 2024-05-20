@@ -3,7 +3,7 @@ import React from "react";
 import Recommendation from "../models/Recommendation";
 
 interface RecomendationService {
-  fetchRecommendation(): Promise<Recommendation>;
+  fetchRecommendation(token: string): Promise<Recommendation>;
 }
 
 export default RecomendationService;
