@@ -54,11 +54,14 @@ function Header() {
                   <Icon.FaChartPie size={navBarIconSize} />
                 </IconWrapper>
               </Link>
-              <Link to="/recommendation" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaTshirt size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/recommendation" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <Icon.FaTshirt size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              ) : null}
+
               <Link to="/profile" className="nav-link px-2 text-white">
                 <IconWrapper>
                   <Icon.FaUser size={navBarIconSize} />

@@ -1,6 +1,7 @@
 import RecomendationService from "../RecomendationService";
 import Recommendation from "../../models/Recommendation";
 import axios from "axios";
+import { useAuth } from "../auth/AuthContext";
 
 export default class RecommendationImplementation
   implements RecomendationService
@@ -12,23 +13,28 @@ export default class RecommendationImplementation
     return demoRecommendation;
   }
 
-  async fetchRecommendation(): Promise<Recommendation> {
+  async fetchRecommendation(token: string): Promise<Recommendation> {
     try {
       const response = await axios.get(
-        "https://weatherstation4dev.azurewebsites.net/api/GetRecommendation"
+        "https://weatherstation4dev.azurewebsites.net/api/GetRecommendation",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
       );
 
       const jsonData = response.data;
       console.log(jsonData);
 
       const recivedRecommendation: Recommendation = {
-        description: jsonData.Value,
+        description: jsonData.recommendation,
       };
 
       return recivedRecommendation;
     } catch (error) {
       console.error("Error fetching CurrentWeather data:", error);
-      return this.demoRecomendation(); // Return null or handle the error as appropriate
+      return this.demoRecomendation();
     }
   }
 }

@@ -171,18 +171,17 @@ export default class WeatherHttpService implements WeatherService {
       );
       const jsonData = response.data;
       console.log(jsonData);
-      const lastIndex: number = jsonData.length - 1;
-      console.log(jsonData[lastIndex].Light);
+      console.log(jsonData[0].Light);
       const currentWeather: CurrentWeather = {
-        temperature: jsonData[lastIndex].Temperature,
+        temperature: jsonData[0].Temperature,
         location: "Horsens",
-        weatherState: jsonData[lastIndex].WeatherState,
+        weatherState: jsonData[0].WeatherState,
         time: `${format(
-          new Date(parseISO(jsonData[lastIndex].Time)),
+          new Date(parseISO(jsonData[0].Time)),
           "EEEE dd.MM HH:mm"
         )}`,
-        humidity: jsonData[lastIndex].Humidity,
-        light: jsonData[lastIndex].Light,
+        humidity: jsonData[0].Humidity,
+        light: jsonData[0].Light,
       };
 
       return currentWeather;

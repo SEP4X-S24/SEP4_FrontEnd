@@ -5,7 +5,8 @@ interface AccountService {
   logout(): Promise<void>;
   register(user: Account): Promise<void>;
   getUser(): Promise<Account>;
-  update(user: Account): Promise<void>;
+  update(user: Account, newPassword: string): Promise<void>;
+  updatePreferences(preferences: string): Promise<void>;
 }
 
 export default AccountService;
