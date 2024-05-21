@@ -1,3 +1,4 @@
+import React from "react";
 import Countdown from "react-countdown";
 import * as FaIcon from "react-icons/fa6";
 import styles from "./ImmediateUpdateButton.module.css";
@@ -29,6 +30,10 @@ function ImmediateUpdateButton({
     transform: isCurrentWeatherRequested ? "translateY(-5%)" : "translateY(0%)",
     config: { tension: 500, friction: 10 },
   });
+
+  if (!isAuthenticated) {
+    return null;
+  }
 
   return (
     <div className={styles.immediateUpdate}>

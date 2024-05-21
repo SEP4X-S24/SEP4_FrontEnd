@@ -5,6 +5,7 @@
 
 .timer {
   user-select: none;
+  -webkit-user-select: none; /* Added for Safari support */
 }
 
 .immediate-update-mobile {
