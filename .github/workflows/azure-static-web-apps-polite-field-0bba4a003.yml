@@ -16,6 +16,9 @@ jobs:
         with:
           node-version: "18.x"
 
+      - name: List files in frontend directory
+        run: dir ./frontend
+
       - name: npm ci, build and test
         run: |
           npm ci
@@ -33,11 +36,16 @@ jobs:
         with:
           submodules: true
           lfs: false
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "18.x" # Specify the Node.js version to use
           cache: "npm" # Optionally cache npm modules
+
+      - name: List files in frontend directory
+        run: dir ./frontend
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
