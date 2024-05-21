@@ -40,6 +40,8 @@ function ImmediateUpdateButton({
         }}
       >
         <FaIcon.FaArrowRotateRight
+          role="button"
+          aria-label="Update Weather"
           style={{
             width: "100%",
             height: "100%",
