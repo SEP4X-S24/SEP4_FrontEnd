@@ -60,6 +60,7 @@ function Footer() {
             <a
               className="facebook"
               href="https://www.facebook.com/denmarkweather"
+              data-testid="facebook-icon"
             >
               <SMIcon.Facebook
                 size={socialMediaIconSize}
@@ -71,6 +72,7 @@ function Footer() {
             <a
               className="linkedin"
               href="https://www.linkedin.com/company/weather-company/"
+              data-testid="linkedin-icon"
             >
               <SMIcon.Linkedin
                 size={socialMediaIconSize}
