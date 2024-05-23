@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./InputBox.css";
 import { IconType } from "react-icons";
+import { IoIosCloudyNight } from "react-icons/io";
+import { FaEye, FaEyeSlash, FaIcons } from "react-icons/fa6";
 
 function InputBox({
 	label,
@@ -19,8 +21,19 @@ function InputBox({
 }) {
 	// const [value, setValue] = useState("");
 	const [data, setData] = useState(false);
-	const handleCheck= () => { setData(!data); handleClick(data); }
-	// setValue('');
+	const handleCheck = () => {
+		setData(!data);
+		handleClick(data);
+	};
+	const [typeTemp, setTypeTemp] = useState(type);
+
+	function seePass() {
+		if (typeTemp === "password") {
+			setTypeTemp("text");
+		} else {
+			setTypeTemp("password");
+		}
+	}
 
 	if (type === "checkbox") {
 		return (
@@ -30,32 +43,55 @@ function InputBox({
 					<p className="checkbox_label">{label}</p>
 					<input
 						className="checkbox_input"
-						type={type}
+						type={typeTemp}
 						checked={data}
 						onChange={handleCheck}
 					></input>
 				</div>
 			</div>
 		);
-	} else {
+	} else if (typeTemp === "password" || typeTemp === "text"){
+				return (
+					<div className="form_input">
+						<div className="form_input_box">
+							<label htmlFor="">{label}</label>
+							<input
+								type={typeTemp}
+								value={value}
+								onChange={handleClick}
+							></input>
+						</div>
+						<div onClick={seePass}>
+
+							{typeTemp === "password" ? (
+								<FaEyeSlash
+									style={{ width: "40px", height: "40px", fill: "var(--color-secondary)" }}
+								/>
+							) : (
+								<FaEye style={{ width: "40px", height: "40px", fill: "var(--color-secondary)" }}
+								/>
+							)}
+						</div>
+					</div>
+				);
+	}else {
 		return (
 			<div className="form_input">
 				<div className="form_input_box">
 					<label htmlFor="">{label}</label>
-					<input 
-					type={type} 
-					value={value} 
-					onChange={handleClick}></input>
+					<input type={type} value={value} onChange={handleClick}></input>
 				</div>
-				{InputIcon && (
-					<InputIcon
-						style={{
-							width: "40px",
-							height: "40px",
-							fill: "var(--color-secondary)",
-						}}
-					/>
-				)}
+				<div >
+					{InputIcon && (
+						<InputIcon
+							style={{
+								width: "40px",
+								height: "40px",
+								fill: "var(--color-secondary)",
+							}}
+						/>
+					)}
+				</div>
 			</div>
 		);
 	}
