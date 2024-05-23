@@ -117,6 +117,11 @@ function RegisterPage() {
 							Register
 						</button>
 					</form>
+					<div className="back_button">
+						<Link className="back" to={"/"}>
+							Or go back
+						</Link>
+					</div>
 				</div>
 			</div>
 		</>
