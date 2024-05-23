@@ -3,6 +3,7 @@ import "./InputBox.css";
 import { IconType } from "react-icons";
 import { IoIosCloudyNight } from "react-icons/io";
 import { FaEye, FaEyeSlash, FaIcons } from "react-icons/fa6";
+import { Cursor } from "react-bootstrap-icons";
 
 function InputBox({
 	label,
@@ -61,7 +62,7 @@ function InputBox({
 								onChange={handleClick}
 							></input>
 						</div>
-						<div onClick={seePass}>
+						<div onClick={seePass} style={{cursor: "pointer"}}>
 
 							{typeTemp === "password" ? (
 								<FaEyeSlash
