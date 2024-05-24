@@ -3,7 +3,6 @@ import CurrentWeatherComponent from "./components/CurrentWeather/CurrentWeather"
 import "./HomePage.css";
 import CurrentWeather from "../../models/CurrentWeather";
 import HourlyForecast from "../../models/HourlyForecast";
-import DummyWeatherService from "../../services/impl/DummyWeatherService";
 import DailyForecast from "../../models/DailyForecast";
 import WeatherForecast from "./components/WeatherForecast/WeatherForecast";
 import { FaRegCalendarAlt, FaRegClock } from "react-icons/fa";
@@ -32,7 +31,6 @@ function HomePage() {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    const dummyService = new DummyWeatherService();
     const service = new WeatherHttpService();
 
     const fetchWeatherData = async () => {

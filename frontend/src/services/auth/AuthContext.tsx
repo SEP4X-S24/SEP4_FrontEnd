@@ -1,7 +1,13 @@
 // AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  ReactNode,
+  useEffect,
+} from "react";
 import Account from "../../models/Account";
-import AccountService from "../AccountService";
+import AccountService from "../Interfaces/AccountService";
 import AccountHttpService from "../impl/AccountHttpService";
 import Cookies from "js-cookie";
 
@@ -37,7 +43,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     if (token) {
-      setUser(AccountHttpService.getUser() );
+      setUser(AccountHttpService.getUser());
     }
   }, [token]);
 

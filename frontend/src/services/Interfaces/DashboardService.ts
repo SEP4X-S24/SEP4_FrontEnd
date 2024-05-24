@@ -1,4 +1,4 @@
-import DashboardObj from "../models/Dashboard/DashboardObj";
+import DashboardObj from "../../models/Dashboard/DashboardObj";
 
 export default interface DashboardService {
   fetchDataFor_7Day(): Promise<DashboardObj>;

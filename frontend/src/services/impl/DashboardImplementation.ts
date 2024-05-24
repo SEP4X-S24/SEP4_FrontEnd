@@ -1,5 +1,5 @@
 import DashboardObj from "../../models/Dashboard/DashboardObj";
-import DashboardService from "../DashboardService";
+import DashboardService from "../Interfaces/DashboardService";
 import axios from "axios";
 import { fetchWeatherApi } from "openmeteo";
 import { each } from "chart.js/dist/helpers/helpers.core";

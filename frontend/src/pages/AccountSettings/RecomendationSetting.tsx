@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./RecomendationSetting.css";
-import AccountService from "../../services/AccountService";
+import AccountService from "../../services/Interfaces/AccountService";
 import AccountHttpService from "../../services/impl/AccountHttpService";
 
 const RecomendationSetting: React.FC = () => {
@@ -24,13 +24,13 @@ const RecomendationSetting: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    const preferences = `color: ${color}, style: ${style}, gender: ${gender}`
-    console.log(preferences)
+    const preferences = `color: ${color}, style: ${style}, gender: ${gender}`;
+    console.log(preferences);
     try {
       await service.updatePreferences(preferences);
     } catch (error: Error | any) {
-      alert(error.message)
-    } 
+      alert(error.message);
+    }
   };
 
   return (
