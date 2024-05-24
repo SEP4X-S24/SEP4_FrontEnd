@@ -10,6 +10,7 @@ import Recommendation from "../../models/Recommendation";
 import RecommendationImplementation from "../../services/impl/RecommendationImplementation";
 import weatherFetcher from "../../services/impl/WeatherFetcher";
 import RecommendationFetcher from "../../services/impl/RecommendationFetcher";
+import "./Recomendation.css";
 
 function RecomendationPage() {
   const { isAuthenticated, token } = useAuth();
@@ -38,8 +39,10 @@ function RecomendationPage() {
   return (
     <div className="app page-container">
       <Header />
-      <Banner recommendation={currentRecommendation} />
-      <WeatherInfo />
+      <div className="recomendation-page">
+        <Banner recommendation={currentRecommendation} />
+        <WeatherInfo />
+      </div>
       <Footer />
       {/* Other components will follow */}
     </div>
