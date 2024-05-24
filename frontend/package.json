@@ -74,8 +74,10 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.5",
     "@testing-library/react": "^15.0.7",
+    "@types/axios-mock-adapter": "^1.10.0",
     "@types/jest": "^29.5.12",
     "@types/js-cookie": "^3.0.6",
-    "@types/react-datepicker": "^6.2.0"
+    "@types/react-datepicker": "^6.2.0",
+    "axios-mock-adapter": "^1.22.0"
   }
 }
