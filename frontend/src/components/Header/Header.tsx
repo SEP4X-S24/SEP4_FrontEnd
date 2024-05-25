@@ -49,11 +49,14 @@ function Header() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/dashboard" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaChartPie size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/dashboard" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <Icon.FaChartPie size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              ) : null}
+
               {isAuthenticated ? (
                 <Link to="/recommendation" className="nav-link px-2 text-white">
                   <IconWrapper>
@@ -62,11 +65,13 @@ function Header() {
                 </Link>
               ) : null}
 
-              <Link to="/profile" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaUser size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/profile" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <Icon.FaUser size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              ) : null}
 
               {isAuthenticated ? (
                 <div className="nav-link px-2 text-white">
