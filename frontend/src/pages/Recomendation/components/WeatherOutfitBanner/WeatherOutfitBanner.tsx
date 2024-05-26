@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./WeatherOutfitBanner.css";
-import DummyWeatherService from "../../../../services/impl/DummyWeatherService";
+import DummyWeatherService from "../../../../services/impl/Demo/DummyWeatherService";
 
 const WeatherOutfitBanner: React.FC = () => {
   const [weather, setWeather] = useState({

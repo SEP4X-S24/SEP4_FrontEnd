@@ -12,7 +12,7 @@ import NotificationSetting from "./pages/AccountSettings/NotificationSetting";
 import ProfilePage from "./pages/AccountSettings/AccountSettingsPage";
 import ProfileSetting from "./pages/AccountSettings/ProfileSetting";
 import RecomendationSetting from "./pages/AccountSettings/RecomendationSetting";
-import RecomendationPage from "./pages/Recomendation/RecomendationPage";
+import RecomendationPage from "./pages/Recomendation/RecommendationPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import StyleDemonstration from "./pages/StyleDemonstration/StyleDemonstration";
 import weatherFetcher from "./services/impl/WeatherFetcher";

@@ -1,5 +1,3 @@
-// weatherFetcher.js
-
 import WeatherHttpService from "./WeatherHttpService";
 
 const service = new WeatherHttpService();

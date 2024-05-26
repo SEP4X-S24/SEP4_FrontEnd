@@ -1,10 +1,10 @@
 import { addDays, format } from "date-fns";
-import CurrentWeather from "../../models/CurrentWeather";
-import DailyForecast from "../../models/DailyForecast";
-import HourlyForecast from "../../models/HourlyForecast";
-import Suggestion from "../../models/Suggestion";
-import WeatherService from "../WeatherService";
-import weatherIconMapper from "../../utils/WeatherIconMapper";
+import CurrentWeather from "../../../models/CurrentWeather";
+import DailyForecast from "../../../models/DailyForecast";
+import HourlyForecast from "../../../models/HourlyForecast";
+import Suggestion from "../../../models/Suggestion";
+import WeatherService from "../../Interfaces/WeatherService";
+import weatherIconMapper from "../../../utils/WeatherIconMapper";
 
 export default class DummyWeatherService implements WeatherService {
   async fetchWeatherImmediately(token: string): Promise<CurrentWeather> {
@@ -14,7 +14,7 @@ export default class DummyWeatherService implements WeatherService {
       location: "Horsens",
       time: `${format(new Date(), "EEEE dd.MM HH:mm")}`,
       humidity: 61,
-      light: 25
+      light: 25,
     };
   }
   async fetchWeatherHourlyForecast(): Promise<HourlyForecast[]> {
@@ -66,7 +66,7 @@ export default class DummyWeatherService implements WeatherService {
       location: "Horsens",
       time: `${format(new Date(), "EEEE dd.MM HH:mm")}`,
       humidity: 61,
-      light: 25
+      light: 25,
     };
   }
 

@@ -1,4 +1,4 @@
-import RecomendationService from "../RecomendationService";
+import RecomendationService from "../Interfaces/RecomendationService";
 import Recommendation from "../../models/Recommendation";
 import axios from "axios";
 import { useAuth } from "../auth/AuthContext";
@@ -19,8 +19,8 @@ export default class RecommendationImplementation
         "https://weatherstation4dev.azurewebsites.net/api/GetRecommendation",
         {
           headers: {
-            Authorization: `Bearer ${token}`
-          }
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 

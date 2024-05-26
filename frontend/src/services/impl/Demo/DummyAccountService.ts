@@ -1,5 +1,5 @@
-import Account from "../../models/Account";
-import AccountService from "../AccountService";
+import Account from "../../../models/Account";
+import AccountService from "../../Interfaces/AccountService";
 
 const accounts: Account[] = [
   { email: "Boss@email.com", password: "bosspass" },
@@ -15,7 +15,9 @@ export default class DummyAccountService {
   async login(user: Account): Promise<string> {
     if (
       accounts.some(
-        (el) => el.email.toLowerCase() === user.email.toLowerCase() && el.password === user.password
+        (el) =>
+          el.email.toLowerCase() === user.email.toLowerCase() &&
+          el.password === user.password
       )
     ) {
       const token = "awo;iujrfw4ehcshrkghndkgbwsetrhserth";
