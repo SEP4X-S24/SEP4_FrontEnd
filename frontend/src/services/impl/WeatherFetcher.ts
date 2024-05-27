@@ -1,8 +1,9 @@
 // weatherFetcher.js
 
+import WeatherService from "../WeatherService";
 import WeatherHttpService from "./WeatherHttpService";
 
-const service = new WeatherHttpService();
+const service: WeatherService = new WeatherHttpService();
 
 const weatherFetcher = {
   async initCurrentWeatherFetch() {
