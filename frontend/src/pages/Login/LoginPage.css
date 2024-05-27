@@ -53,6 +53,18 @@
   margin-top: 4rem;
   width: 100%;
 }
+.login_container .back_button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 5px;
+}
+.login_container .back_button .back {
+  color: var(--color-white);
+  font-size: 16px;
+  text-decoration: none;
+}
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
   .login_container {

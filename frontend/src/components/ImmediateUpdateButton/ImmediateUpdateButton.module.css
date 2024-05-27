@@ -5,6 +5,7 @@
 
 .timer {
   user-select: none;
+  -webkit-user-select: none;
   /* position: absolute;
   bottom: calc(var(--space-large) - var(--space-large) / 2);
   right: calc(var(--space-large)); */

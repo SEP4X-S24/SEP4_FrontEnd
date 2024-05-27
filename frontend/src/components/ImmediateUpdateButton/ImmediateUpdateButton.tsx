@@ -1,3 +1,4 @@
+import React from "react";
 import Countdown from "react-countdown";
 import * as FaIcon from "react-icons/fa6";
 import styles from "./ImmediateUpdateButton.module.css";
@@ -5,6 +6,7 @@ import { animated, useSpring } from "@react-spring/web";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import { useAuth } from "../../services/auth/AuthContext";
 import CurrentWeather from "../../models/CurrentWeather";
+import WeatherService from "../../services/Interfaces/WeatherService";
 
 function ImmediateUpdateButton({
   isCurrentWeatherRequested,
@@ -16,7 +18,7 @@ function ImmediateUpdateButton({
   setCurrentWeather: (weather: CurrentWeather) => void;
 }) {
   const { isAuthenticated, token } = useAuth();
-  const service = new WeatherHttpService();
+  const service: WeatherService = new WeatherHttpService();
 
   const timerSpring = useSpring({
     transform: isCurrentWeatherRequested
@@ -30,6 +32,10 @@ function ImmediateUpdateButton({
     config: { tension: 500, friction: 10 },
   });
 
+  if (!isAuthenticated) {
+    return null;
+  }
+
   return (
     <div className={styles.immediateUpdate}>
       <animated.div
@@ -40,6 +46,8 @@ function ImmediateUpdateButton({
         }}
       >
         <FaIcon.FaArrowRotateRight
+          role="button"
+          aria-label="Update Weather"
           style={{
             width: "100%",
             height: "100%",

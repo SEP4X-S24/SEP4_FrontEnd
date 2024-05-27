@@ -49,30 +49,29 @@ function Header() {
             </ul>
 
             <div className="d-flex text-end align-items-center">
-              <Link to="/recomandation" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaChartPie size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/dashboard" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <Icon.FaChartPie size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              ) : null}
 
-              <Link
-                to="/style_demonstration"
-                className="nav-link px-2 text-white"
-              >
-                <IconWrapper>
-                  <IoLogoCss3 size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
-              <Link to="/dashboard" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaBell size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
-              <Link to="/profile" className="nav-link px-2 text-white">
-                <IconWrapper>
-                  <Icon.FaUser size={navBarIconSize} />
-                </IconWrapper>
-              </Link>
+              {isAuthenticated ? (
+                <Link to="/recommendation" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <Icon.FaTshirt size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              ) : null}
+
+              {isAuthenticated ? (
+                <Link to="/profile" className="nav-link px-2 text-white">
+                  <IconWrapper>
+                    <Icon.FaUser size={navBarIconSize} />
+                  </IconWrapper>
+                </Link>
+              ) : null}
 
               {isAuthenticated ? (
                 <div className="nav-link px-2 text-white">

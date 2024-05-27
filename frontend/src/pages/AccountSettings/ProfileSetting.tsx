@@ -2,37 +2,71 @@ import "./ProfileSetting.css";
 import InputBox from "../../components/InputBox/InputBox";
 import { FaAddressCard, FaEnvelope, FaEye } from "react-icons/fa";
 import { useAuth } from "../../services/auth/AuthContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Account from "../../models/Account";
-import { update } from "@react-spring/web";
+import { useNavigate } from "react-router-dom";
 
 function ProfileSetting() {
-	const { user } = useAuth();
+	const { user, update } = useAuth();
+	const navigate = useNavigate();
 
-	const [email = user?.email, handleEmail] = useState(user?.email);
-	const [password, handlePassword] = useState("");
-	const [firstname = user?.firstname, handleFirstname] = useState(user?.firstname	);
-	const [lastname = user?.lastname, handleLastname] = useState(user?.lastname);
+	const [email, setEmail] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [firstname, setFirstname] = useState<string | any>('');
+  const [lastname, setLastname] = useState<string | any>('');
+
+  useEffect(() => {
+    if (user) {
+      setEmail(user.email);
+      setFirstname(user.firstname);
+      setLastname(user.lastname);
+    }
+  }, [user]);
 
 	const handleEmailChange = (e: any) => {
-		handleEmail(e.target.value);
+		setEmail(e.target.value);
 	};
-	const handlePasswordChange = (e: any) => {
-		handlePassword(e.target.value);
+	const handleNewPasswordChange = (e: any) => {
+		setNewPassword(e.target.value);
+	};
+	const handleCurrentPasswordChange = (e: any) => {
+		setCurrentPassword(e.target.value);
 	};
 	const handleFirstnameChange = (e: any) => {
-		handleFirstname(e.target.value);
+		setFirstname(e.target.value);
 	};
 	const handleLastnameChange = (e: any) => {
-		handleLastname(e.target.value);
+		setLastname(e.target.value);
 	};
 
-	async function sendData(event: React.FormEvent<HTMLFormElement>) {
+	async function updateFunc(email: string, currentPassword: string, firstname: string, lastname: string, newPassword: string) {
+			try {	
+				
+				const acc: Account = {
+					email: email, 
+					password: currentPassword,
+					firstname: firstname,
+					lastname: lastname,
+				};
+				console.log("sending");
+				await update(acc, newPassword);
+				console.log("sent");
+				navigate("/profile")
+				alert("Account updated succesfully");
+			} catch (error: Error | any) {
+				alert(error.message);
+			} finally {
+				console.log(email, currentPassword, firstname, lastname, "kek");
+			}
+	}
+
+	function sendData(event: React.FormEvent<HTMLFormElement>) {
 		event.preventDefault();
-		if (!email || !password || !firstname || !lastname) {
+		if (!email || !currentPassword || !newPassword || !firstname || !lastname) {
 			alert("Please fill all the fields");
 			return;
-		} else if (password.length < 6 || password.length > 20) {
+		} else if (currentPassword.length < 6 || currentPassword.length > 20 || newPassword.length < 6 || newPassword.length > 20) {
 			alert("Password must be between 6 and 20 characters");
 			return;
 		} else if (email.length > 50) {
@@ -46,26 +80,8 @@ function ProfileSetting() {
 		) {
 			alert("First name and last name must be between 1 and 50 characters");
 			return;
-		} else {
-			try {
-				const acc: Account = {
-					userid: user?.userid,
-					email: email,
-					password: password,
-					firstname: firstname,
-					lastname: lastname,
-				};
-				// await update(acc);
-				// display some success message
-			} catch (error: Error | any) {
-				alert(error.message);
-			} finally {
-				handleEmail("");
-				handlePassword("");
-				handleFirstname("");
-				handleLastname("");
-				console.log(email, password, firstname, lastname, "kek");
-			}
+		}else {
+			updateFunc(email, currentPassword, firstname, lastname, newPassword);
 		}
 	}
 	return (
@@ -94,10 +110,17 @@ function ProfileSetting() {
 					InputIcon={FaEnvelope}
 				/>
 				<InputBox
-					label="Password"
+					label="Current password"
 					type="password"
-					handleClick={handlePasswordChange}
-					value={password}
+					handleClick={handleCurrentPasswordChange}
+					value={currentPassword}
+					InputIcon={FaEye}
+				/>
+				<InputBox
+					label="New password"
+					type="password"
+					handleClick={handleNewPasswordChange}
+					value={newPassword}
 					InputIcon={FaEye}
 				/>
 

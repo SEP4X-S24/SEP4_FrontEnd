@@ -2,12 +2,18 @@ import React from "react";
 import "./AccountSettingsPage.css";
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
+import { FaAngleLeft } from "react-icons/fa6";
 
-function ProfilePage(){
+function ProfilePage() {
 	return (
 		<>
 			<div className="settings_page">
 				<div className="settings_navbar">
+					<div className="settings_navbar_backsign">
+						<Link to="/">
+							<FaAngleLeft color="white" size={45} />
+						</Link>
+					</div>
 					<h3>Account Settings</h3>
 					<div className="settings_divider"></div>
 					<div className="settings_links">
@@ -17,12 +23,6 @@ function ProfilePage(){
 							</Link>
 						</div>
 						<div className="settings_link">
-							<Link to={`notificationSettings`} className="nav-link" >
-								Notifications
-							</Link>
-						</div>
-						<div className="settings_link">
-							
 							<Link to={`recomendationSettings`} className="nav-link">
 								Recommendations
 							</Link>

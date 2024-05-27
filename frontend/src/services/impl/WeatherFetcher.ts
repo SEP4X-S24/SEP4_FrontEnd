@@ -1,8 +1,9 @@
 // weatherFetcher.js
 
+import WeatherService from "../Interfaces/WeatherService";
 import WeatherHttpService from "./WeatherHttpService";
 
-const service = new WeatherHttpService();
+const service: WeatherService = new WeatherHttpService();
 
 const weatherFetcher = {
   async initCurrentWeatherFetch() {
@@ -16,7 +17,6 @@ const weatherFetcher = {
   fetchCurrentWeatherPeriodicaly() {
     const fetchCurrentWeather = () => {
       const minutes = new Date().getMinutes();
-      console.log(`Checking time: ${minutes}`);
       if (minutes === 30 || minutes === 0) {
         service.fetchCurrentWeather().then((c) => {
           localStorage.setItem("current_weather", JSON.stringify(c));

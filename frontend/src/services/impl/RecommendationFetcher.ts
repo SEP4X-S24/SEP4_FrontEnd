@@ -1,9 +1,10 @@
+import RecommendationService from "../RecommendationService";
 import RecommendationImplementation from "./RecommendationImplementation";
-const service = new RecommendationImplementation();
+const service: RecommendationService = new RecommendationImplementation();
 
 const RecommendationFetcher = {
-  async initRecommendationFetch() {
-    const d = await service.fetchRecommendation();
+  async initRecommendationFetch(token: string) {
+    const d = await service.fetchRecommendation(token);
     localStorage.setItem("recommendation", JSON.stringify(d));
     console.log(
       `Init recommendation data fetched: ${new Date().toLocaleTimeString()}`
@@ -11,11 +12,11 @@ const RecommendationFetcher = {
     return d;
   },
   fetchDataPeriodicaly() {
-    const fetchRecommendation = () => {
+    const fetchRecommendation = (token: string) => {
       const minutes = new Date().getMinutes();
       console.log(`Checking time: ${minutes}`);
       if (minutes === 30 || minutes === 0) {
-        service.fetchRecommendation().then((c) => {
+        service.fetchRecommendation(token).then((c) => {
           localStorage.setItem("recommendation", JSON.stringify(c));
           console.log(
             `Current recommendation data fetched: ${new Date().toLocaleTimeString()}`

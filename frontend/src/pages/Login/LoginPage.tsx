@@ -3,10 +3,11 @@ import "./LoginPage.css";
 import InputBox from "../../components/InputBox/InputBox";
 import { Link } from "react-router-dom";
 
-import { FaEnvelope, FaEye } from "react-icons/fa6";
+import { FaAngleLeft, FaEnvelope, FaEye } from "react-icons/fa6";
 import { useAuth } from "../../services/auth/AuthContext";
 import { useNavigate } from "react-router-dom";
 import Account from "../../models/Account";
+import { Colors } from "chart.js";
 
 function LoginPage() {
 	const [email, handleEmail] = useState("");
@@ -48,8 +49,7 @@ function LoginPage() {
 			} catch (error: Error | any) {
 				alert(error.message);
 			} finally {
-				handleEmail("");
-				handlePassword("");
+			handlePassword("");
 			}
 		}
 	}
@@ -85,6 +85,11 @@ function LoginPage() {
 							Login
 						</button>
 					</form>
+					<div className="back_button">
+						<Link className="back" to={"/"}>
+							Or go back
+						</Link>
+					</div>
 				</div>
 			</div>
 		</>

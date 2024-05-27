@@ -4,6 +4,7 @@ import "./ImmediateUpdateButtonMobileVersion.css";
 import CurrentWeather from "../../models/CurrentWeather";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import { useAuth } from "../../services/auth/AuthContext";
+import WeatherService from "../../services/Interfaces/WeatherService";
 
 function ImmediateUpdateButtonMobileVersion({
   isCurrentWeatherRequested,
@@ -14,7 +15,7 @@ function ImmediateUpdateButtonMobileVersion({
   setIsCurrentWeatherRequested: (value: boolean) => void;
   setCurrentWeather: (weather: CurrentWeather) => void;
 }) {
-  const service = new WeatherHttpService();
+  const service: WeatherService = new WeatherHttpService();
   const { isAuthenticated, token } = useAuth();
 
   return (
