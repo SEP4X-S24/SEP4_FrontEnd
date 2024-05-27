@@ -6,6 +6,7 @@ import { animated, useSpring } from "@react-spring/web";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import { useAuth } from "../../services/auth/AuthContext";
 import CurrentWeather from "../../models/CurrentWeather";
+import WeatherService from "../../services/Interfaces/WeatherService";
 
 function ImmediateUpdateButton({
   isCurrentWeatherRequested,
@@ -17,7 +18,7 @@ function ImmediateUpdateButton({
   setCurrentWeather: (weather: CurrentWeather) => void;
 }) {
   const { isAuthenticated, token } = useAuth();
-  const service = new WeatherHttpService();
+  const service: WeatherService = new WeatherHttpService();
 
   const timerSpring = useSpring({
     transform: isCurrentWeatherRequested

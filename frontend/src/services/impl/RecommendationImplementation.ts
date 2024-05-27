@@ -1,4 +1,4 @@
-import RecomendationService from "../Interfaces/RecomendationService";
+import RecomendationService from "../RecommendationService";
 import Recommendation from "../../models/Recommendation";
 import axios from "axios";
 import { useAuth } from "../auth/AuthContext";
