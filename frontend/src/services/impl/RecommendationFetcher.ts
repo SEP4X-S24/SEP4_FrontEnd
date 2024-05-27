@@ -1,5 +1,6 @@
+import RecommendationService from "../RecommendationService";
 import RecommendationImplementation from "./RecommendationImplementation";
-const service = new RecommendationImplementation();
+const service: RecommendationService = new RecommendationImplementation();
 
 const RecommendationFetcher = {
   async initRecommendationFetch(token: string) {

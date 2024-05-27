@@ -10,13 +10,14 @@ import "./DashboardPage.css";
 import DashboardImplementation from "../../services/impl/DashboardImplementation";
 import DashboardObj from "../../models/Dashboard/DashboardObj";
 import DemoDashboardData from "../../services/impl/Demo/DemoDashboardData";
+import DashboardService from "../../services/Interfaces/DashboardService";
 
 const DashboardPage: React.FC = () => {
   const [dashboardData, setDashboardData] = useState<DashboardObj | null>(null);
   const [selectedView, setSelectedView] = useState<string>("");
 
   const handleTimelineChange = (date: string) => {
-    const service = new DashboardImplementation();
+    const service: DashboardService = new DashboardImplementation();
     if (date === "12 months") {
       service
         .fetchDataFor_12Month()

@@ -14,6 +14,7 @@ import LightComponent from "./components/Light/LightComponent";
 import weatherFetcher from "../../services/impl/WeatherFetcher";
 import WeatherHttpService from "../../services/impl/WeatherHttpService";
 import { useAuth } from "../../services/auth/AuthContext";
+import WeatherService from "../../services/Interfaces/WeatherService";
 
 function HomePage() {
   const [currentWeather, setCurrentWeather] = useState<CurrentWeather | null>(
@@ -31,7 +32,7 @@ function HomePage() {
   const { isAuthenticated } = useAuth();
 
   useEffect(() => {
-    const service = new WeatherHttpService();
+    const service: WeatherService = new WeatherHttpService();
 
     const fetchWeatherData = async () => {
       const cachedWeather = localStorage.getItem("current_weather");
