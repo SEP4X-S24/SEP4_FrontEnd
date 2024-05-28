@@ -72,6 +72,10 @@ hr {
   text-align: justify;
 }
 
+.footer-section{
+  margin-inline: 0.8rem;
+}
+
 @media (max-width: 767px) {
   .main-section > * {
     margin: 0;
