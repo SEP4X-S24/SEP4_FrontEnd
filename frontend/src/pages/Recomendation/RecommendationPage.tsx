@@ -19,6 +19,10 @@ function RecomendationPage() {
   const navigate = useNavigate()
 
   useEffect(() => {
+    if(!isAuthenticated){
+      navigate("/login")
+    }
+    
     const fetchRecommendationData = async () => {
       const cachedRecommendation = localStorage.getItem("recommendation");
       if (cachedRecommendation) {
@@ -36,9 +40,7 @@ function RecomendationPage() {
     isRecommendationLoadedRef.current = true;
   }, []);
 
-  if(!isAuthenticated){
-    navigate("/login")
-  }
+  
 
   return (
     <div className="app page-container">
