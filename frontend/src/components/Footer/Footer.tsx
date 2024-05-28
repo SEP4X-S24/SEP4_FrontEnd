@@ -2,11 +2,15 @@ import React from "react";
 import "./Footer.css";
 import * as SMIcon from "react-bootstrap-icons";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../services/auth/AuthContext";
 
 function Footer() {
-  const aboutDetails = "Starting from the fact that weather is dynamic and can vary significantly even in the one location, it is often essential to have a clear picture of the meteorological conditions at a fixed point at a moment in time, not just some average values. Our system provides a solution for a technical and digital tool that would allow the measurement of meteorological conditions in a specific location and to present the results to users in live mode. Also to give suggestions about clothes in real time considering the weather conditions.";
+  const aboutDetails =
+    "Starting from the fact that weather is dynamic and can vary significantly even in the one location, it is often essential to have a clear picture of the meteorological conditions at a fixed point at a moment in time, not just some average values. Our system provides a solution for a technical and digital tool that would allow the measurement of meteorological conditions in a specific location and to present the results to users in live mode. Also to give suggestions about clothes in real time considering the weather conditions.";
   const currentYear = new Date().getFullYear();
   const socialMediaIconSize = 35;
+
+  const { isAuthenticated } = useAuth();
 
   return (
     <footer className="footer">
@@ -21,15 +25,19 @@ function Footer() {
           <Link className="a" to="/">
             Home
           </Link>
-          <Link className="a" to="/profile">
-            Profile
-          </Link>
-          <Link className="a" to="/dashboard">
-            Dashboard
-          </Link>
-          <Link className="a" to="/recommendation">
-            Recommendations
-          </Link>
+          {isAuthenticated ? (
+            <>
+              <Link className="a" to="/profile">
+                Profile
+              </Link>
+              <Link className="a" to="/dashboard">
+                Dashboard
+              </Link>
+              <Link className="a" to="/recommendation">
+                Recommendations
+              </Link>
+            </>
+          ) : null}
         </div>
 
         <div className="footer-section menu-section col-md col-sm-12 d-flex flex-column">
@@ -37,15 +45,20 @@ function Footer() {
           <Link className="a" to="/">
             About us
           </Link>
-          <Link className="a" to="/profile">
-            Profile
-          </Link>
-          <Link className="a" to="/dashboard">
-            Dashboard
-          </Link>
-          <Link className="a" to="/notification">
-            Notification preferences
-          </Link>
+
+          {isAuthenticated ? (
+            <>
+              <Link className="a" to="/profile">
+                Profile
+              </Link>
+              <Link className="a" to="/dashboard">
+                Dashboard
+              </Link>
+              <Link className="a" to="/recommendation">
+                Recommendations
+              </Link>
+            </>
+          ) : null}
         </div>
       </div>
 
