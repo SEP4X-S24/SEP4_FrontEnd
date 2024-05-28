@@ -20,10 +20,6 @@ const DashboardPage: React.FC = () => {
   const {isAuthenticated} = useAuth()
 	const navigate = useNavigate()
 
-	if(!isAuthenticated){
-		navigate("/login")
-	}
-
   const handleTimelineChange = (date: string) => {
     const service: DashboardService = new DashboardImplementation();
     if (date === "12 months") {
@@ -69,6 +65,9 @@ const DashboardPage: React.FC = () => {
   };
 
   useEffect(() => {
+    if(!isAuthenticated){
+      navigate("/login")
+    }
     const service = new DashboardImplementation();
     const fetchDataForWeek = async () => {
       try {
