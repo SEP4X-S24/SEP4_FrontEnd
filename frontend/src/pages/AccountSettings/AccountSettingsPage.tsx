@@ -1,10 +1,18 @@
 import React from "react";
 import "./AccountSettingsPage.css";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import { FaAngleLeft } from "react-icons/fa6";
+import { useAuth } from "../../services/auth/AuthContext";
 
 function ProfilePage() {
+	const {isAuthenticated} = useAuth()
+	const navigate = useNavigate()
+
+	if(!isAuthenticated){
+		navigate("/login")
+	}
+
 	return (
 		<>
 			<div className="settings_page">

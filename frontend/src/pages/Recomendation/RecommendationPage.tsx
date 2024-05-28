@@ -7,12 +7,16 @@ import Banner from "./components/Banner/Banner";
 import Recommendation from "../../models/Recommendation";
 import RecommendationFetcher from "../../services/impl/RecommendationFetcher";
 import "./Recomendation.css";
+import LoginPage from "../Login/LoginPage";
+import { useNavigate } from "react-router-dom";
 
 function RecomendationPage() {
   const { isAuthenticated, token } = useAuth();
   const [currentRecommendation, setRecommendation] =
     useState<Recommendation | null>(null);
   const isRecommendationLoadedRef = useRef(false);
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const fetchRecommendationData = async () => {
@@ -31,6 +35,10 @@ function RecomendationPage() {
     fetchRecommendationData();
     isRecommendationLoadedRef.current = true;
   }, []);
+
+  if(!isAuthenticated){
+    navigate("/login")
+  }
 
   return (
     <div className="app page-container">
