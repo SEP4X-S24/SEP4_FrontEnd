@@ -11,10 +11,18 @@ import DashboardImplementation from "../../services/impl/DashboardImplementation
 import DashboardObj from "../../models/Dashboard/DashboardObj";
 import DemoDashboardData from "../../services/impl/Demo/DemoDashboardData";
 import DashboardService from "../../services/Interfaces/DashboardService";
+import { useAuth } from "../../services/auth/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const DashboardPage: React.FC = () => {
   const [dashboardData, setDashboardData] = useState<DashboardObj | null>(null);
   const [selectedView, setSelectedView] = useState<string>("");
+  const {isAuthenticated} = useAuth()
+	const navigate = useNavigate()
+
+	if(!isAuthenticated){
+		navigate("/login")
+	}
 
   const handleTimelineChange = (date: string) => {
     const service: DashboardService = new DashboardImplementation();
@@ -82,6 +90,8 @@ const DashboardPage: React.FC = () => {
   if (dashboardData == null) {
     return <h1>Loading...</h1>;
   }
+
+  
 
   return (
     <div className="page-container">
