@@ -3,7 +3,6 @@ import "./InputBox.css";
 import { IconType } from "react-icons";
 import { IoIosCloudyNight } from "react-icons/io";
 import { FaEye, FaEyeSlash, FaIcons } from "react-icons/fa6";
-import { Cursor } from "react-bootstrap-icons";
 
 function InputBox({
 	label,
@@ -44,45 +43,69 @@ function InputBox({
 					<p className="checkbox_label">{label}</p>
 					<input
 						className="checkbox_input"
-						type={typeTemp}
+						type={type}
 						checked={data}
 						onChange={handleCheck}
 					></input>
 				</div>
 			</div>
 		);
-	} else if (typeTemp === "password" || typeTemp === "text"){
-				return (
-					<div className="form_input">
-						<div className="form_input_box">
-							<label htmlFor="">{label}</label>
-							<input
-								type={typeTemp}
-								value={value}
-								onChange={handleClick}
-							></input>
-						</div>
-						<div onClick={seePass} style={{cursor: "pointer"}}>
-
-							{typeTemp === "password" ? (
-								<FaEyeSlash
-									style={{ width: "40px", height: "40px", fill: "var(--color-secondary)" }}
-								/>
-							) : (
-								<FaEye style={{ width: "40px", height: "40px", fill: "var(--color-secondary)" }}
-								/>
-							)}
-						</div>
-					</div>
-				);
-	}else {
+	} else if (type === "text") {
 		return (
 			<div className="form_input">
 				<div className="form_input_box">
 					<label htmlFor="">{label}</label>
 					<input type={type} value={value} onChange={handleClick}></input>
 				</div>
-				<div >
+				<div>
+					{InputIcon && (
+						<InputIcon
+							style={{
+								width: "40px",
+								height: "40px",
+								fill: "var(--color-secondary)",
+							}}
+						/>
+					)}
+				</div>
+			</div>
+		);
+	} else if (typeTemp === "password" || typeTemp === "text") {
+		return (
+			<div className="form_input">
+				<div className="form_input_box">
+					<label htmlFor="">{label}</label>
+					<input type={typeTemp} value={value} onChange={handleClick}></input>
+				</div>
+				<div onClick={seePass} style={{ cursor: "pointer" }}>
+					{typeTemp === "password" ? (
+						<FaEyeSlash
+							style={{
+								width: "40px",
+								height: "40px",
+								fill: "var(--color-secondary)",
+							}}
+						/>
+					) : (
+						<FaEye
+							style={{
+								width: "40px",
+								height: "40px",
+								fill: "var(--color-secondary)",
+							}}
+						/>
+					)}
+				</div>
+			</div>
+		);
+	} else {
+		return (
+			<div className="form_input">
+				<div className="form_input_box">
+					<label htmlFor="">{label}</label>
+					<input type={type} value={value} onChange={handleClick}></input>
+				</div>
+				<div>
 					{InputIcon && (
 						<InputIcon
 							style={{

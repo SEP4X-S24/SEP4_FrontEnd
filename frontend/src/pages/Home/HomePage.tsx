@@ -54,7 +54,15 @@ function HomePage() {
   }, []);
 
   if (!currentWeather || !hourlyForecast || !dailyForecast) {
-    return <h1>Loading...</h1>;
+    return (
+			<div style={{display:"flex",flexDirection:"column", justifyContent:"center", alignItems:"center", width:"100vw", height:"100vh"}}>
+				<div
+					className="spinner-border"
+					role="status"
+					style={{ width: "100px", height: "100px" }}
+				></div>
+			</div>
+		);
   }
 
   return (
