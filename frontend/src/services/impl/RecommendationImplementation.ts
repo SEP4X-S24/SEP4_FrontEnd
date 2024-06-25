@@ -16,7 +16,7 @@ export default class RecommendationImplementation
   async fetchRecommendation(token: string): Promise<Recommendation> {
     try {
       const response = await axios.get(
-        "https://weatherstation4dev.azurewebsites.net/api/GetRecommendation",
+        "https://weatherstationsep4new.azurewebsites.net/api/GetRecommendation",
         {
           headers: {
             Authorization: `Bearer ${token}`,

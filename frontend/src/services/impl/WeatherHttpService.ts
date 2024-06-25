@@ -16,7 +16,7 @@ export default class WeatherHttpService implements WeatherService {
   async fetchWeatherImmediately(token: string): Promise<CurrentWeather> {
     try {
       const response = await axios.get(
-        "https://weatherstation4dev.azurewebsites.net/api/GetInstantData",
+        "https://weatherstationsep4new.azurewebsites.net/api/GetInstantData",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -167,7 +167,7 @@ export default class WeatherHttpService implements WeatherService {
   async fetchCurrentWeather(): Promise<CurrentWeather> {
     try {
       const response = await axios.get(
-        "https://weatherstation4dev.azurewebsites.net/api/GetDefaultData"
+        "https://weatherstationsep4new.azurewebsites.net/api/GetDefaultData"
       );
       const jsonData = response.data;
       console.log(jsonData);

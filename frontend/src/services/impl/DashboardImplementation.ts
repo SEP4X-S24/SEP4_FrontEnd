@@ -15,10 +15,10 @@ interface WeatherData {
 }
 
 const apiURL = {
-  Week: "https://weatherstation4dev.azurewebsites.net/api/GetWeatherStatistics/Week",
+  Week: "https://weatherstationsep4new.azurewebsites.net/api/GetWeatherStatistics/Week",
   Month:
-    "https://weatherstation4dev.azurewebsites.net/api/GetWeatherStatistics/Month",
-  Year: "https://weatherstation4dev.azurewebsites.net/api/GetWeatherStatistics/Year",
+    "https://weatherstationsep4new.azurewebsites.net/api/GetWeatherStatistics/Month",
+  Year: "https://weatherstationsep4new.azurewebsites.net/api/GetWeatherStatistics/Year",
 };
 
 export default class implements DashboardService {

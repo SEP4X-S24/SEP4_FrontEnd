@@ -5,7 +5,7 @@ import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 
 export default class AccountHttpService implements AccountService {
-  private BASE_API_URL = "https://weatherstation4dev.azurewebsites.net/api";
+  private BASE_API_URL = "https://weatherstationsep4new.azurewebsites.net/api";
 
   async updatePreferences(preferences: string): Promise<void> {
     try {
